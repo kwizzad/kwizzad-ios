@@ -1,0 +1,515 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		503BC2011DC5529B006258F0 /* ObjCMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 503BC2001DC5529B006258F0 /* ObjCMain.storyboard */; };
+		507074B61DABD47A006D3869 /* KwizzadSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507074B21DABD469006D3869 /* KwizzadSDK.framework */; };
+		507074B71DABD47A006D3869 /* KwizzadSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 507074B21DABD469006D3869 /* KwizzadSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		507074BA1DABD4DD006D3869 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507074B91DABD4DD006D3869 /* RxSwift.framework */; };
+		507074BB1DABD4DD006D3869 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 507074B91DABD4DD006D3869 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		507074C31DABD569006D3869 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507074C21DABD569006D3869 /* XCGLogger.framework */; };
+		507074C41DABD569006D3869 /* XCGLogger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 507074C21DABD569006D3869 /* XCGLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		50F179501DB0636E002A878C /* KwizzadExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA7660B21D94083B00DBC694 /* KwizzadExample.xcdatamodeld */; };
+		50F179531DB0636E002A878C /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507074C21DABD569006D3869 /* XCGLogger.framework */; };
+		50F179551DB0636E002A878C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507074B91DABD4DD006D3869 /* RxSwift.framework */; };
+		50F179561DB0636E002A878C /* KwizzadSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507074B21DABD469006D3869 /* KwizzadSDK.framework */; };
+		50F179581DB0636E002A878C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA7660B71D94083B00DBC694 /* LaunchScreen.storyboard */; };
+		50F179591DB0636E002A878C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA7660B51D94083B00DBC694 /* Assets.xcassets */; };
+		50F1795C1DB0636E002A878C /* XCGLogger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 507074C21DABD569006D3869 /* XCGLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		50F1795E1DB0636E002A878C /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 507074B91DABD4DD006D3869 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		50F1795F1DB0636E002A878C /* KwizzadSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 507074B21DABD469006D3869 /* KwizzadSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		50F179651DB063D7002A878C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F1794C1DB06350002A878C /* AppDelegate.m */; };
+		50F1798A1DB065A2002A878C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F179891DB065A2002A878C /* main.m */; };
+		50F1798E1DB06D6F002A878C /* ObjCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F1798C1DB06D65002A878C /* ObjCViewController.m */; };
+		AA7660AC1D94083B00DBC694 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7660AB1D94083B00DBC694 /* AppDelegate.swift */; };
+		AA7660AE1D94083B00DBC694 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7660AD1D94083B00DBC694 /* ViewController.swift */; };
+		AA7660B11D94083B00DBC694 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA7660AF1D94083B00DBC694 /* Main.storyboard */; };
+		AA7660B41D94083B00DBC694 /* KwizzadExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA7660B21D94083B00DBC694 /* KwizzadExample.xcdatamodeld */; };
+		AA7660B61D94083B00DBC694 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA7660B51D94083B00DBC694 /* Assets.xcassets */; };
+		AA7660B91D94083B00DBC694 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA7660B71D94083B00DBC694 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		507074B81DABD47A006D3869 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				507074C41DABD569006D3869 /* XCGLogger.framework in Embed Frameworks */,
+				507074BB1DABD4DD006D3869 /* RxSwift.framework in Embed Frameworks */,
+				507074B71DABD47A006D3869 /* KwizzadSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50F1795B1DB0636E002A878C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				50F1795C1DB0636E002A878C /* XCGLogger.framework in Embed Frameworks */,
+				50F1795E1DB0636E002A878C /* RxSwift.framework in Embed Frameworks */,
+				50F1795F1DB0636E002A878C /* KwizzadSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		503BC2001DC5529B006258F0 /* ObjCMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ObjCMain.storyboard; sourceTree = "<group>"; };
+		507074B21DABD469006D3869 /* KwizzadSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KwizzadSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		507074B91DABD4DD006D3869 /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		507074C21DABD569006D3869 /* XCGLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = XCGLogger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50F1794B1DB06350002A878C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		50F1794C1DB06350002A878C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		50F179631DB0636E002A878C /* KwizzadExampleObjc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KwizzadExampleObjc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		50F179641DB0636F002A878C /* KwizzadExampleObjc-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "KwizzadExampleObjc-Info.plist"; path = "/Users/ace/work/kwizzad_sdk_ios_swift/KwizzadExample/KwizzadExampleObjc-Info.plist"; sourceTree = "<absolute>"; };
+		50F179891DB065A2002A878C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		50F1798B1DB06D65002A878C /* ObjCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCViewController.h; sourceTree = "<group>"; };
+		50F1798C1DB06D65002A878C /* ObjCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjCViewController.m; sourceTree = "<group>"; };
+		AA7660A81D94083B00DBC694 /* KwizzadExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KwizzadExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA7660AB1D94083B00DBC694 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AA7660AD1D94083B00DBC694 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AA7660B01D94083B00DBC694 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AA7660B31D94083B00DBC694 /* KwizzadExample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KwizzadExample.xcdatamodel; sourceTree = "<group>"; };
+		AA7660B51D94083B00DBC694 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA7660B81D94083B00DBC694 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AA7660BA1D94083B00DBC694 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA7660DD1D94087A00DBC694 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		AA7F00BD1DAA81A6006070D6 /* KwizzadSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KwizzadSDK.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/KwizzadSDK-bcitgyagtmgdzmacxiqspjlnfpbn/Build/Products/Debug-iphoneos/KwizzadSDK.framework"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		50F179521DB0636E002A878C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50F179531DB0636E002A878C /* XCGLogger.framework in Frameworks */,
+				50F179551DB0636E002A878C /* RxSwift.framework in Frameworks */,
+				50F179561DB0636E002A878C /* KwizzadSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA7660A51D94083B00DBC694 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				507074C31DABD569006D3869 /* XCGLogger.framework in Frameworks */,
+				507074BA1DABD4DD006D3869 /* RxSwift.framework in Frameworks */,
+				507074B61DABD47A006D3869 /* KwizzadSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA76609F1D94083B00DBC694 = {
+			isa = PBXGroup;
+			children = (
+				507074C21DABD569006D3869 /* XCGLogger.framework */,
+				507074B91DABD4DD006D3869 /* RxSwift.framework */,
+				507074B21DABD469006D3869 /* KwizzadSDK.framework */,
+				AA7660AA1D94083B00DBC694 /* KwizzadExample */,
+				AA7660A91D94083B00DBC694 /* Products */,
+				AA7660DC1D94087A00DBC694 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AA7660A91D94083B00DBC694 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA7660A81D94083B00DBC694 /* KwizzadExample.app */,
+				50F179631DB0636E002A878C /* KwizzadExampleObjc.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA7660AA1D94083B00DBC694 /* KwizzadExample */ = {
+			isa = PBXGroup;
+			children = (
+				AA7660AB1D94083B00DBC694 /* AppDelegate.swift */,
+				50F1794B1DB06350002A878C /* AppDelegate.h */,
+				50F1794C1DB06350002A878C /* AppDelegate.m */,
+				50F179891DB065A2002A878C /* main.m */,
+				AA7660AD1D94083B00DBC694 /* ViewController.swift */,
+				50F1798B1DB06D65002A878C /* ObjCViewController.h */,
+				50F1798C1DB06D65002A878C /* ObjCViewController.m */,
+				AA7660AF1D94083B00DBC694 /* Main.storyboard */,
+				503BC2001DC5529B006258F0 /* ObjCMain.storyboard */,
+				AA7660B51D94083B00DBC694 /* Assets.xcassets */,
+				AA7660B71D94083B00DBC694 /* LaunchScreen.storyboard */,
+				AA7660BA1D94083B00DBC694 /* Info.plist */,
+				50F179641DB0636F002A878C /* KwizzadExampleObjc-Info.plist */,
+				AA7660B21D94083B00DBC694 /* KwizzadExample.xcdatamodeld */,
+			);
+			path = KwizzadExample;
+			sourceTree = "<group>";
+		};
+		AA7660DC1D94087A00DBC694 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA7F00BD1DAA81A6006070D6 /* KwizzadSDK.framework */,
+				AA7660DD1D94087A00DBC694 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		50F1794D1DB0636E002A878C /* KwizzadExampleObjc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50F179601DB0636E002A878C /* Build configuration list for PBXNativeTarget "KwizzadExampleObjc" */;
+			buildPhases = (
+				50F1794E1DB0636E002A878C /* Sources */,
+				50F179521DB0636E002A878C /* Frameworks */,
+				50F179571DB0636E002A878C /* Resources */,
+				50F1795B1DB0636E002A878C /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KwizzadExampleObjc;
+			productName = KwizzadExample;
+			productReference = 50F179631DB0636E002A878C /* KwizzadExampleObjc.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AA7660A71D94083B00DBC694 /* KwizzadExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA7660D31D94083B00DBC694 /* Build configuration list for PBXNativeTarget "KwizzadExample" */;
+			buildPhases = (
+				AA7660A41D94083B00DBC694 /* Sources */,
+				AA7660A51D94083B00DBC694 /* Frameworks */,
+				AA7660A61D94083B00DBC694 /* Resources */,
+				507074B81DABD47A006D3869 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KwizzadExample;
+			productName = KwizzadExample;
+			productReference = AA7660A81D94083B00DBC694 /* KwizzadExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA7660A01D94083B00DBC694 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = Kwizzad;
+				TargetAttributes = {
+					50F1794D1DB0636E002A878C = {
+						DevelopmentTeam = M6VZFHJV8T;
+						LastSwiftMigration = 0810;
+					};
+					AA7660A71D94083B00DBC694 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = M6VZFHJV8T;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = AA7660A31D94083B00DBC694 /* Build configuration list for PBXProject "KwizzadExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AA76609F1D94083B00DBC694;
+			productRefGroup = AA7660A91D94083B00DBC694 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA7660A71D94083B00DBC694 /* KwizzadExample */,
+				50F1794D1DB0636E002A878C /* KwizzadExampleObjc */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		50F179571DB0636E002A878C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50F179581DB0636E002A878C /* LaunchScreen.storyboard in Resources */,
+				503BC2011DC5529B006258F0 /* ObjCMain.storyboard in Resources */,
+				50F179591DB0636E002A878C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA7660A61D94083B00DBC694 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA7660B91D94083B00DBC694 /* LaunchScreen.storyboard in Resources */,
+				AA7660B61D94083B00DBC694 /* Assets.xcassets in Resources */,
+				AA7660B11D94083B00DBC694 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		50F1794E1DB0636E002A878C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50F179501DB0636E002A878C /* KwizzadExample.xcdatamodeld in Sources */,
+				50F1798A1DB065A2002A878C /* main.m in Sources */,
+				50F1798E1DB06D6F002A878C /* ObjCViewController.m in Sources */,
+				50F179651DB063D7002A878C /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA7660A41D94083B00DBC694 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA7660AE1D94083B00DBC694 /* ViewController.swift in Sources */,
+				AA7660B41D94083B00DBC694 /* KwizzadExample.xcdatamodeld in Sources */,
+				AA7660AC1D94083B00DBC694 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AA7660AF1D94083B00DBC694 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA7660B01D94083B00DBC694 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AA7660B71D94083B00DBC694 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA7660B81D94083B00DBC694 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		50F179611DB0636E002A878C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = M6VZFHJV8T;
+				INFOPLIST_FILE = "KwizzadExampleObjc-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kwizzad.KwizzadExampleObjc;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		50F179621DB0636E002A878C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = M6VZFHJV8T;
+				INFOPLIST_FILE = "KwizzadExampleObjc-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kwizzad.KwizzadExampleObjc;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		AA7660D11D94083B00DBC694 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AA7660D21D94083B00DBC694 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AA7660D41D94083B00DBC694 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = M6VZFHJV8T;
+				INFOPLIST_FILE = KwizzadExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kwizzad.KwizzadExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		AA7660D51D94083B00DBC694 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = M6VZFHJV8T;
+				INFOPLIST_FILE = KwizzadExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kwizzad.KwizzadExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		50F179601DB0636E002A878C /* Build configuration list for PBXNativeTarget "KwizzadExampleObjc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50F179611DB0636E002A878C /* Debug */,
+				50F179621DB0636E002A878C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA7660A31D94083B00DBC694 /* Build configuration list for PBXProject "KwizzadExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA7660D11D94083B00DBC694 /* Debug */,
+				AA7660D21D94083B00DBC694 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA7660D31D94083B00DBC694 /* Build configuration list for PBXNativeTarget "KwizzadExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA7660D41D94083B00DBC694 /* Debug */,
+				AA7660D51D94083B00DBC694 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AA7660B21D94083B00DBC694 /* KwizzadExample.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AA7660B31D94083B00DBC694 /* KwizzadExample.xcdatamodel */,
+			);
+			currentVersion = AA7660B31D94083B00DBC694 /* KwizzadExample.xcdatamodel */;
+			path = KwizzadExample.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = AA7660A01D94083B00DBC694 /* Project object */;
+}
