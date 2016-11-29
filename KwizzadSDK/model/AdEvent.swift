@@ -16,10 +16,15 @@ func generateUserData() -> [String:Any] {
         (ASIdentifierManager.shared().advertisingIdentifier.uuidString, "idfa") --> userData
     }
     
+    KwizzadSDK.instance.model.userData.toDict(&userData);
+    
     ("iOS", "PlatformType") --> userData
-    ("0.7.1", "sdkVersion") --> userData
+    ("0.7.4", "sdkVersion") --> userData
     // (osVersion, "OSVersion") --> userData
     ("1.0", "apiVersion") --> userData
+    
+    print("User data", userData);
+    
     return userData;
 }
 

@@ -17,7 +17,8 @@ class KwizzadView : UIViewController {
     let api : KwizzadAPI
     let customParameters: [String:Any]?;
     var viewAppeared = false;
-    var goalReached=false;
+    var goalReached = false;
+    var callToActionClicked = false;
     
     var disposeBag = DisposeBag()
     var controller : WKController?
@@ -99,12 +100,6 @@ class KwizzadView : UIViewController {
             conf.mediaPlaybackAllowsAirPlay = false
         }
         
-        /*let webView2 = WKWebView(frame: self.view.bounds);
-        webView2.autoresizingMask = [ .flexibleWidth, .flexibleHeight ]
-        webView2.load(URLRequest(url: URL(string:"http://www.google.de")!));
-        view.addSubview(webView2);
-        */
-        
         let webView = WKWebView(frame: self.view.bounds, configuration: conf)
         self.webView = webView;
         self.webView?.isHidden = true
@@ -130,7 +125,7 @@ class KwizzadView : UIViewController {
         
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        button.contentEdgeInsets = UIEdgeInsetsMake(10,10,10,10)
+        button.contentEdgeInsets = UIEdgeInsetsMake(5,5,5,5)
         
         button.sizeToFit()
         
@@ -144,6 +139,8 @@ class KwizzadView : UIViewController {
             kwlog.debug("kwizzadView received \(adState)")
             
             switch(adState) {
+            case .CALL2ACTIONCLICKED:
+                self.callToActionClicked = true;
             case .GOAL_REACHED:
                 self.button.setImage(UIImage(named: "okay", in: Bundle(for: type(of: self)), compatibleWith: nil), for: .normal)
                 self.button.setImage(UIImage(named: "okay_active", in: Bundle(for: type(of: self)), compatibleWith: nil), for: .highlighted)
@@ -170,9 +167,7 @@ class KwizzadView : UIViewController {
                 self.webView?.isHidden = false
             case .DISMISSED:
                 self.closeAd();
-                self.dismiss(animated: true, completion: {
-                    
-                })
+                self.dismiss(animated: true)
                 break;
             default:
                 break
@@ -201,22 +196,53 @@ class KwizzadView : UIViewController {
         closeAd()
     }
     
-    func closeButtonClick() {
+    func dismissAndClosePlacement() {
+        self.dismiss(animated: true, completion: {
+            self.placement.close();
+        })
+    }
+    
+    func forfeitRewardsText() -> String {
+        if let reward = self.placement.adResponse?.rewards?.first(where: { $0.type == RewardType.CALLBACK }) {
+            if let maxAmountOrAmount = (reward.maxAmount != nil) ? reward.maxAmount : reward.amount {
+                if maxAmountOrAmount > 0 {
+                    if let currency = reward.currency {
+                        return "Are you sure you want to quit and miss out on \(maxAmountOrAmount) \(reward.currency!)?"
+                    }
+                }
+            }
+        }
         
-        kwlog.debug("close clicked")
-        if(goalReached) {
-            self.dismiss(animated: true, completion: {
-                
-            })
+        return "Are you sure you want to miss out on this offer?"
+    }
+    
+    func closeButtonClick() {
+        kwlog.debug(self.placement.adResponse)
+        
+        kwlog.debug("Close button clicked")
+
+        if (goalReached) {
+            self.dismissAndClosePlacement()
+            return
+        }
+
+        let goalUrlPattern = self.placement.adResponse?.goalUrlPattern
+        
+        if (callToActionClicked) {
+            let alert = UIAlertController(title: nil, message: "Close window and go back to the app?", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Yes, close window", style: UIAlertActionStyle.default, handler: { foo in
+                self.dismissAndClosePlacement()
+            }))
+            self.present(alert, animated: true, completion: nil)
         }
         else {
-            let msg = "Are you sure you want to quit and miss out on #number_of_rewards# #reward_name#?"
-            
+            let msg = self.forfeitRewardsText()
             let alert = UIAlertController(title: "Are you sure?", message: msg, preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Continue and claim reward", style: UIAlertActionStyle.cancel, handler: { foo in
             }))
             alert.addAction(UIAlertAction(title: "Quit and forfeit reward", style: UIAlertActionStyle.destructive, handler: { foo in
-                self.dismiss(animated: true)
+                self.dismissAndClosePlacement()
             }))
             self.present(alert, animated: true, completion: nil)
         }
