@@ -11,7 +11,7 @@
 #import <KwizzadSDK/KwizzadSDK-Swift.h>
 
 @interface ObjCViewController () {
-    BOOL started;
+    BOOL running;
     UIViewController *kwizzadViewController;
     NSObject *adSignal;
     NSObject *transactionsSignal;
@@ -23,7 +23,7 @@
 
 @implementation ObjCViewController
 
--(void) viewDidLoad {
+- (void) viewDidLoad {
     [super viewDidLoad];
     
     NSString *placementId = nil;
@@ -31,17 +31,47 @@
     placementId = @"tvsa";
     
     self.placementIdField.text = placementId;
-    
 }
 
--(IBAction)onStartButton {
-    if (started) return;
+// Customize this to change how your app shows users their rewards.
+// Note that each open transaction must be confirmed by the app (using `completeTransaction`).
+// Unconfirmed transactions are shown again until they are confirmed.
+
+- (void) handleTransaction:(KwizzadOpenTransaction *)transaction {
+    NSLog(@"received %@, confirming", transaction);
+    KwizzadReward *reward = transaction.reward;
+    NSString *message = [NSString stringWithFormat:@"You've earned %@.", [reward asFormattedString]];
+    if (reward) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle: @"Congratulations!"
+                                                                       message: message
+                                                                preferredStyle: UIAlertControllerStyleAlert];
+        
+        [alert addAction: [UIAlertAction actionWithTitle:@"Yo" style: UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [KwizzadSDK.instance completeTransaction:transaction];
+        }]];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    else {
+        // Silently confirm the transaction
+        [KwizzadSDK.instance completeTransaction:transaction];
+    }
+}
+
+- (IBAction)onStartButton {
+    if (running) return;
     NSString *placementId = self.placementIdField.text;
     
     if (placementId.length == 0) return;
     
-    started = YES;
+    running = YES;
     
+    // For better targeting, you can set known user data here:
+    KwizzadUserDataModel *userData = KwizzadSDK.instance.userDataModel;
+    userData.userName = @"Francesca Rossi"; // user name inside your app
+    userData.facebookUserId = @"1234abc";
+    userData.userId = @"12345"; // identifies the user inside your app
+    userData.gender = KwizzadGenderFemale;
     
     /**
      if you need to close the kwizzad, you have to call following:
@@ -61,11 +91,12 @@
                         case KwizzadAdStateINITIAL:
                             NSLog(@">> ad state INITIAL");
                             break;
+                            
                         case KwizzadAdStateRECEIVED_AD: {
                             kwizzadViewController = [KwizzadSDK.instance prepare:placementId customParameters:nil];
                         }
-                            
                             break;
+                            
                         case KwizzadAdStateAD_READY:
                         {
                             [self presentViewController:kwizzadViewController animated:true completion:nil];
@@ -74,19 +105,25 @@
                             
                         case KwizzadAdStateDISMISSED:
                         {
-                            
                             adSignal = nil;
-                            started = NO;
+                            running = NO;
                             
                             transactionsSignal = [KwizzadSDK.instance subscribeToPendingTransactionsWithCallback:^(NSSet<KwizzadOpenTransaction *> * _Nonnull transactions) {
                                 
                                 KwizzadOpenTransaction *transaction = [transactions anyObject];
                                 
                                 if (transaction) {
-                                    NSLog(@"received %@, confirming", transaction);
-                                    [KwizzadSDK.instance completeTransaction:transaction];
+                                    [self handleTransaction:transaction];
                                 }
                             }];
+                        }
+                            break;
+                            
+                        case KwizzadAdStateNOFILL: {
+                            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
+                                                                                           message:@"No ad available on this placement."
+                                                                                    preferredStyle:UIAlertControllerStyleAlert];
+                            [self presentViewController:alert animated:YES completion:nil];
                         }
                             break;
                             

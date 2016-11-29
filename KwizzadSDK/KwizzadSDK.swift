@@ -15,20 +15,20 @@ let kwlog: XCGLogger = {
     
     // Create a destination for the system console log (via NSLog)
     /*let systemDestination = AppleSystemLogDestination(identifier: "advancedLogger.systemDestination")
-    
-    
-    // Optionally set some configuration options
-    systemDestination.outputLevel = .debug
-    systemDestination.showLogIdentifier = false
-    systemDestination.showFunctionName = false
-    systemDestination.showThreadName = true
-    systemDestination.showLevel = false
-    systemDestination.showFileName = true
-    systemDestination.showLineNumber = true
-    systemDestination.showDate = true
-    
-    // Add the destination to the logger
-    log.add(destination: systemDestination)*/
+     
+     
+     // Optionally set some configuration options
+     systemDestination.outputLevel = .debug
+     systemDestination.showLogIdentifier = false
+     systemDestination.showFunctionName = false
+     systemDestination.showThreadName = true
+     systemDestination.showLevel = false
+     systemDestination.showFileName = true
+     systemDestination.showLineNumber = true
+     systemDestination.showDate = true
+     
+     // Add the destination to the logger
+     log.add(destination: systemDestination)*/
     
     return log
 }()
@@ -66,6 +66,10 @@ open class KwizzadSDK:NSObject {
         
         model.configured.value = true;
         
+    }
+    
+    open var userDataModel: UserDataModel {
+        return model.userData;
     }
     
     open var isConfigured: Bool {
@@ -128,16 +132,7 @@ open class KwizzadSDK:NSObject {
     open func close(_ placementId : String) {
         kwlog.debug(placementId);
         let placement = model.placementModel(placementId: placementId)
-        
-        placement.transition(from:
-                                AdState.AD_READY,
-                                AdState.LOADING_AD,
-                                AdState.SHOWING_AD,
-                                AdState.CALL2ACTION,
-                                AdState.CALL2ACTIONCLICKED,
-                                AdState.GOAL_REACHED,
-                                AdState.NOFILL,
-                            to: AdState.DISMISSED)
+        placement.close()
         
     }
     
@@ -207,6 +202,7 @@ class KwizzadAPI {
                 }
                 
                 kwlog.debug("server response \(response)")
+                kwlog.debug()
                 
                 let foo: [FromDict] = dictConvert(str: response)
                 
@@ -219,9 +215,9 @@ class KwizzadAPI {
                             .placementModel(placementId: noFillEvent.placementId!)
                             .transition(from: .REQUESTING_AD,
                                         to: .NOFILL,
-                                beforeChange: { placement in
-                                    placement.retryAfter = noFillEvent.retryAfter;
-                                    placement.adResponse = nil;
+                                        beforeChange: { placement in
+                                            placement.retryAfter = noFillEvent.retryAfter;
+                                            placement.adResponse = nil;
                             })
                     }
                     
@@ -266,12 +262,12 @@ class KwizzadAPI {
                                     //QLog.d("Replace " + event.url + " with " + model.overrideWeb);
                                     //event.url = event.url.replaceFirst("",model.overrideWeb);
                                     //QLog.d("Replaced: " + event.url);
-                                }
+                            }
                         )
                         
                     }
                 }
-        }).addDisposableTo(disposeBag)
+            }).addDisposableTo(disposeBag)
     }
     
     func send(_ request: String, _ ret: BehaviorSubject<Void>) -> Observable<String> {

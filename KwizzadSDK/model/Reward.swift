@@ -15,11 +15,19 @@ public enum RewardType : String {
     case GOALREACHED = "goalReached"
 }
 
-open class Reward : FromDict {
+@objc(KwizzadReward)
+open class Reward : NSObject, FromDict {
     open let amount : Int?
     open let maxAmount : Int?
     open let currency : String?
     open let type : RewardType
+
+    public func asFormattedString() -> String? {
+        if let amount = self.amount, let currency = self.currency {
+            return "\(amount) \(currency)"
+        }
+        return nil;
+    }
     
     public required init(_ map: [String : Any]) {
         amount = map["amount"] as? Int

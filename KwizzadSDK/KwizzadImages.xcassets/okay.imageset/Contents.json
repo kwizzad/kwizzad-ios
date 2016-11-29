@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "okay-button@1x-1.png",
+      "filename" : "okay-button@1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "okay-button.png",
+      "filename" : "okay-button@2x.png",
       "scale" : "2x"
     },
     {

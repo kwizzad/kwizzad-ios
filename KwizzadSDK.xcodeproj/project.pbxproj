@@ -32,6 +32,7 @@
 		AAB780C41DB9406C003DCA77 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB780C31DB9406C003DCA77 /* Reward.swift */; };
 		AAB780C61DB94EB3003DCA77 /* OpenTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB780C51DB94EB3003DCA77 /* OpenTransaction.swift */; };
 		AADE2E701DB7D7A300F06407 /* DictConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE2E6F1DB7D7A300F06407 /* DictConvertible.swift */; };
+		FE93A8701DE5D16100BE65D1 /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE93A86F1DE5D16100BE65D1 /* UserDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,8 @@
 		AAB780C31DB9406C003DCA77 /* Reward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reward.swift; path = model/Reward.swift; sourceTree = "<group>"; };
 		AAB780C51DB94EB3003DCA77 /* OpenTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenTransaction.swift; path = model/OpenTransaction.swift; sourceTree = "<group>"; };
 		AADE2E6F1DB7D7A300F06407 /* DictConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictConvertible.swift; path = model/DictConvertible.swift; sourceTree = "<group>"; };
+		FE93A86F1DE5D16100BE65D1 /* UserDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDataModel.swift; path = model/UserDataModel.swift; sourceTree = "<group>"; };
+		FE93A8711DE5FABD00BE65D1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +102,7 @@
 		AA00C5651D93EA980044F1AC = {
 			isa = PBXGroup;
 			children = (
+				FE93A8711DE5FABD00BE65D1 /* README.md */,
 				AA00C5711D93EA980044F1AC /* KwizzadSDK */,
 				AA00C57C1D93EA980044F1AC /* KwizzadSDKTests */,
 				AA00C5701D93EA980044F1AC /* Products */,
@@ -149,6 +153,7 @@
 				AA7A67A51DAAC8FB00BEE919 /* PlacementModel.swift */,
 				AA7A67A71DAACBCE00BEE919 /* Configuration.swift */,
 				AADE2E6F1DB7D7A300F06407 /* DictConvertible.swift */,
+				FE93A86F1DE5D16100BE65D1 /* UserDataModel.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 				AA7A67AE1DAACC6500BEE919 /* WKController.swift in Sources */,
 				AA7A67A61DAAC8FB00BEE919 /* PlacementModel.swift in Sources */,
 				AA7A67A01DAAC8A600BEE919 /* KwizzadModel.swift in Sources */,
+				FE93A8701DE5D16100BE65D1 /* UserDataModel.swift in Sources */,
 				AAB780C61DB94EB3003DCA77 /* OpenTransaction.swift in Sources */,
 				AAB780C01DB94026003DCA77 /* NoFillEvent.swift in Sources */,
 				AA1E42FC1DB678CD00CB1150 /* Signal.swift in Sources */,

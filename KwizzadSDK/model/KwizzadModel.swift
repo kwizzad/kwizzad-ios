@@ -21,8 +21,8 @@ class KwizzadModel {
     let openTransactions : Variable<Set<OpenTransaction>> = Variable([])
     
     var placements = [String: PlacementModel]()
-    
-    
+
+    let userData = UserDataModel();
     
     public init() {
         let userDefaults = UserDefaults.standard;

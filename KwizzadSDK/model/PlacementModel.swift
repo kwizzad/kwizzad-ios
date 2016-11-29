@@ -122,4 +122,16 @@ open class PlacementModel : NSObject {
         }
         return false
     }
+    
+    func close() {
+        self.transition(from: AdState.AD_READY,
+                              AdState.LOADING_AD,
+                              AdState.SHOWING_AD,
+                              AdState.CALL2ACTION,
+                              AdState.CALL2ACTIONCLICKED,
+                              AdState.GOAL_REACHED,
+                              AdState.NOFILL,
+                          to: AdState.DISMISSED)
+
+    }
 }

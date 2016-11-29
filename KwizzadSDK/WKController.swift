@@ -58,7 +58,7 @@ class WKController : NSObject, WKScriptMessageHandler, WKNavigationDelegate {
             kwlog.debug("goal reached");
             
             DispatchQueue.main.async {
-                self.model.transition(from: AdState.SHOWING_AD, AdState.CALL2ACTION, AdState.CALL2ACTIONCLICKED, to: AdState.GOAL_REACHED)
+                self.model.transition(from: AdState.CALL2ACTION, AdState.CALL2ACTIONCLICKED, to: AdState.GOAL_REACHED)
             }
             
             _ = self.api.queue(AdTrackingEvent(action: "goalReached", forAd: self.model.adResponse!.adId!))
