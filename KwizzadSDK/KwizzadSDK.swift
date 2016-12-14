@@ -15,23 +15,39 @@ let kwlog: XCGLogger = {
     
     // Create a destination for the system console log (via NSLog)
     /*let systemDestination = AppleSystemLogDestination(identifier: "advancedLogger.systemDestination")
-     
-     
-     // Optionally set some configuration options
-     systemDestination.outputLevel = .debug
-     systemDestination.showLogIdentifier = false
-     systemDestination.showFunctionName = false
-     systemDestination.showThreadName = true
-     systemDestination.showLevel = false
-     systemDestination.showFileName = true
-     systemDestination.showLineNumber = true
-     systemDestination.showDate = true
-     
-     // Add the destination to the logger
-     log.add(destination: systemDestination)*/
+    
+    
+    // Optionally set some configuration options
+    systemDestination.outputLevel = .debug
+    systemDestination.showLogIdentifier = false
+    systemDestination.showFunctionName = false
+    systemDestination.showThreadName = true
+    systemDestination.showLevel = false
+    systemDestination.showFileName = true
+    systemDestination.showLineNumber = true
+    systemDestination.showDate = true
+    
+    // Add the destination to the logger
+    log.add(destination: systemDestination)*/
     
     return log
 }()
+
+func KwizzadLocalized(_ key: String, replacements : [String:String]? = nil) -> String {
+    var str = NSLocalizedString(key, tableName: "Kwizzad", bundle: Bundle(for: type(of: KwizzadSDK.instance)), comment: key+"!");
+    
+    if let repl = replacements {
+        
+        for (key, value) in repl {
+            str = str.replacingOccurrences(of: key, with: value);
+        }
+        
+        return str;
+    }
+    else {
+        return str;
+    }
+}
 
 open class KwizzadSDK:NSObject {
     
@@ -41,7 +57,7 @@ open class KwizzadSDK:NSObject {
     open static let instance = KwizzadSDK()
     
     let model = KwizzadModel()
-    
+
     let api : KwizzadAPI
     
     let disposeBag = DisposeBag()
@@ -51,11 +67,16 @@ open class KwizzadSDK:NSObject {
         c.add(clazz: AdResponseEvent.self, type: "adResponse")
         c.add(clazz: OpenTransactionsEvent.self, type: "openTransactions")
         c.add(clazz: DeprecatedResponse.self, type: "openCallbacks")
+        c.add(clazz: NoFillEvent.self, type: "adNoFill")
         
         api = KwizzadAPI(model);
+        HTTPCookieStorage.shared.cookieAcceptPolicy = HTTPCookie.AcceptPolicy.always;
+
+        super.init();
     }
     
     open func configure(_ configuration : Configuration) {
+        
         model.apiKey = configuration.apiKey;
         
         if(configuration.overrideServer != nil) {
@@ -71,7 +92,7 @@ open class KwizzadSDK:NSObject {
     open var userDataModel: UserDataModel {
         return model.userData;
     }
-    
+
     open var isConfigured: Bool {
         return model.configured.value;
     }
@@ -215,9 +236,9 @@ class KwizzadAPI {
                             .placementModel(placementId: noFillEvent.placementId!)
                             .transition(from: .REQUESTING_AD,
                                         to: .NOFILL,
-                                        beforeChange: { placement in
-                                            placement.retryAfter = noFillEvent.retryAfter;
-                                            placement.adResponse = nil;
+                                beforeChange: { placement in
+                                    placement.retryAfter = noFillEvent.retryAfter;
+                                    placement.adResponse = nil;
                             })
                     }
                     
@@ -262,12 +283,12 @@ class KwizzadAPI {
                                     //QLog.d("Replace " + event.url + " with " + model.overrideWeb);
                                     //event.url = event.url.replaceFirst("",model.overrideWeb);
                                     //QLog.d("Replaced: " + event.url);
-                            }
+                                }
                         )
                         
                     }
                 }
-            }).addDisposableTo(disposeBag)
+        }).addDisposableTo(disposeBag)
     }
     
     func send(_ request: String, _ ret: BehaviorSubject<Void>) -> Observable<String> {

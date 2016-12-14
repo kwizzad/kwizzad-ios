@@ -10,6 +10,7 @@
 		50057CB41DC6205100A5C5E7 /* OpenTransactionsSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50057CB31DC6205100A5C5E7 /* OpenTransactionsSignal.swift */; };
 		AA00C5791D93EA980044F1AC /* KwizzadSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA00C56F1D93EA980044F1AC /* KwizzadSDK.framework */; };
 		AA00C5801D93EA980044F1AC /* KwizzadSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00C5721D93EA980044F1AC /* KwizzadSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA08A0BE1DF09CD1008A29BC /* Kwizzad.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA08A0BB1DF09CD1008A29BC /* Kwizzad.strings */; };
 		AA1E42F31DB53AF000CB1150 /* AdTrackingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1E42F21DB53AF000CB1150 /* AdTrackingEvent.swift */; };
 		AA1E42FC1DB678CD00CB1150 /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1E42FB1DB678CD00CB1150 /* Signal.swift */; };
 		AA51D4B31DAFEAD0001A7B21 /* KwizzadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA51D4B21DAFEAD0001A7B21 /* KwizzadView.swift */; };
@@ -52,6 +53,8 @@
 		AA00C5731D93EA980044F1AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA00C5781D93EA980044F1AC /* KwizzadSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KwizzadSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA00C57F1D93EA980044F1AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA08A0BC1DF09CD1008A29BC /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Kwizzad.strings; sourceTree = "<group>"; };
+		AA08A0BD1DF09CD1008A29BC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Kwizzad.strings; sourceTree = "<group>"; };
 		AA1E42F21DB53AF000CB1150 /* AdTrackingEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdTrackingEvent.swift; path = model/AdTrackingEvent.swift; sourceTree = "<group>"; };
 		AA1E42FB1DB678CD00CB1150 /* Signal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
 		AA51D4B21DAFEAD0001A7B21 /* KwizzadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KwizzadView.swift; sourceTree = "<group>"; };
@@ -122,6 +125,8 @@
 		AA00C5711D93EA980044F1AC /* KwizzadSDK */ = {
 			isa = PBXGroup;
 			children = (
+				AA08A0BB1DF09CD1008A29BC /* Kwizzad.strings */,
+				AA08A0B41DF09882008A29BC /* localization */,
 				AA7A679A1DAAC86000BEE919 /* model */,
 				AA00C5721D93EA980044F1AC /* KwizzadSDK.h */,
 				AA00C5731D93EA980044F1AC /* Info.plist */,
@@ -140,6 +145,13 @@
 				AA00C57F1D93EA980044F1AC /* Info.plist */,
 			);
 			path = KwizzadSDKTests;
+			sourceTree = "<group>";
+		};
+		AA08A0B41DF09882008A29BC /* localization */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = localization;
 			sourceTree = "<group>";
 		};
 		AA7A679A1DAAC86000BEE919 /* model */ = {
@@ -278,6 +290,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				de,
 			);
 			mainGroup = AA00C5651D93EA980044F1AC;
 			productRefGroup = AA00C5701D93EA980044F1AC /* Products */;
@@ -296,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA51D4B51DAFF7CE001A7B21 /* KwizzadImages.xcassets in Resources */,
+				AA08A0BE1DF09CD1008A29BC /* Kwizzad.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,11 +368,24 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		AA08A0BB1DF09CD1008A29BC /* Kwizzad.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA08A0BC1DF09CD1008A29BC /* de */,
+				AA08A0BD1DF09CD1008A29BC /* en */,
+			);
+			name = Kwizzad.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		AA00C5811D93EA980044F1AC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -413,6 +440,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

@@ -93,7 +93,8 @@
                             break;
                             
                         case KwizzadAdStateRECEIVED_AD: {
-                            kwizzadViewController = [KwizzadSDK.instance prepare:placementId customParameters:nil];
+                            NSDictionary* myCustomParameters = [NSDictionary dictionaryWithObjectsAndKeys:userData.userId, @"userId", nil];
+                            kwizzadViewController = [KwizzadSDK.instance prepare:placementId customParameters:myCustomParameters];
                         }
                             break;
                             
@@ -118,15 +119,19 @@
                             }];
                         }
                             break;
-                            
+
                         case KwizzadAdStateNOFILL: {
                             UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
                                                                                            message:@"No ad available on this placement."
                                                                                     preferredStyle:UIAlertControllerStyleAlert];
                             [self presentViewController:alert animated:YES completion:nil];
+                            
+                            [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                                [alert dismissViewControllerAnimated:true completion:nil];
+                            }]];
                         }
                             break;
-                            
+
                         default:
                             break;
                     }

@@ -22,7 +22,7 @@ class ViewController: UIViewController{
     
     func handleTransaction(_ t:OpenTransaction) {
         print("Received transaction: \(t.adId) \(t.transactionId) \(t.state) \(t.conversionTimestamp), confirming...")
-        
+
         if let reward = t.reward {
             var msg = "You've earned a reward!"
             if let amount = reward.amount, let currency = reward.currency {
@@ -68,8 +68,8 @@ class ViewController: UIViewController{
             case AdState.RECEIVED_AD:
                 
                 print("received ad :))")
-                
-                self.controller = self.kwizzad.prepare(self.placementId);
+                let myCustomParameters = ["userId":userData.userId]; // "userId" should be set to userData.userId
+                self.controller = self.kwizzad.prepare(self.placementId, customParameters: myCustomParameters);
                 
             case AdState.AD_READY:
                 print("ad ready")
@@ -96,14 +96,21 @@ class ViewController: UIViewController{
             case AdState.NOFILL:
                 let alert = UIAlertController(title: nil, message: "No ad available on this placement.", preferredStyle: UIAlertControllerStyle.alert)
                 self.present(alert, animated: true)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: {
+                    (alertAction: UIAlertAction!) in
+                    alert.dismiss(animated: true, completion: nil)
+                }))
+                
             default:
                 print("other")
             }
         }).addDisposableTo(disposeBag)
     }
     
-    @IBOutlet weak var placementTx: UITextField!
     
+    @IBOutlet weak var placementTx: UITextField!
+
     // Contact us to get a valid placement ID for your app and fill it in here.
     var placementId: String = "goal_ok";
     

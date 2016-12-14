@@ -204,16 +204,21 @@ class KwizzadView : UIViewController {
     
     func forfeitRewardsText() -> String {
         if let reward = self.placement.adResponse?.rewards?.first(where: { $0.type == RewardType.CALLBACK }) {
-            if let maxAmountOrAmount = (reward.maxAmount != nil) ? reward.maxAmount : reward.amount {
-                if maxAmountOrAmount > 0 {
-                    if let currency = reward.currency {
-                        return "Are you sure you want to quit and miss out on \(maxAmountOrAmount) \(reward.currency!)?"
+            if let currency = reward.currency {
+                if let maxAmount = reward.maxAmount {
+                    if maxAmount > 0 {
+                        return KwizzadLocalized("alert_close_title_var",replacements: ["#number_of_rewards#":"\(maxAmount)", "#reward_name#":"\(reward.currency!)"])
+                    }
+                }
+                if let amount = reward.amount {
+                    if amount > 0 {
+                        return KwizzadLocalized("alert_close_title",replacements: ["#number_of_rewards#":"\(amount)", "#reward_name#":"\(reward.currency!)"])
                     }
                 }
             }
         }
         
-        return "Are you sure you want to miss out on this offer?"
+        return KwizzadLocalized("alert_close_title_0");
     }
     
     func closeButtonClick() {
@@ -228,20 +233,20 @@ class KwizzadView : UIViewController {
 
         let goalUrlPattern = self.placement.adResponse?.goalUrlPattern
         
-        if (callToActionClicked) {
-            let alert = UIAlertController(title: nil, message: "Close window and go back to the app?", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "Yes, close window", style: UIAlertActionStyle.default, handler: { foo in
+        if (callToActionClicked && (self.placement.goalUrl == nil || self.placement.goalUrl!.isEmpty)) {
+            let alert = UIAlertController(title: nil, message: KwizzadLocalized("close_alert_title"), preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: KwizzadLocalized("close_alert_no"), style: UIAlertActionStyle.cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: KwizzadLocalized("close_alert_yes"), style: UIAlertActionStyle.default, handler: { foo in
                 self.dismissAndClosePlacement()
             }))
             self.present(alert, animated: true, completion: nil)
         }
         else {
             let msg = self.forfeitRewardsText()
-            let alert = UIAlertController(title: "Are you sure?", message: msg, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Continue and claim reward", style: UIAlertActionStyle.cancel, handler: { foo in
+            let alert = UIAlertController(title: nil, message: msg, preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: KwizzadLocalized("alert_close_claim"), style: UIAlertActionStyle.cancel, handler: { foo in
             }))
-            alert.addAction(UIAlertAction(title: "Quit and forfeit reward", style: UIAlertActionStyle.destructive, handler: { foo in
+            alert.addAction(UIAlertAction(title: KwizzadLocalized("alert_close_forfeit"), style: UIAlertActionStyle.destructive, handler: { foo in
                 self.dismissAndClosePlacement()
             }))
             self.present(alert, animated: true, completion: nil)

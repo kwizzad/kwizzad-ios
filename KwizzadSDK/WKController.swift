@@ -14,7 +14,6 @@ class WKController : NSObject, WKScriptMessageHandler, WKNavigationDelegate {
     let model : PlacementModel
     let api : KwizzadAPI
     var attached: Bool = true
-    var goalUrl:String? = nil
     var goalUrlCondition = true
     var dismissOnGoalUrl = true
     var goalReached = false
@@ -32,9 +31,9 @@ class WKController : NSObject, WKScriptMessageHandler, WKNavigationDelegate {
         
         if(attached) {
             
-            if (goalUrl != nil && webView.url!.absoluteString.contains(goalUrl!) == goalUrlCondition) {
+            if (model.goalUrl != nil && webView.url!.absoluteString.contains(model.goalUrl!) == goalUrlCondition) {
                 
-                kwlog.debug("attached: \(self.attached) goal: \(self.goalUrl!) now: \(webView.url!)")
+                kwlog.debug("attached: \(self.attached) goal: \(self.model.goalUrl!) now: \(webView.url!)")
                 
                 model.transition(
                     from: AdState.SHOWING_AD, AdState.CALL2ACTION, AdState.CALL2ACTIONCLICKED,
@@ -119,21 +118,21 @@ class WKController : NSObject, WKScriptMessageHandler, WKNavigationDelegate {
     func applyGoalUrl(_ goalUrlPattern: String) {
         kwlog.debug("received goal url pattern: \(goalUrlPattern)")
         
-        self.goalUrl = goalUrlPattern
+        self.model.goalUrl = goalUrlPattern
         
         self.dismissOnGoalUrl = true
         
-        if goalUrl!.hasPrefix("OK") {
-            goalUrl = goalUrl!.substring(from: goalUrl!.index(goalUrl!.startIndex, offsetBy: 2))
+        if model.goalUrl!.hasPrefix("OK") {
+            model.goalUrl = model.goalUrl!.substring(from: model.goalUrl!.index(model.goalUrl!.startIndex, offsetBy: 2))
             self.dismissOnGoalUrl = false
         }
         
         self.goalUrlCondition = true;
-        if goalUrl!.hasPrefix("!") {
-            goalUrl = goalUrl!.substring(from: goalUrl!.index(after: goalUrl!.startIndex))
+        if model.goalUrl!.hasPrefix("!") {
+            model.goalUrl = model.goalUrl!.substring(from: model.goalUrl!.index(after: model.goalUrl!.startIndex))
             self.goalUrlCondition = false
         }
         
-        kwlog.debug("goal url: \(self.goalUrl), dismissOnGoalUrl: \(self.dismissOnGoalUrl), goalUrlCondition: \(self.goalUrlCondition)")
+        kwlog.debug("goal url: \(self.model.goalUrl), dismissOnGoalUrl: \(self.dismissOnGoalUrl), goalUrlCondition: \(self.goalUrlCondition)")
     }
 }

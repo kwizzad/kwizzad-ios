@@ -28,13 +28,13 @@ Test using the `KwizzadExample` target.
 
 Initialize the SDK like this in your app delegate:
 
-    KwizzadSDK.instance.configure(Configuration.create()
+    KwizzadSDK.instance.configure(
+      Configuration.create()
       .apiKey("YOUR_API_TOKEN_HERE")
-      .overrideServer("https://labs.tvsmiles.tv/api/sdk/")
       .build()
+    )
 
 `ViewController.swift` contains an exemplary integration of an ad placement in a view controller.
-
 
 ## with Objective-C
 
@@ -45,8 +45,6 @@ Initialize the SDK like this in your app delegate:
     [KwizzadSDK.instance configure:
       [[KwizzadConfiguration alloc]
         initWithApiKey:@"YOUR_API_KEY_HERE"
-        overrideServer:@"https://labs.tvsmiles.tv/api/sdk/"
-        overrideWeb:@"https://qbdev.tvsmiles.tv"
         debug:YES]
     ];
 

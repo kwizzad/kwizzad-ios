@@ -22,6 +22,7 @@ open class PlacementModel : NSObject {
     var _changed: Date = Date()
     var retryAfter:Date?
     var currentStep = 0
+    var goalUrl:String? = nil
     
     public init(placementId: String) {
         self.placementId = placementId
@@ -54,6 +55,7 @@ open class PlacementModel : NSObject {
         }
         set(newValue) {
             _adResponse = newValue;
+            goalUrl = nil;
             if(adResponse?.closeButtonVisibility != nil) {
                 closeType.value = _adResponse!.closeButtonVisibility!
             }

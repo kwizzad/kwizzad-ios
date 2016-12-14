@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  KwizzadSDK
+
+  Created by Sandro Manke on 01.12.16.
+  Copyright © 2016 Kwizzad. All rights reserved.
+*/
+"alert_close_title" = "Are you sure you want to quit and miss out on #number_of_rewards# #reward_name#?";
+"alert_close_title_var" = "Are you sure you want to quit and miss out on up to #number_of_rewards# #reward_name#?";
+"alert_close_title_0" = "Are you sure you want to miss out on this offer?";
+"alert_close_claim" = "Continue and claim reward";
+"alert_close_forfeit" = "Quit and forfeit reward";
+
+"close_alert_title" = "Close window and go back to the app?";
+"close_alert_yes" = "Yes, close window";
+"close_alert_no" = "Cancel";

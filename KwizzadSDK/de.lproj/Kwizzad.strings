@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  KwizzadSDK
+
+  Created by Sandro Manke on 01.12.16.
+  Copyright © 2016 Kwizzad. All rights reserved.
+*/
+"alert_close_title" = "Willst du die Aktion wirklich beenden und keine #number_of_rewards# #reward_name# erhalten?";
+"alert_close_title_var" = "Willst du die Aktion wirklich beenden und nicht bis zu #number_of_rewards# #reward_name# erhalten?";
+"alert_close_title_0" = "Willst du dir das Angebot wirklich entgehen lassen?";
+"alert_close_claim" = "Weitermachen und Belohnung erhalten";
+"alert_close_forfeit" = "Ohne Belohnung beenden";
+
+"close_alert_title" = "Fenster schliessen und zurück zur App?";
+"close_alert_yes" = "Ja, Fenster schliessen";
+"close_alert_no" = "Abbrechen";
