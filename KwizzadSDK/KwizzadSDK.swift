@@ -116,9 +116,9 @@ open class KwizzadSDK:NSObject {
         case .NOFILL:
             if let retryAfter = placement.retryAfter {
                 kwlog.debug("retry after \(retryAfter.timeIntervalSinceNow)")
-                if retryAfter.timeIntervalSinceNow < 0 {
+                if retryAfter.timeIntervalSinceNow > 0 {
                     kwlog.info("no fill said to retry after \(retryAfter)");
-                    return
+                    break; // currently we allow retry at any time
                 }
             }
         default:

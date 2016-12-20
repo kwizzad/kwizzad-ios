@@ -47,7 +47,7 @@ class ViewController: UIViewController{
         
         let adState = kwizzad.placementModel(placementId).adState;
         
-        guard adState == .INITIAL || adState == .DISMISSED else {
+        guard adState == .INITIAL || adState == .DISMISSED || adState == .NOFILL else {
             return
         }
         
