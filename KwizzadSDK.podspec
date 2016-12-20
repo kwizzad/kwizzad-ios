@@ -4,13 +4,14 @@ Pod::Spec.new do |s|
 s.platform = :ios
 s.ios.deployment_target = '9.0'
 s.name = "KwizzadSDK"
-s.summary = "KWIZZAD is a native advertising platform that can be easily integrated into any mobile or web application in order to guarantee maximum flexibility in the monetization of your product."
+s.summary = "KWIZZAD is the new advertising format for gamified, native advertising"
+s.description = "KWIZZAD is the new advertising format for gamified, native advertising.
+With KWIZZAD, we are redefining digital advertising by offering both advertisers and publishers the opportunity to meet their goals better than ever before. "
 s.requires_arc = true
-
 #s.social_media_url = "http://kwizzad.com"
 
 # 2
-s.version = "0.7.7"
+s.version = "0.7.8"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
@@ -27,16 +28,13 @@ s.source = { :git => "https://github.com/kwizzad/kwizzad-ios.git", :tag => "#{s.
 # 7
 s.frameworks   = ['Foundation', 'UIKit']
 
+# 8 - Source files
+s.source_files = "KwizzadSDK/**/*.{swift,h,m}"
 
-
-# 8
-
-s.source_files = 'KwizzadSDK/*.{swift,h,m}'
-
-# 9
+# 9 - Resources
 s.resources = "KwizzadSDK/**/*.{png}"
 
-
+# 10 - Dependencies
 s.dependency 'RxSwift', '~> 3.0'
 s.dependency 'XCGLogger', '~> 4.0.0'
 
