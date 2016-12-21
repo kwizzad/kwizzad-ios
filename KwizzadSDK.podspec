@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
 # 1
 s.platform = :ios
-s.ios.deployment_target = '9.0'
+s.ios.deployment_target = '8.0'
 s.name = "KwizzadSDK"
 s.summary = "KWIZZAD is the new advertising format for gamified, native advertising"
 s.description = "KWIZZAD is the new advertising format for gamified, native advertising.
@@ -11,7 +11,7 @@ s.requires_arc = true
 #s.social_media_url = "http://kwizzad.com"
 
 # 2
-s.version = "0.7.8"
+s.version = "0.7.9"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
@@ -20,7 +20,7 @@ s.license = { :type => "MIT", :file => "LICENSE" }
 s.author = { "Kwizzad Team" => "info@kwizzad.com" }
 
 # 5 - Replace this URL with your own Github page's URL (from the address bar)
-s.homepage = "https://www.kwizzad.com"
+s.homepage = "https://github.com/kwizzad/kwizzad-ios"
 
 # 6 - Replace this URL with your own Git URL from "Quick Setup"
 s.source = { :git => "https://github.com/kwizzad/kwizzad-ios.git", :tag => "#{s.version}"}
@@ -32,7 +32,7 @@ s.frameworks   = ['Foundation', 'UIKit']
 s.source_files = "KwizzadSDK/**/*.{swift,h,m}"
 
 # 9 - Resources
-s.resources = "KwizzadSDK/**/*.{png}"
+s.resources = ["KwizzadSDK/**/*.{strings}" , "KwizzadSDK/**/**/*.{png,json}"]
 
 # 10 - Dependencies
 s.dependency 'RxSwift', '~> 3.0'

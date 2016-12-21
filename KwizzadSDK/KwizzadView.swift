@@ -131,8 +131,18 @@ class KwizzadView : UIViewController {
         
         view.addSubview(button)
         
-        button.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        button.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        if #available(iOS 9.0, *) {
+            button.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+            button.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            
+        } else {
+            // Fallback on earlier versions
+            let constTop:NSLayoutConstraint = NSLayoutConstraint(item: button, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0);
+            self.view.addConstraint(constTop);
+            
+            let constRight:NSLayoutConstraint = NSLayoutConstraint(item: button, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.right, multiplier: 1, constant: 0);
+            self.view.addConstraint(constRight);
+        }
         
         placement.adStateObservable.subscribe(onNext: {adState in
             
@@ -204,7 +214,7 @@ class KwizzadView : UIViewController {
     
     func forfeitRewardsText() -> String {
         if let reward = self.placement.adResponse?.rewards?.first(where: { $0.type == RewardType.CALLBACK }) {
-            if let currency = reward.currency {
+            if reward.currency != nil {
                 if let maxAmount = reward.maxAmount {
                     if maxAmount > 0 {
                         return KwizzadLocalized("alert_close_title_var",replacements: ["#number_of_rewards#":"\(maxAmount)", "#reward_name#":"\(reward.currency!)"])
@@ -231,7 +241,7 @@ class KwizzadView : UIViewController {
             return
         }
 
-        let goalUrlPattern = self.placement.adResponse?.goalUrlPattern
+        //let goalUrlPattern = self.placement.adResponse?.goalUrlPattern
         
         if (callToActionClicked && (self.placement.goalUrl == nil || self.placement.goalUrl!.isEmpty)) {
             let alert = UIAlertController(title: nil, message: KwizzadLocalized("close_alert_title"), preferredStyle: UIAlertControllerStyle.alert)
