@@ -11,7 +11,7 @@ s.requires_arc = true
 #s.social_media_url = "http://kwizzad.com"
 
 # 2
-s.version = "0.7.9"
+s.version = "0.8.0"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }

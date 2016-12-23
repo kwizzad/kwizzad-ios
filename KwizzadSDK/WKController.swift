@@ -18,6 +18,7 @@ class WKController : NSObject, WKScriptMessageHandler, WKNavigationDelegate {
     var dismissOnGoalUrl = true
     var goalReached = false
     
+    
     init(_ model: PlacementModel, _ api: KwizzadAPI) {
         self.model = model
         self.api = api;
@@ -26,7 +27,6 @@ class WKController : NSObject, WKScriptMessageHandler, WKNavigationDelegate {
     open func detach() {
         attached=false;
     }
-    
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         
         if(attached) {
@@ -46,11 +46,33 @@ class WKController : NSObject, WKScriptMessageHandler, WKNavigationDelegate {
                 })
                 
                 
+                
             }
+            
+            // Open App Store (url schema)
+            if (navigationAction.request.url?.scheme?.contains("itms-apps"))! {
+                
+                UIApplication.shared.openURL(navigationAction.request.url!)
+                
+                model.transition(
+                    from: AdState.SHOWING_AD, AdState.CALL2ACTION, AdState.CALL2ACTIONCLICKED,
+                    decideTo: {
+                        self.goalReached=true;
+                        if self.dismissOnGoalUrl == true {
+                            return AdState.DISMISSED
+                        }
+                        return nil
+                })
+                
+                decisionHandler(.cancel)
+            }
+            
         }
         
         decisionHandler(.allow);
     }
+    
+    
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         if(self.goalReached) {
@@ -58,6 +80,7 @@ class WKController : NSObject, WKScriptMessageHandler, WKNavigationDelegate {
             
             DispatchQueue.main.async {
                 self.model.transition(from: AdState.CALL2ACTION, AdState.CALL2ACTIONCLICKED, to: AdState.GOAL_REACHED)
+                
             }
             
             _ = self.api.queue(AdTrackingEvent(action: "goalReached", forAd: self.model.adResponse!.adId!))
@@ -66,6 +89,7 @@ class WKController : NSObject, WKScriptMessageHandler, WKNavigationDelegate {
     }
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        
         if(message.name == "KwizzAdJI" && attached) {
             
             DispatchQueue.main.async {
