@@ -121,6 +121,8 @@
                             break;
 
                         case KwizzadAdStateNOFILL: {
+                            adSignal = nil;
+                            running = NO;
                             UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
                                                                                            message:@"No ad available on this placement."
                                                                                     preferredStyle:UIAlertControllerStyleAlert];
