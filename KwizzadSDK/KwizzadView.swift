@@ -143,6 +143,7 @@ class KwizzadView : UIViewController {
             let constRight:NSLayoutConstraint = NSLayoutConstraint(item: button, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.right, multiplier: 1, constant: 0);
             self.view.addConstraint(constRight);
         }
+
         
         placement.adStateObservable.subscribe(onNext: {adState in
             

@@ -34,8 +34,13 @@ let kwlog: XCGLogger = {
 }()
 
 func KwizzadLocalized(_ key: String, replacements : [String:String]? = nil) -> String {
-    var str = NSLocalizedString(key, tableName: "Kwizzad", bundle: Bundle(for: type(of: KwizzadSDK.instance)), comment: key+"!");
-    
+    let mainBundle = Bundle(for: KwizzadSDK.self)
+    var resourcePath = mainBundle.path(forResource: "en", ofType: "lproj")
+    if ( NSLocale.current.languageCode != "en") {
+        resourcePath = mainBundle.path(forResource: "de", ofType: "lproj")
+    }
+    let resourceBundle = Bundle(path: resourcePath!)
+    var str = NSLocalizedString(key, tableName: "Kwizzad", bundle: resourceBundle! , comment: key+"!");
     if let repl = replacements {
         
         for (key, value) in repl {
@@ -118,7 +123,7 @@ open class KwizzadSDK:NSObject {
                 kwlog.debug("retry after \(retryAfter.timeIntervalSinceNow)")
                 if retryAfter.timeIntervalSinceNow > 0 {
                     kwlog.info("no fill said to retry after \(retryAfter)");
-                    break; // currently we allow retry at any time
+                    break; // TVSDK-292 currently we allow retry at any time
                 }
             }
         default:

@@ -17,6 +17,8 @@
 $ gem install cocoapods
 ```
 
+> CocoaPods 1.1.0+ is required to build Alamofire 4.0.0+.
+
 To integrate KwizzadSDK into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
@@ -25,7 +27,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-pod 'KwizzadSDK'
+    pod 'KwizzadSDK'
 end
 ```
 

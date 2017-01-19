@@ -121,6 +121,7 @@
                             break;
 
                         case KwizzadAdStateNOFILL: {
+                            
                             adSignal = nil;
                             running = NO;
                             UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil

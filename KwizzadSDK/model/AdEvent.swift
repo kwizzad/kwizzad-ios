@@ -17,9 +17,10 @@ func generateUserData() -> [String:Any] {
     }
 
     KwizzadSDK.instance.model.userData.toDict(&userData);
-
+    let version = Bundle(for: KwizzadSDK.self).infoDictionary?["CFBundleShortVersionString"];
+    
     ("iOS", "PlatformType") --> userData
-    ("0.7.5", "sdkVersion") --> userData
+    (version, "sdkVersion") --> userData
     // (osVersion, "OSVersion") --> userData
     ("1.0", "apiVersion") --> userData
     

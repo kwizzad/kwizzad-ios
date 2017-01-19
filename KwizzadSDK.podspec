@@ -11,7 +11,7 @@ s.requires_arc = true
 #s.social_media_url = "http://kwizzad.com"
 
 # 2
-s.version = "0.8.1"
+s.version = "0.8.56"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
@@ -20,7 +20,7 @@ s.license = { :type => "MIT", :file => "LICENSE" }
 s.author = { "Kwizzad Team" => "info@kwizzad.com" }
 
 # 5 - Replace this URL with your own Github page's URL (from the address bar)
-s.homepage = "https://github.com/kwizzad/kwizzad-ios"
+s.homepage = "https://www.kwizzad.com"
 
 # 6 - Replace this URL with your own Git URL from "Quick Setup"
 s.source = { :git => "https://github.com/kwizzad/kwizzad-ios.git", :tag => "#{s.version}"}
