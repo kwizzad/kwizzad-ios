@@ -125,7 +125,6 @@
 		AA00C5711D93EA980044F1AC /* KwizzadSDK */ = {
 			isa = PBXGroup;
 			children = (
-				AA08A0BB1DF09CD1008A29BC /* Kwizzad.strings */,
 				AA08A0B41DF09882008A29BC /* localization */,
 				AA7A679A1DAAC86000BEE919 /* model */,
 				AA00C5721D93EA980044F1AC /* KwizzadSDK.h */,
@@ -150,6 +149,7 @@
 		AA08A0B41DF09882008A29BC /* localization */ = {
 			isa = PBXGroup;
 			children = (
+				AA08A0BB1DF09CD1008A29BC /* Kwizzad.strings */,
 			);
 			name = localization;
 			sourceTree = "<group>";
@@ -494,6 +494,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -502,6 +503,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kwizzad.KwizzadSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -520,6 +522,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -528,6 +531,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kwizzad.KwizzadSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
