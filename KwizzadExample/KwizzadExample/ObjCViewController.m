@@ -12,16 +12,19 @@
 
 @interface ObjCViewController () {
     BOOL running;
-    UIViewController *kwizzadViewController;
-    NSObject *adSignal;
-    NSObject *transactionsSignal;
 }
 
-@property(nonatomic, weak) IBOutlet UITextField *placementIdField;
+@property(nonatomic) IBOutlet UITextField *placementIdField;
+@property(retain) UIViewController *kwizzadViewController;
+@property(retain) NSObject *adSignal;
+@property(retain) NSObject *transactionsSignal;
 
 @end
 
 @implementation ObjCViewController
+@synthesize kwizzadViewController;
+@synthesize adSignal;
+@synthesize transactionsSignal;
 
 - (void) viewDidLoad {
     [super viewDidLoad];
@@ -85,7 +88,7 @@
     [KwizzadSDK.instance requestAd:placementId];
     
     
-    adSignal = [[KwizzadSDK.instance placementModel:placementId]
+    self.adSignal = [[KwizzadSDK.instance placementModel:placementId]
                 adStateSignal:^(enum KwizzadAdState adState) {
                     switch (adState) {
                         case KwizzadAdStateINITIAL:
@@ -94,22 +97,22 @@
                             
                         case KwizzadAdStateRECEIVED_AD: {
                             NSDictionary* myCustomParameters = [NSDictionary dictionaryWithObjectsAndKeys:userData.userId, @"userId", nil];
-                            kwizzadViewController = [KwizzadSDK.instance prepare:placementId customParameters:myCustomParameters];
+                            self.kwizzadViewController = [KwizzadSDK.instance prepare:placementId customParameters:myCustomParameters];
                         }
                             break;
                             
                         case KwizzadAdStateAD_READY:
                         {
-                            [self presentViewController:kwizzadViewController animated:true completion:nil];
+                            [self presentViewController:self.kwizzadViewController animated:true completion:nil];
                         }
                             break;
                             
                         case KwizzadAdStateDISMISSED:
                         {
-                            adSignal = nil;
+                            self.adSignal = nil;
                             running = NO;
                             
-                            transactionsSignal = [KwizzadSDK.instance subscribeToPendingTransactionsWithCallback:^(NSSet<KwizzadOpenTransaction *> * _Nonnull transactions) {
+                            self.transactionsSignal = [KwizzadSDK.instance subscribeToPendingTransactionsWithCallback:^(NSSet<KwizzadOpenTransaction *> * _Nonnull transactions) {
                                 
                                 KwizzadOpenTransaction *transaction = [transactions anyObject];
                                 
@@ -121,8 +124,7 @@
                             break;
 
                         case KwizzadAdStateNOFILL: {
-                            
-                            adSignal = nil;
+                            self.adSignal = nil;
                             running = NO;
                             UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
                                                                                            message:@"No ad available on this placement."
