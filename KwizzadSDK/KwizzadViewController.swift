@@ -1,5 +1,5 @@
 //
-//  KwizzadView.swift
+//  KwizzadViewController.swift
 //  KwizzadSDK
 //
 //  Created by Sandro Manke on 13.10.16.
@@ -11,7 +11,7 @@ import RxSwift
 import WebKit
 import XCGLogger
 
-class KwizzadView : UIViewController {
+class KwizzadViewController : UIViewController {
     let placement : PlacementModel
     let button : UIButton
     let api : KwizzadAPI
@@ -26,14 +26,14 @@ class KwizzadView : UIViewController {
     
     var open = true
     
-    public static func create(placement : PlacementModel, api : KwizzadAPI, customParameters: [String:Any]? = nil) -> KwizzadView {
-        let view = KwizzadView(placement: placement, api: api, customParameters: customParameters);
+    public static func create(placement : PlacementModel, api : KwizzadAPI, customParameters: [String:Any]? = nil) -> KwizzadViewController {
+        let viewController = KwizzadViewController(placement: placement, api: api, customParameters: customParameters);
         
-        UIApplication.shared.keyWindow?.insertSubview(view.view, at: 0)
+        UIApplication.shared.keyWindow?.insertSubview(viewController.view, at: 0)
         
-        view.startme();
+        viewController.start();
         
-        return view;
+        return viewController;
     }
     
     fileprivate init(placement : PlacementModel, api : KwizzadAPI, customParameters: [String:Any]? = nil) {
@@ -65,8 +65,8 @@ class KwizzadView : UIViewController {
         return true
     }
     
-    fileprivate func startme() {
-        kwlog.debug("viewWillLayoutSubviews")
+    fileprivate func start() {
+        //kwlog.debug("viewWillLayoutSubviews")
         
         
 /*        if #available(iOS 9.0, *) {
@@ -121,7 +121,7 @@ class KwizzadView : UIViewController {
         button.setImage(UIImage(named: "close", in: Bundle(for: type(of: self)), compatibleWith: nil), for: .normal)
         button.setImage(UIImage(named: "close_active", in: Bundle(for: type(of: self)), compatibleWith: nil), for: .highlighted)
         
-        button.addTarget(self, action: #selector(KwizzadView.closeButtonClick), for: .touchUpInside)
+        button.addTarget(self, action: #selector(KwizzadViewController.closeButtonClick), for: .touchUpInside)
         
         button.translatesAutoresizingMaskIntoConstraints = false
         

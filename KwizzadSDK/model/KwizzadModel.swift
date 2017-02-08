@@ -16,9 +16,9 @@ class KwizzadModel {
     var overrideWeb:String?
     let installId: String;
     
-    let configured = Variable(false)
+    let configured = UnsafeVariable(false)
     
-    let openTransactions : Variable<Set<OpenTransaction>> = Variable([])
+    let openTransactions : UnsafeVariable<Set<OpenTransaction>> = UnsafeVariable([])
     
     var placements = [String: PlacementModel]()
 

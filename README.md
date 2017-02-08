@@ -76,4 +76,4 @@ Initialize the SDK like this in your app delegate:
         debug:YES]
     ];
 
-`ViewController.m` contains an exemplary integration of an ad placement in a view controller.
+`ObjCViewController.m` contains an exemplary integration of an ad placement in a view controller.

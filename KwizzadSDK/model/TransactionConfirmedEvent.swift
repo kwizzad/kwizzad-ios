@@ -11,9 +11,10 @@ import Foundation
 open class TransactionConfirmedEvent : AdEvent, ToDict {
     open var transactionId : String?
     
-    public init(_ transaction: OpenTransaction) {
-        super.init(type: "transactionConfirmed", placementId: nil, adId: transaction.adId)
-        transactionId = transaction.transactionId
+    static func fromTransaction(_ transaction: OpenTransaction) -> TransactionConfirmedEvent {
+        let event = TransactionConfirmedEvent.init(type: "transactionConfirmed", placementId: nil, adId: transaction.adId)
+        event.transactionId = transaction.transactionId
+        return event
     }
     
     open override func toDict(_ map: inout [String : Any]) {

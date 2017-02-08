@@ -149,7 +149,7 @@ open class KwizzadSDK:NSObject {
         
         if(placement.transition(from: AdState.RECEIVED_AD, to: AdState.LOADING_AD)) {
             
-            return KwizzadView.create(placement : placement, api : api, customParameters: customParameters);
+            return KwizzadViewController.create(placement : placement, api : api, customParameters: customParameters);
         }
         return nil;
     }
@@ -198,7 +198,7 @@ open class KwizzadSDK:NSObject {
     public func completeTransaction(_ transaction: OpenTransaction) {
         transaction.state = .SENDING
         
-        _ = api.queue(TransactionConfirmedEvent(transaction))
+        _ = api.queue(TransactionConfirmedEvent.fromTransaction(transaction))
             .subscribe(onError: { err in
                 transaction.state = .ERROR
             }, onCompleted: {

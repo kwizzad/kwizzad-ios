@@ -63,13 +63,17 @@ class ViewController: UIViewController{
         
         kwizzad.requestAd(self.placementId)
         
-        kwizzad.placementModel(placementId).adStateObservable.subscribe(onNext: { adState in
+        let placementModel = kwizzad.placementModel(placementId);
+        placementModel.adStateObservable.subscribe(onNext: { adState in
             switch(adState) {
             case AdState.RECEIVED_AD:
-                
                 print("received ad :))")
                 let myCustomParameters = ["userId":userData.userId]; // "userId" should be set to userData.userId
                 self.controller = self.kwizzad.prepare(self.placementId, customParameters: myCustomParameters);
+                
+                // Optionally, you can use this to show the user their potential reward(s).
+                let rewardStrings = placementModel.adResponse?.rewards?.flatMap { (reward) -> String? in reward.asDebugString() }
+                print("potential rewards:", rewardStrings?.joined(separator: ", ") ?? "none");
                 
             case AdState.AD_READY:
                 print("ad ready")

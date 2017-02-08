@@ -14,8 +14,8 @@ open class DeprecatedResponse : AdEvent, FromDict {
     }
 }
 
+@objc(KwizzadAdResponseEvent)
 open class AdResponseEvent : AdEvent, FromDict {
-    
     open let adType: String?
     open let expiry: Date?
     open var url: String?

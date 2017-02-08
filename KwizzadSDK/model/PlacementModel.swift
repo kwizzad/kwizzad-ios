@@ -12,9 +12,9 @@ import RxSwift
 @objc(KwizzadPlacementModel)
 open class PlacementModel : NSObject {
     
-    let state = Variable(AdState.INITIAL)
-    let closeType = Variable("OVERALL")
-    let _closeButtonVisible = Variable(false)
+    let state = UnsafeVariable(AdState.INITIAL)
+    let closeType = UnsafeVariable("OVERALL")
+    let _closeButtonVisible = UnsafeVariable(false)
     var _adResponse : AdResponseEvent?
     
     let disposeBag = DisposeBag()

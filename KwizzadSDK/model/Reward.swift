@@ -29,6 +29,13 @@ open class Reward : NSObject, FromDict {
         return nil;
     }
     
+    public func asDebugString() -> String? {
+        if let amount = self.amount, let currency = self.currency {
+            return "\(amount) \(currency) for \(type)"
+        }
+        return nil;
+    }
+    
     public required init(_ map: [String : Any]) {
         amount = map["amount"] as? Int
         maxAmount = map["maxAmount"] as? Int

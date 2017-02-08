@@ -13,7 +13,7 @@
 		AA08A0BE1DF09CD1008A29BC /* Kwizzad.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA08A0BB1DF09CD1008A29BC /* Kwizzad.strings */; };
 		AA1E42F31DB53AF000CB1150 /* AdTrackingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1E42F21DB53AF000CB1150 /* AdTrackingEvent.swift */; };
 		AA1E42FC1DB678CD00CB1150 /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1E42FB1DB678CD00CB1150 /* Signal.swift */; };
-		AA51D4B31DAFEAD0001A7B21 /* KwizzadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA51D4B21DAFEAD0001A7B21 /* KwizzadView.swift */; };
+		AA51D4B31DAFEAD0001A7B21 /* KwizzadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA51D4B21DAFEAD0001A7B21 /* KwizzadViewController.swift */; };
 		AA51D4B51DAFF7CE001A7B21 /* KwizzadImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA51D4B41DAFF7CE001A7B21 /* KwizzadImages.xcassets */; };
 		AA7660E21D940AEC00DBC694 /* KwizzadSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7660E11D940AEC00DBC694 /* KwizzadSDK.swift */; };
 		AA7A67A01DAAC8A600BEE919 /* KwizzadModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7A679F1DAAC8A600BEE919 /* KwizzadModel.swift */; };
@@ -32,6 +32,7 @@
 		AAB780C21DB94052003DCA77 /* OpenTransactionsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB780C11DB94052003DCA77 /* OpenTransactionsEvent.swift */; };
 		AAB780C41DB9406C003DCA77 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB780C31DB9406C003DCA77 /* Reward.swift */; };
 		AAB780C61DB94EB3003DCA77 /* OpenTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB780C51DB94EB3003DCA77 /* OpenTransaction.swift */; };
+		AAB92A1E1E44EDA100434893 /* UnsafeVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB92A1D1E44EDA100434893 /* UnsafeVariable.swift */; };
 		AADE2E701DB7D7A300F06407 /* DictConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE2E6F1DB7D7A300F06407 /* DictConvertible.swift */; };
 		FE93A8701DE5D16100BE65D1 /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE93A86F1DE5D16100BE65D1 /* UserDataModel.swift */; };
 /* End PBXBuildFile section */
@@ -57,7 +58,7 @@
 		AA08A0BD1DF09CD1008A29BC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Kwizzad.strings; sourceTree = "<group>"; };
 		AA1E42F21DB53AF000CB1150 /* AdTrackingEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdTrackingEvent.swift; path = model/AdTrackingEvent.swift; sourceTree = "<group>"; };
 		AA1E42FB1DB678CD00CB1150 /* Signal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
-		AA51D4B21DAFEAD0001A7B21 /* KwizzadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KwizzadView.swift; sourceTree = "<group>"; };
+		AA51D4B21DAFEAD0001A7B21 /* KwizzadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KwizzadViewController.swift; sourceTree = "<group>"; };
 		AA51D4B41DAFF7CE001A7B21 /* KwizzadImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = KwizzadImages.xcassets; sourceTree = "<group>"; };
 		AA7660E11D940AEC00DBC694 /* KwizzadSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KwizzadSDK.swift; sourceTree = "<group>"; };
 		AA7A679F1DAAC8A600BEE919 /* KwizzadModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KwizzadModel.swift; path = model/KwizzadModel.swift; sourceTree = "<group>"; };
@@ -76,6 +77,7 @@
 		AAB780C11DB94052003DCA77 /* OpenTransactionsEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenTransactionsEvent.swift; path = model/OpenTransactionsEvent.swift; sourceTree = "<group>"; };
 		AAB780C31DB9406C003DCA77 /* Reward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reward.swift; path = model/Reward.swift; sourceTree = "<group>"; };
 		AAB780C51DB94EB3003DCA77 /* OpenTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenTransaction.swift; path = model/OpenTransaction.swift; sourceTree = "<group>"; };
+		AAB92A1D1E44EDA100434893 /* UnsafeVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UnsafeVariable.swift; path = model/UnsafeVariable.swift; sourceTree = "<group>"; };
 		AADE2E6F1DB7D7A300F06407 /* DictConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictConvertible.swift; path = model/DictConvertible.swift; sourceTree = "<group>"; };
 		FE93A86F1DE5D16100BE65D1 /* UserDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDataModel.swift; path = model/UserDataModel.swift; sourceTree = "<group>"; };
 		FE93A8711DE5FABD00BE65D1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -131,7 +133,7 @@
 				AA00C5731D93EA980044F1AC /* Info.plist */,
 				AA7660E11D940AEC00DBC694 /* KwizzadSDK.swift */,
 				AA7A67AD1DAACC6500BEE919 /* WKController.swift */,
-				AA51D4B21DAFEAD0001A7B21 /* KwizzadView.swift */,
+				AA51D4B21DAFEAD0001A7B21 /* KwizzadViewController.swift */,
 				AA51D4B41DAFF7CE001A7B21 /* KwizzadImages.xcassets */,
 				AA1E42FB1DB678CD00CB1150 /* Signal.swift */,
 			);
@@ -166,6 +168,7 @@
 				AA7A67A71DAACBCE00BEE919 /* Configuration.swift */,
 				AADE2E6F1DB7D7A300F06407 /* DictConvertible.swift */,
 				FE93A86F1DE5D16100BE65D1 /* UserDataModel.swift */,
+				AAB92A1D1E44EDA100434893 /* UnsafeVariable.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -344,9 +347,10 @@
 				AA7A67A41DAAC8E200BEE919 /* AdState.swift in Sources */,
 				AAB780C41DB9406C003DCA77 /* Reward.swift in Sources */,
 				AAB780C21DB94052003DCA77 /* OpenTransactionsEvent.swift in Sources */,
+				AAB92A1E1E44EDA100434893 /* UnsafeVariable.swift in Sources */,
 				AADE2E701DB7D7A300F06407 /* DictConvertible.swift in Sources */,
 				AA7A67AC1DAACC2400BEE919 /* AdResponseEvent.swift in Sources */,
-				AA51D4B31DAFEAD0001A7B21 /* KwizzadView.swift in Sources */,
+				AA51D4B31DAFEAD0001A7B21 /* KwizzadViewController.swift in Sources */,
 				AAB780BB1DB93F43003DCA77 /* AdEvent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,7 +411,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
