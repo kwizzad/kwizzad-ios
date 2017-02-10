@@ -217,12 +217,12 @@ class KwizzadViewController : UIViewController {
         if let reward = self.placement.adResponse?.rewards?.first(where: { $0.type == RewardType.CALLBACK }) {
             if reward.currency != nil {
                 if let maxAmount = reward.maxAmount {
-                    if maxAmount > 0 {
+                    if maxAmount.intValue > 0 {
                         return KwizzadLocalized("alert_close_title_var",replacements: ["#number_of_rewards#":"\(maxAmount)", "#reward_name#":"\(reward.currency!)"])
                     }
                 }
                 if let amount = reward.amount {
-                    if amount > 0 {
+                    if amount.intValue > 0 {
                         return KwizzadLocalized("alert_close_title",replacements: ["#number_of_rewards#":"\(amount)", "#reward_name#":"\(reward.currency!)"])
                     }
                 }

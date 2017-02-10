@@ -105,6 +105,8 @@
                             NSMutableArray *rewardStrings = [NSMutableArray array];
                             for (KwizzadReward *reward in adResponse.rewards) {
                                 [rewardStrings addObject:reward.asDebugString];
+                                NSLog(@"Potential reward currency: %@", reward.currency);
+                                NSLog(@"Potential reward amount: %@", reward.amount);
                             }
                             NSString *rewardsString = [rewardStrings componentsJoinedByString:@", "];
                             NSLog(@"Potential rewards: %@", rewardsString);

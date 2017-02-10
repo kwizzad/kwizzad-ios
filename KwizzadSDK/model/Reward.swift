@@ -17,12 +17,18 @@ public enum RewardType : String {
 
 @objc(KwizzadReward)
 open class Reward : NSObject, FromDict {
-    open let amount : Int?
-    open let maxAmount : Int?
-    open let currency : String?
-    open let type : RewardType
+    // This is the actual amount of the reward.
+    public let amount : NSNumber?
+    // if this is defined, this is the maximal amount of the reward, so the actual reward can be lower than this.
+    public let maxAmount : NSNumber?
+    public let currency : String?
+    // Defines which state you have to get to as user to actually get the reward.
+    public let type : RewardType
 
     public func asFormattedString() -> String? {
+        if let maxAmount = self.maxAmount, let currency = self.currency {
+            return "up to \(maxAmount) \(currency)"
+        }
         if let amount = self.amount, let currency = self.currency {
             return "\(amount) \(currency)"
         }
@@ -30,6 +36,9 @@ open class Reward : NSObject, FromDict {
     }
     
     public func asDebugString() -> String? {
+        if let maxAmount = self.maxAmount, let currency = self.currency {
+            return "up to \(maxAmount) \(currency) for \(type)"
+        }
         if let amount = self.amount, let currency = self.currency {
             return "\(amount) \(currency) for \(type)"
         }
@@ -37,8 +46,8 @@ open class Reward : NSObject, FromDict {
     }
     
     public required init(_ map: [String : Any]) {
-        amount = map["amount"] as? Int
-        maxAmount = map["maxAmount"] as? Int
+        amount = map["amount"] as? NSNumber
+        maxAmount = map["maxAmount"] as? NSNumber
         currency = map["currency"] as? String
         
         if let rt = map["type"] as? String {
