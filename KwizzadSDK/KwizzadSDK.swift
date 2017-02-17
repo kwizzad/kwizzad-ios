@@ -14,7 +14,7 @@ let kwlog: XCGLogger = {
     let log = XCGLogger(identifier: "advancedLogger", includeDefaultDestinations: true)
     
     // Create a destination for the system console log (via NSLog)
-    /*let systemDestination = AppleSystemLogDestination(identifier: "advancedLogger.systemDestination")
+    let systemDestination = AppleSystemLogDestination(identifier: "advancedLogger.systemDestination")
     
     
     // Optionally set some configuration options
@@ -28,7 +28,7 @@ let kwlog: XCGLogger = {
     systemDestination.showDate = true
     
     // Add the destination to the logger
-    log.add(destination: systemDestination)*/
+    log.add(destination: systemDestination)
     
     return log
 }()

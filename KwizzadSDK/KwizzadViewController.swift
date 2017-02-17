@@ -214,7 +214,7 @@ class KwizzadViewController : UIViewController {
     }
     
     func forfeitRewardsText() -> String {
-        if let reward = self.placement.adResponse?.rewards?.first(where: { $0.type == RewardType.CALLBACK }) {
+        if let reward = self.placement.adResponse?.rewards?.first(where: { $0.type == "CALLBACK" }) {
             if reward.currency != nil {
                 if let maxAmount = reward.maxAmount {
                     if maxAmount.intValue > 0 {

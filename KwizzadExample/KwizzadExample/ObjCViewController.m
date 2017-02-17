@@ -107,6 +107,7 @@
                                 [rewardStrings addObject:reward.asDebugString];
                                 NSLog(@"Potential reward currency: %@", reward.currency);
                                 NSLog(@"Potential reward amount: %@", reward.amount);
+                                NSLog(@"Potential reward type: %@", reward.type);
                             }
                             NSString *rewardsString = [rewardStrings componentsJoinedByString:@", "];
                             NSLog(@"Potential rewards: %@", rewardsString);

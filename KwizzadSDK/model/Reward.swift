@@ -8,12 +8,6 @@
 
 import Foundation
 
-public enum RewardType : String {
-    case UNKNOWN = ""
-    case CALLBACK = "callback"
-    case CALL2ACTIONSTARTED = "call2ActionStarted"
-    case GOALREACHED = "goalReached"
-}
 
 @objc(KwizzadReward)
 open class Reward : NSObject, FromDict {
@@ -23,7 +17,7 @@ open class Reward : NSObject, FromDict {
     public let maxAmount : NSNumber?
     public let currency : String?
     // Defines which state you have to get to as user to actually get the reward.
-    public let type : RewardType
+    public let type : String?
 
     public func asFormattedString() -> String? {
         if let maxAmount = self.maxAmount, let currency = self.currency {
@@ -50,16 +44,16 @@ open class Reward : NSObject, FromDict {
         maxAmount = map["maxAmount"] as? NSNumber
         currency = map["currency"] as? String
         
-        if let rt = map["type"] as? String {
-            if let type = RewardType(rawValue: rt) {
+        if let rt = map["type"] as? String? {
+            if let type = rt {
                 self.type = type
             }
             else {
-                type = .UNKNOWN
+                type = "UNKNOWN"
             }
         }
         else {
-            type = .UNKNOWN
+            type = "UNKNOWN"
         }
         
     }
