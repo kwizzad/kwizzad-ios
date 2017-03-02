@@ -1,3 +1,7 @@
+# Prerequisites
+- You already have your own KWIZZAD API KEY and PLACEMENT ID. If not, please contact TVSMILES per [E-Mail](mailto:it@tvsmiles.de) and we will register your APP.
+
+
 # Setting up the SDK build
 
 - Checkout this repository with examples for Objective-C and Swift 3.
