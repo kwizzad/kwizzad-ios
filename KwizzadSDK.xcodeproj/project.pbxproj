@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		50057CB41DC6205100A5C5E7 /* OpenTransactionsSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50057CB31DC6205100A5C5E7 /* OpenTransactionsSignal.swift */; };
+		6298A40A1E5EEC880070F007 /* IJProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6298A4091E5EEC880070F007 /* IJProgressView.swift */; };
 		AA00C5791D93EA980044F1AC /* KwizzadSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA00C56F1D93EA980044F1AC /* KwizzadSDK.framework */; };
 		AA00C5801D93EA980044F1AC /* KwizzadSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00C5721D93EA980044F1AC /* KwizzadSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA08A0BE1DF09CD1008A29BC /* Kwizzad.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA08A0BB1DF09CD1008A29BC /* Kwizzad.strings */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		50057CB31DC6205100A5C5E7 /* OpenTransactionsSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenTransactionsSignal.swift; sourceTree = "<group>"; };
+		6298A4091E5EEC880070F007 /* IJProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IJProgressView.swift; sourceTree = "<group>"; };
 		AA00C56F1D93EA980044F1AC /* KwizzadSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KwizzadSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA00C5721D93EA980044F1AC /* KwizzadSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KwizzadSDK.h; sourceTree = "<group>"; };
 		AA00C5731D93EA980044F1AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -104,6 +106,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6298A4081E5EEC720070F007 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				6298A4091E5EEC880070F007 /* IJProgressView.swift */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
 		AA00C5651D93EA980044F1AC = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +137,7 @@
 		AA00C5711D93EA980044F1AC /* KwizzadSDK */ = {
 			isa = PBXGroup;
 			children = (
+				6298A4081E5EEC720070F007 /* utils */,
 				AA08A0B41DF09882008A29BC /* localization */,
 				AA7A679A1DAAC86000BEE919 /* model */,
 				AA00C5721D93EA980044F1AC /* KwizzadSDK.h */,
@@ -338,6 +349,7 @@
 				50057CB41DC6205100A5C5E7 /* OpenTransactionsSignal.swift in Sources */,
 				AA7A67AE1DAACC6500BEE919 /* WKController.swift in Sources */,
 				AA7A67A61DAAC8FB00BEE919 /* PlacementModel.swift in Sources */,
+				6298A40A1E5EEC880070F007 /* IJProgressView.swift in Sources */,
 				AA7A67A01DAAC8A600BEE919 /* KwizzadModel.swift in Sources */,
 				FE93A8701DE5D16100BE65D1 /* UserDataModel.swift in Sources */,
 				AAB780C61DB94EB3003DCA77 /* OpenTransaction.swift in Sources */,

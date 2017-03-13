@@ -102,9 +102,9 @@
                             
                             /* Optionally, you can use this to show the user their potential reward(s). */
                             KwizzadAdResponseEvent *adResponse = [KwizzadSDK.instance placementModel:placementId].adResponse;
-                            NSMutableArray *rewardStrings = [NSMutableArray array];
+                            NSMutableArray *rewardStrings = [[NSMutableArray alloc]init];
                             for (KwizzadReward *reward in adResponse.rewards) {
-                                [rewardStrings addObject:reward.asDebugString];
+                                [rewardStrings addObject:[NSString stringWithFormat:@"%@",reward.asDebugString]];
                                 NSLog(@"Potential reward currency: %@", reward.currency);
                                 NSLog(@"Potential reward amount: %@", reward.amount);
                                 NSLog(@"Potential reward type: %@", reward.type);

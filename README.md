@@ -1,7 +1,3 @@
-# Prerequisites
-- You already have your own KWIZZAD API KEY and PLACEMENT ID. If not, please contact TVSMILES per [E-Mail](mailto:it@tvsmiles.de) and we will register your APP.
-
-
 # Setting up the SDK build
 
 - Checkout this repository with examples for Objective-C and Swift 3.
@@ -20,6 +16,8 @@
 ```bash
 $ gem install cocoapods
 ```
+
+> CocoaPods 1.1.0+ is required to build Alamofire 4.0.0+.
 
 To integrate KwizzadSDK into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
