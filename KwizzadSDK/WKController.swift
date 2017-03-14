@@ -86,9 +86,8 @@ class WKController : NSObject, WKScriptMessageHandler, WKNavigationDelegate {
             _ = self.api.queue(AdTrackingEvent(action: "goalReached", forAd: self.model.adResponse!.adId!))
             
         }
-        if (webView.canGoBack){
             IJProgressView.shared.hideProgressView()
-        }
+        
     }
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {

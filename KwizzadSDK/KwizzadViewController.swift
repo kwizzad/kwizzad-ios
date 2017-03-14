@@ -28,9 +28,6 @@ class KwizzadViewController : UIViewController {
     
     public static func create(placement : PlacementModel, api : KwizzadAPI, customParameters: [String:Any]? = nil) -> KwizzadViewController {
         // Display progressView on top of viewController
-        if let topView = UIApplication.shared.keyWindow {
-            IJProgressView.shared.showProgressView(topView)
-        }
         let viewController = KwizzadViewController(placement: placement, api: api, customParameters: customParameters);
         
         UIApplication.shared.keyWindow?.insertSubview(viewController.view, at: 0)
@@ -187,7 +184,6 @@ class KwizzadViewController : UIViewController {
             case .SHOWING_AD:
                 _ = self.api.queue(AdTrackingEvent(action: "adStarted", forAd: self.placement.adResponse!.adId!).customParams(self.customParameters))
                 self.webView?.isHidden = false
-                IJProgressView.shared.hideProgressView()
             case .DISMISSED:
                 self.closeAd();
                 self.dismiss(animated: true)
