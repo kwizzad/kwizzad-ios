@@ -1,11 +1,11 @@
 # Migration guide from versions < `2.x.x`
 
-- [Changelog](##Showcase)
-- [Step by step guide](#Step by step)
-- [User experience](#The user experience)
+- [Changelog](#changelog)
+- [Step by step guide](#guide-step-by-step)
+- [User experience](#user-experience--requesting-and-presenting-ads)
 ---
 
-## Changelog:
+## Changelog
 With version 2.0.0, we overhauled Kwizzad's SDK, cleaned up some API endpoints and added many new features.
 
 If you used to integrate Kwizzad SDK in a version prior to `2.x.x`, there are some necessary and some optional changes:
@@ -19,7 +19,7 @@ If you used to integrate Kwizzad SDK in a version prior to `2.x.x`, there are so
 
 ---
 
-## Step by step :
+## Guide Step by step
 ### step 1 : Initializing the SDK
   - with swift
     ```Swift
@@ -108,7 +108,7 @@ If you used to integrate Kwizzad SDK in a version prior to `2.x.x`, there are so
 
 ---
 
-### User experience: requesting and presenting ads
+## User experience : requesting and presenting ads
 
 We recommend you request an ad from Kwizzad right when the view you want to display it in has
 finished loading.
