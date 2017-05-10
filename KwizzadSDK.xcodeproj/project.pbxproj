@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		50057CB41DC6205100A5C5E7 /* OpenTransactionsSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50057CB31DC6205100A5C5E7 /* OpenTransactionsSignal.swift */; };
-		6298A40A1E5EEC880070F007 /* IJProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6298A4091E5EEC880070F007 /* IJProgressView.swift */; };
+		62045F051E9CF38B00650EB0 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62045F041E9CF38B00650EB0 /* Logger.swift */; };
+		629215761EB355DF00C008DD /* KwizzadSDKDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629215751EB355DF00C008DD /* KwizzadSDKDelegate.swift */; };
+		6298A40A1E5EEC880070F007 /* KwizzadProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6298A4091E5EEC880070F007 /* KwizzadProgressView.swift */; };
+		629947691E8166AA003AF9A9 /* KwizzadAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629947681E8166AA003AF9A9 /* KwizzadAPI.swift */; };
 		AA00C5791D93EA980044F1AC /* KwizzadSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA00C56F1D93EA980044F1AC /* KwizzadSDK.framework */; };
 		AA00C5801D93EA980044F1AC /* KwizzadSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00C5721D93EA980044F1AC /* KwizzadSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA08A0BE1DF09CD1008A29BC /* Kwizzad.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA08A0BB1DF09CD1008A29BC /* Kwizzad.strings */; };
 		AA1E42F31DB53AF000CB1150 /* AdTrackingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1E42F21DB53AF000CB1150 /* AdTrackingEvent.swift */; };
-		AA1E42FC1DB678CD00CB1150 /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1E42FB1DB678CD00CB1150 /* Signal.swift */; };
 		AA51D4B31DAFEAD0001A7B21 /* KwizzadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA51D4B21DAFEAD0001A7B21 /* KwizzadViewController.swift */; };
 		AA51D4B51DAFF7CE001A7B21 /* KwizzadImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA51D4B41DAFF7CE001A7B21 /* KwizzadImages.xcassets */; };
 		AA7660E21D940AEC00DBC694 /* KwizzadSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7660E11D940AEC00DBC694 /* KwizzadSDK.swift */; };
@@ -24,8 +25,6 @@
 		AA7A67AA1DAACC1900BEE919 /* KwizzadEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7A67A91DAACC1900BEE919 /* KwizzadEvent.swift */; };
 		AA7A67AC1DAACC2400BEE919 /* AdResponseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7A67AB1DAACC2400BEE919 /* AdResponseEvent.swift */; };
 		AA7A67AE1DAACC6500BEE919 /* WKController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7A67AD1DAACC6500BEE919 /* WKController.swift */; };
-		AA7A67B21DAAD09300BEE919 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7A67B11DAAD09300BEE919 /* XCGLogger.framework */; };
-		AA7F00BC1DAA8153006070D6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7F00BB1DAA8153006070D6 /* RxSwift.framework */; };
 		AAB780B71DB93F04003DCA77 /* AdRequestEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB780B61DB93F04003DCA77 /* AdRequestEvent.swift */; };
 		AAB780B91DB93F18003DCA77 /* TransactionConfirmedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB780B81DB93F18003DCA77 /* TransactionConfirmedEvent.swift */; };
 		AAB780BB1DB93F43003DCA77 /* AdEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB780BA1DB93F43003DCA77 /* AdEvent.swift */; };
@@ -35,7 +34,10 @@
 		AAB780C61DB94EB3003DCA77 /* OpenTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB780C51DB94EB3003DCA77 /* OpenTransaction.swift */; };
 		AAB92A1E1E44EDA100434893 /* UnsafeVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB92A1D1E44EDA100434893 /* UnsafeVariable.swift */; };
 		AADE2E701DB7D7A300F06407 /* DictConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE2E6F1DB7D7A300F06407 /* DictConvertible.swift */; };
+		FE4F50681E964848004B2765 /* ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4F50671E964848004B2765 /* ImageInfo.swift */; };
+		FE4F506A1E964C4D004B2765 /* AdMetaInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4F50691E964C4D004B2765 /* AdMetaInfo.swift */; };
 		FE93A8701DE5D16100BE65D1 /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE93A86F1DE5D16100BE65D1 /* UserDataModel.swift */; };
+		FEAEA9281E9CC3CA0000A095 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEAEA9251E9CC3CA0000A095 /* RxSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,8 +51,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		50057CB31DC6205100A5C5E7 /* OpenTransactionsSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenTransactionsSignal.swift; sourceTree = "<group>"; };
-		6298A4091E5EEC880070F007 /* IJProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IJProgressView.swift; sourceTree = "<group>"; };
+		62045F041E9CF38B00650EB0 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		629215751EB355DF00C008DD /* KwizzadSDKDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KwizzadSDKDelegate.swift; sourceTree = "<group>"; };
+		6298A4091E5EEC880070F007 /* KwizzadProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KwizzadProgressView.swift; sourceTree = "<group>"; };
+		629947681E8166AA003AF9A9 /* KwizzadAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KwizzadAPI.swift; sourceTree = "<group>"; };
 		AA00C56F1D93EA980044F1AC /* KwizzadSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KwizzadSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA00C5721D93EA980044F1AC /* KwizzadSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KwizzadSDK.h; sourceTree = "<group>"; };
 		AA00C5731D93EA980044F1AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,7 +63,6 @@
 		AA08A0BC1DF09CD1008A29BC /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Kwizzad.strings; sourceTree = "<group>"; };
 		AA08A0BD1DF09CD1008A29BC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Kwizzad.strings; sourceTree = "<group>"; };
 		AA1E42F21DB53AF000CB1150 /* AdTrackingEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdTrackingEvent.swift; path = model/AdTrackingEvent.swift; sourceTree = "<group>"; };
-		AA1E42FB1DB678CD00CB1150 /* Signal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
 		AA51D4B21DAFEAD0001A7B21 /* KwizzadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KwizzadViewController.swift; sourceTree = "<group>"; };
 		AA51D4B41DAFF7CE001A7B21 /* KwizzadImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = KwizzadImages.xcassets; sourceTree = "<group>"; };
 		AA7660E11D940AEC00DBC694 /* KwizzadSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KwizzadSDK.swift; sourceTree = "<group>"; };
@@ -70,8 +73,6 @@
 		AA7A67A91DAACC1900BEE919 /* KwizzadEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KwizzadEvent.swift; path = model/KwizzadEvent.swift; sourceTree = "<group>"; };
 		AA7A67AB1DAACC2400BEE919 /* AdResponseEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdResponseEvent.swift; path = model/AdResponseEvent.swift; sourceTree = "<group>"; };
 		AA7A67AD1DAACC6500BEE919 /* WKController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WKController.swift; sourceTree = "<group>"; };
-		AA7A67B11DAAD09300BEE919 /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = "Carthage/Checkouts/XCGLogger/Sources/build/Debug-iphoneos/XCGLogger.framework"; sourceTree = "<group>"; };
-		AA7F00BB1DAA8153006070D6 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-iphoneos/RxSwift.framework"; sourceTree = "<group>"; };
 		AAB780B61DB93F04003DCA77 /* AdRequestEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdRequestEvent.swift; path = model/AdRequestEvent.swift; sourceTree = "<group>"; };
 		AAB780B81DB93F18003DCA77 /* TransactionConfirmedEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionConfirmedEvent.swift; path = model/TransactionConfirmedEvent.swift; sourceTree = "<group>"; };
 		AAB780BA1DB93F43003DCA77 /* AdEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdEvent.swift; path = model/AdEvent.swift; sourceTree = "<group>"; };
@@ -81,8 +82,11 @@
 		AAB780C51DB94EB3003DCA77 /* OpenTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenTransaction.swift; path = model/OpenTransaction.swift; sourceTree = "<group>"; };
 		AAB92A1D1E44EDA100434893 /* UnsafeVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UnsafeVariable.swift; path = model/UnsafeVariable.swift; sourceTree = "<group>"; };
 		AADE2E6F1DB7D7A300F06407 /* DictConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictConvertible.swift; path = model/DictConvertible.swift; sourceTree = "<group>"; };
+		FE4F50671E964848004B2765 /* ImageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageInfo.swift; path = model/ImageInfo.swift; sourceTree = "<group>"; };
+		FE4F50691E964C4D004B2765 /* AdMetaInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdMetaInfo.swift; path = model/AdMetaInfo.swift; sourceTree = "<group>"; };
 		FE93A86F1DE5D16100BE65D1 /* UserDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDataModel.swift; path = model/UserDataModel.swift; sourceTree = "<group>"; };
 		FE93A8711DE5FABD00BE65D1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FEAEA9251E9CC3CA0000A095 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,8 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA7A67B21DAAD09300BEE919 /* XCGLogger.framework in Frameworks */,
-				AA7F00BC1DAA8153006070D6 /* RxSwift.framework in Frameworks */,
+				FEAEA9281E9CC3CA0000A095 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,7 +112,9 @@
 		6298A4081E5EEC720070F007 /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				6298A4091E5EEC880070F007 /* IJProgressView.swift */,
+				AA7A67AD1DAACC6500BEE919 /* WKController.swift */,
+				6298A4091E5EEC880070F007 /* KwizzadProgressView.swift */,
+				62045F041E9CF38B00650EB0 /* Logger.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -141,12 +146,11 @@
 				AA08A0B41DF09882008A29BC /* localization */,
 				AA7A679A1DAAC86000BEE919 /* model */,
 				AA00C5721D93EA980044F1AC /* KwizzadSDK.h */,
-				AA00C5731D93EA980044F1AC /* Info.plist */,
 				AA7660E11D940AEC00DBC694 /* KwizzadSDK.swift */,
-				AA7A67AD1DAACC6500BEE919 /* WKController.swift */,
+				629215751EB355DF00C008DD /* KwizzadSDKDelegate.swift */,
 				AA51D4B21DAFEAD0001A7B21 /* KwizzadViewController.swift */,
 				AA51D4B41DAFF7CE001A7B21 /* KwizzadImages.xcassets */,
-				AA1E42FB1DB678CD00CB1150 /* Signal.swift */,
+				AA00C5731D93EA980044F1AC /* Info.plist */,
 			);
 			path = KwizzadSDK;
 			sourceTree = "<group>";
@@ -175,6 +179,7 @@
 				AAB780BD1DB93F8E003DCA77 /* response */,
 				AA7A67A31DAAC8E200BEE919 /* AdState.swift */,
 				AA7A679F1DAAC8A600BEE919 /* KwizzadModel.swift */,
+				629947681E8166AA003AF9A9 /* KwizzadAPI.swift */,
 				AA7A67A51DAAC8FB00BEE919 /* PlacementModel.swift */,
 				AA7A67A71DAACBCE00BEE919 /* Configuration.swift */,
 				AADE2E6F1DB7D7A300F06407 /* DictConvertible.swift */,
@@ -187,8 +192,7 @@
 		AAA50BBD1D93F00700764DD1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AA7A67B11DAAD09300BEE919 /* XCGLogger.framework */,
-				AA7F00BB1DAA8153006070D6 /* RxSwift.framework */,
+				FEAEA9251E9CC3CA0000A095 /* RxSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -211,7 +215,8 @@
 				AAB780C11DB94052003DCA77 /* OpenTransactionsEvent.swift */,
 				AAB780C31DB9406C003DCA77 /* Reward.swift */,
 				AAB780C51DB94EB3003DCA77 /* OpenTransaction.swift */,
-				50057CB31DC6205100A5C5E7 /* OpenTransactionsSignal.swift */,
+				FE4F50671E964848004B2765 /* ImageInfo.swift */,
+				FE4F50691E964C4D004B2765 /* AdMetaInfo.swift */,
 			);
 			name = response;
 			sourceTree = "<group>";
@@ -342,25 +347,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAB780B91DB93F18003DCA77 /* TransactionConfirmedEvent.swift in Sources */,
+				629947691E8166AA003AF9A9 /* KwizzadAPI.swift in Sources */,
+				FE4F50681E964848004B2765 /* ImageInfo.swift in Sources */,
 				AA7660E21D940AEC00DBC694 /* KwizzadSDK.swift in Sources */,
 				AA7A67AA1DAACC1900BEE919 /* KwizzadEvent.swift in Sources */,
 				AA7A67A81DAACBCE00BEE919 /* Configuration.swift in Sources */,
 				AAB780B71DB93F04003DCA77 /* AdRequestEvent.swift in Sources */,
-				50057CB41DC6205100A5C5E7 /* OpenTransactionsSignal.swift in Sources */,
 				AA7A67AE1DAACC6500BEE919 /* WKController.swift in Sources */,
 				AA7A67A61DAAC8FB00BEE919 /* PlacementModel.swift in Sources */,
-				6298A40A1E5EEC880070F007 /* IJProgressView.swift in Sources */,
+				6298A40A1E5EEC880070F007 /* KwizzadProgressView.swift in Sources */,
+				62045F051E9CF38B00650EB0 /* Logger.swift in Sources */,
 				AA7A67A01DAAC8A600BEE919 /* KwizzadModel.swift in Sources */,
 				FE93A8701DE5D16100BE65D1 /* UserDataModel.swift in Sources */,
 				AAB780C61DB94EB3003DCA77 /* OpenTransaction.swift in Sources */,
 				AAB780C01DB94026003DCA77 /* NoFillEvent.swift in Sources */,
-				AA1E42FC1DB678CD00CB1150 /* Signal.swift in Sources */,
 				AA1E42F31DB53AF000CB1150 /* AdTrackingEvent.swift in Sources */,
 				AA7A67A41DAAC8E200BEE919 /* AdState.swift in Sources */,
 				AAB780C41DB9406C003DCA77 /* Reward.swift in Sources */,
+				FE4F506A1E964C4D004B2765 /* AdMetaInfo.swift in Sources */,
 				AAB780C21DB94052003DCA77 /* OpenTransactionsEvent.swift in Sources */,
 				AAB92A1E1E44EDA100434893 /* UnsafeVariable.swift in Sources */,
 				AADE2E701DB7D7A300F06407 /* DictConvertible.swift in Sources */,
+				629215761EB355DF00C008DD /* KwizzadSDKDelegate.swift in Sources */,
 				AA7A67AC1DAACC2400BEE919 /* AdResponseEvent.swift in Sources */,
 				AA51D4B31DAFEAD0001A7B21 /* KwizzadViewController.swift in Sources */,
 				AAB780BB1DB93F43003DCA77 /* AdEvent.swift in Sources */,

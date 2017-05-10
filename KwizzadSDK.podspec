@@ -11,7 +11,7 @@ s.requires_arc = true
 #s.social_media_url = "http://kwizzad.com"
 
 # 2
-s.version = "0.9.19"
+s.version = "2.0.1"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
@@ -36,7 +36,6 @@ s.resources = ["KwizzadSDK/**/*.{strings}" , "KwizzadSDK/**/*.xcassets"]
 
 # 10 - Dependencies
 s.dependency 'RxSwift', '~> 3.0'
-s.dependency 'XCGLogger', '~> 4.0.0'
 
 
 end

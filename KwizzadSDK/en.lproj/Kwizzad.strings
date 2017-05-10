@@ -14,3 +14,9 @@
 "close_alert_title" = "Close window and go back to the app?";
 "close_alert_yes" = "Yes, close window";
 "close_alert_no" = "Cancel";
+
+"reward.withLimit" = "up to #reward#";
+"reward.incentiveText" = "Earn #potentialTotalReward# with a quiz.";
+"transaction.confirmationText" = "Congratulations, you earned #oneOrMoreRewards#!";
+"enum.two" = "#first# and #second#";
+"enum.moreThanTwo" = "#commaSeparated#, and #last#";

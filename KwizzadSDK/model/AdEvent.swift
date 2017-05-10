@@ -18,11 +18,36 @@ func generateUserData() -> [String:Any] {
 
     KwizzadSDK.instance.model.userData.toDict(&userData);
     let version = Bundle(for: KwizzadSDK.self).infoDictionary?["CFBundleShortVersionString"];
+    let device = UIDevice.current
+    var systemInfo = utsname()
+    uname(&systemInfo)
+    let modelCode = withUnsafePointer(to: &systemInfo.machine) {
+        $0.withMemoryRebound(to: CChar.self, capacity: 1) {
+            ptr in String.init(validatingUTF8: ptr)
+            
+        }
+    }
+
     
+    ("1.0", "apiVersion") --> userData
     ("iOS", "PlatformType") --> userData
     (version, "sdkVersion") --> userData
-    // (osVersion, "OSVersion") --> userData
-    ("1.0", "apiVersion") --> userData
+    (device.systemVersion, "OSVersion") --> userData
+    (device.model + "|" + (modelCode ?? "unknown"), "deviceInformation") --> userData
+    let screenRect = UIScreen.main.bounds;
+    let screenWidth = screenRect.size.width;
+    let screenHeight = screenRect.size.height;
+    (screenWidth, "screenWidth") --> userData;
+    (screenHeight, "screenHeight") --> userData;
+    (UIScreen.main.nativeScale, "devicePixelRatio") --> userData;
+    
+    let bundleApp = Bundle.main;
+    let bundleDisplayName = bundleApp.object(forInfoDictionaryKey: "CFBundleName") as? String;
+    (bundleDisplayName, "userAgent") --> userData;
+    let bundleIdentifier = bundleApp.bundleIdentifier
+    let bundleVersion = bundleApp.infoDictionary?["CFBundleShortVersionString"];
+    (bundleIdentifier, "packageName") --> userData
+    (bundleVersion, "appVersion") --> userData
     
     print("User data", userData);
     

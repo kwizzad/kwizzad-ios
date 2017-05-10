@@ -8,79 +8,43 @@
 
 import Foundation
 
-@objc
-public protocol IAdStateSignal : ISignal {
-    func subscribe(_ callback: @escaping (AdState) -> Void) -> NSObject;
-}
-
-open class AdStateSignal : Signal<AdState>, IAdStateSignal {
-    
-    open func subscribe(_ callback: @escaping (AdState) -> Void) -> NSObject {
-        return super._subscribe(callback)
-    }
-}
-
+/// A class holds the current state of the Ad.
 @objc(KwizzadAdState)
 public enum AdState : Int, CustomStringConvertible {
-    /**
-     * -> REQUESTING_AD
-     */
+    /// Kwizzad has been initialized.
     case INITIAL
     
-    /**
-     * We are currently requesting an ad.
-     * <p>
-     * -> RECEIVED_AD, NOFILL
-     */
+    /// Kwizzad is currently requesting an ad.
     case REQUESTING_AD
-    
-    /**
-     * successful ad request, but no ad was available to be returned.
-     */
+
+    /// Kwizzad requested an ad, but there was none available for the current placement.
+    /// The system will retry at a later point.
     case NOFILL
     
-    /**
-     * -> LOADING_AD
-     */
+    /// An ad has been received from the server.
     case RECEIVED_AD
     
-    /**
-     * -> AD_READY
-     */
+    /// Kwizzad is loading the ad's information.
     case LOADING_AD
     
-    /**
-     * Ad was loaded successfully and is ready to be shown.
-     * <p>
-     * ->  SHOWING_AD, DISMISSED
-     */
+    /// Ad was loaded successfully and is ready to be shown.
     case AD_READY
     
-    /**
-     * -> CALL2ACTION, DISMISSED
-     */
+    /// Ad is currently shown to the user.
     case SHOWING_AD
     
-    /**
-     * -> GOAL_REACHED, DISMISSED
-     */
+    /// User reached the call-to-action point (e.g. a download link).
     case CALL2ACTION
     
-    /**
-     * TODO:
-     */
+    /// User clicked on the call to action or reached an external website.
     case CALL2ACTIONCLICKED
     
-    /**
-     * shows OK button instead of X currently
-     * <p>
-     * -> DISMISSED
-     */
+    /// User reached the goal that was defined in the campaign.
+    /// Instead of a normal close button, an affirmative button is shown
+    /// to signalize the user that they can close the ad.
     case GOAL_REACHED
     
-    /**
-     * Ad was closed.
-     */
+    /// The ad was dismissed. Kwizzad will load a new ad soon.
     case DISMISSED
     
     static let strings: [AdState:String] = [

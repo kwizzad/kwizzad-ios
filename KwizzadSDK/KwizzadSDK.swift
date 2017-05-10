@@ -8,30 +8,9 @@
 
 import Foundation
 import RxSwift
-import XCGLogger
 
-let kwlog: XCGLogger = {
-    let log = XCGLogger(identifier: "advancedLogger", includeDefaultDestinations: true)
-    
-    // Create a destination for the system console log (via NSLog)
-    let systemDestination = AppleSystemLogDestination(identifier: "advancedLogger.systemDestination")
-    
-    
-    // Optionally set some configuration options
-    systemDestination.outputLevel = .debug
-    systemDestination.showLogIdentifier = false
-    systemDestination.showFunctionName = false
-    systemDestination.showThreadName = true
-    systemDestination.showLevel = false
-    systemDestination.showFileName = true
-    systemDestination.showLineNumber = true
-    systemDestination.showDate = true
-    
-    // Add the destination to the logger
-    log.add(destination: systemDestination)
-    
-    return log
-}()
+let logger = Logger.sharedInstance
+public typealias AdAvailableCallback = (_ rewards: [Reward]?, _ adResponse: AdResponseEvent?) -> Void
 
 func KwizzadLocalized(_ key: String, replacements : [String:String]? = nil) -> String {
     let mainBundle = Bundle(for: KwizzadSDK.self)
@@ -42,11 +21,9 @@ func KwizzadLocalized(_ key: String, replacements : [String:String]? = nil) -> S
     let resourceBundle = Bundle(path: resourcePath!)
     var str = NSLocalizedString(key, tableName: "Kwizzad", bundle: resourceBundle! , comment: key+"!");
     if let repl = replacements {
-        
         for (key, value) in repl {
             str = str.replacingOccurrences(of: key, with: value);
         }
-        
         return str;
     }
     else {
@@ -54,134 +31,255 @@ func KwizzadLocalized(_ key: String, replacements : [String:String]? = nil) -> S
     }
 }
 
-open class KwizzadSDK:NSObject {
-    
-    fileprivate static var TIMEOUT_REQUESTING_AD = 1000 * 10;
-    
+/// Handles all delegate callbacks and operations within KwizzadSDK.
+/// Note: This is a singleton.
+open class KwizzadSDK : NSObject {
+    fileprivate static let TIMEOUT_REQUESTING_AD = 1000 * 10;
+    fileprivate static let MAX_REQUEST_RETRIES = 10;
+    fileprivate static let STATES_THAT_ALLOW_REQUESTS = [
+        AdState.INITIAL,
+        AdState.NOFILL,
+        AdState.AD_READY, // after expiration
+        AdState.DISMISSED,
+        ];
+
+    enum ResponseError: Error {
+        case fatalError
+        case retryableRequestError
+    }
+
+    /// The object that acts as the delegate of the Kwizzad SDK.
+    /// The delegate must implement the `KwizzadSDKDelegate` protocol.
+    /// The delegate object is called back for specific events, and
+    /// can decide about the user flow.
+    open weak var delegate: KwizzadSDKDelegate?
+
     @objc
     open static let instance = KwizzadSDK()
-    
-    let model = KwizzadModel()
 
-    let api : KwizzadAPI
+    let model = KwizzadModel()
     
-    let disposeBag = DisposeBag()
+    /// When set to `true` (recommended),
+    /// - a new ad is preloaded when a currently open ad is closed
+    /// - the SDK tries to load a new ad when there is currently no ad available
+    /// You can set this to `false` if you want have exact control over when new ads are loaded.
+    open var preloadAdsAutomatically = true
     
+    fileprivate let api : KwizzadAPI
+
+    fileprivate var observedPlacementIds : Set<String> = []
+
+    fileprivate let disposeBag = DisposeBag()
+
     fileprivate override init() {
         let c = Convertibles.instance;
         c.add(clazz: AdResponseEvent.self, type: "adResponse")
         c.add(clazz: OpenTransactionsEvent.self, type: "openTransactions")
         c.add(clazz: DeprecatedResponse.self, type: "openCallbacks")
         c.add(clazz: NoFillEvent.self, type: "adNoFill")
-        
+
         api = KwizzadAPI(model);
         HTTPCookieStorage.shared.cookieAcceptPolicy = HTTPCookie.AcceptPolicy.always;
 
         super.init();
     }
     
-    open func configure(_ configuration : Configuration) {
-        
-        model.apiKey = configuration.apiKey;
-        
+
+    /// Configures the SDK's basic data that are necessary to function.
+    /// - Parameter configuration: A set of options to be used by the SDK.
+    @objc
+    static open func setup(configuration : Configuration) {
+        instance.model.apiKey = configuration.apiKey;
+
         if(configuration.overrideServer != nil) {
-            model.server = configuration.overrideServer!
+            instance.model.configuredAPIBaseUrl = configuration.overrideServer!
         }
-        
-        model.overrideWeb = configuration.overrideWeb
-        
-        model.configured.value = true;
-        
+
+        instance.model.overrideWeb = configuration.overrideWeb
+
+        instance.model.configured.value = true;
     }
     
+    /// Configures the SDK's basic data that are necessary to function.
+    /// - Parameter apiKey: Ask support for an api key.
+    @objc
+    static open func setup(apiKey : String) {
+        instance.model.apiKey = apiKey;
+        instance.model.configured.value = true;
+    }
+
+    /// Returns a set of targeting data that is used when requesting new ads.
+    /// - returns: `UserDataModel`, a set of targeting data.
     open var userDataModel: UserDataModel {
         return model.userData;
     }
 
-    open var isConfigured: Bool {
-        return model.configured.value;
-    }
-    
-    open func requestAd(_ placementId: String) {
+    /// Requests an ad on a given placement. Allows to supply a callback when an ad is received for this request.
+    ///
+    /// - Parameter placementId: the placement id to request.
+    /// - Parameter onAdAvailable: an optional completion handler called with information about the received ad,
+    ///   and potential rewards for the user when reaching the goal of the campaign.
+    ///
+    /// Warning: The onAdAvailable function is called additionally to the delegate function `kwizzadOnAdAvailable`.
+    /// Don't use both at the same time.
+    open func requestAd(placementId: String, onAdAvailable: AdAvailableCallback? = nil) {
+        
         let placement = model.placementModel(placementId: placementId)
-        
-        // TODO: check states
-        
-        switch(placement.adState) {
-        case .REQUESTING_AD:
-            if Int(placement.changed.timeIntervalSinceNow) > KwizzadSDK.TIMEOUT_REQUESTING_AD {
-                kwlog.error("trying to request a new ad while currently ad request running. will be ignored.");
-                return;
-            } else {
-                kwlog.info("placement was requesting ad, but timeout was reached");
-            }
-        case .RECEIVED_AD:
-            kwlog.error("there is already an ad in received state, please use this first")
-            return
-        case .NOFILL:
-            if let retryAfter = placement.retryAfter {
-                kwlog.debug("retry after \(retryAfter.timeIntervalSinceNow)")
-                if retryAfter.timeIntervalSinceNow > 0 {
-                    kwlog.info("no fill said to retry after \(retryAfter)");
-                    break; // TVSDK-292 currently we allow retry at any time
-                }
-            }
-        default:
-            break;
+        guard KwizzadSDK.STATES_THAT_ALLOW_REQUESTS.contains(placement.state.value) else {
+            logger.logMessage("Ignored ad request in state \(placement.state.value)",.Error);
+            return;
         }
         
+        if (placement.adState == .AD_READY) {
+            placement.close()
+        }
+        
+        self.startObservingAdStateAndNotifyDelegate(placementId: placementId, onAdAvailable: onAdAvailable);
         let adRequest = AdRequestEvent(placementId: placementId)
         
         placement.adState = AdState.REQUESTING_AD
         
-        _ = api.queue(adRequest)
+        _ = self.api.queue(adRequest)
             .subscribe(onError: { err in
                 placement.transition(from: AdState.REQUESTING_AD, to: AdState.DISMISSED)
+                self.delegate?.kwizzadOnErrorOccured?(placementId: placementId, reason: err.localizedDescription)
             })
     }
-    
-    open func prepare(_ placementId : String, customParameters: [String:Any]? = nil) -> UIViewController? {
-        kwlog.debug(placementId)
-        
+
+    /// Should be called when an ad becomes available (for example in the `kwizzadOnAdAvailable` event).
+    ///
+    /// Loads the available ad content and prepares a view controller to be presented to the user.
+    ///
+    /// - Parameter placementId: the used placement id.
+    /// - Parameter customParameters: a `Dictionary` with additional custom parameters to optimize targeting.
+    /// - returns: A `UIViewController` with the ad's content to present to the user if successful,
+    ///   `nil` otherwise.
+    open func loadAd(placementId: String, customParameters: [String:Any]? = [:]) -> UIViewController? {
+        logger.logMessage(placementId,.Debug)
+
         let placement = model.placementModel(placementId: placementId)
-        
+
         placement.currentStep = 0
-        
+
         if(placement.transition(from: AdState.RECEIVED_AD, to: AdState.LOADING_AD)) {
-            
-            return KwizzadViewController.create(placement : placement, api : api, customParameters: customParameters);
+            let myCustomParameters = ["userId": self.userDataModel.userId];
+            return KwizzadViewController.create(placement : placement, api : api, customParameters: myCustomParameters);
         }
         return nil;
     }
     
-    // helper function to dismiss ad without knowing or touching the view
-    open func close(_ placementId : String) {
-        kwlog.debug(placementId);
+    /// Helper function to dismiss ads from the outside while they are open.
+    /// Note: It's very uncommon that this is necessary.
+    /// - Parameter placementId: the ID of the placement whose ad should be closed.
+    open func close(_ placementId: String) {
+        logger.logMessage(placementId);
         let placement = model.placementModel(placementId: placementId)
         placement.close()
-        
+
     }
-    
-    open func placementModel(_ placementId : String) -> PlacementModel {
+
+    /// - returns: `true` if the ad on the placement with the given ID can now be displayed, `false` otherwise.
+    /// - Parameter placementId: the used placement id.
+    open func canShowAd(placementId: String) -> Bool {
+        let placement = model.placementModel(placementId: placementId)
+        guard let adResponse = placement.adResponse else { return false; }
+        return placement.adState == .AD_READY && !adResponse.adWillExpireSoon();
+    }
+
+    /// - returns: information and current state of the placement with the given ID.
+    /// - Parameter placementId: identifies the placement.
+    open func placementModel(placementId: String) -> PlacementModel {
         return model.placementModel(placementId: placementId)
     }
-    
-    open func pendingTransactions() -> Observable<Set<OpenTransaction>> {
-        return model.openTransactions
-            .asObservable()
-            .map(self.filterActiveTransactions)
+
+    /// Tells the backend to complete given transaction and trigger payout.
+    /// - Parameter transaction: the transaction to complete.
+    public func complete(transaction: OpenTransaction) {
+        transaction.state = .SENDING
+
+        _ = api.queue(TransactionConfirmedEvent.fromTransaction(transaction))
+            .subscribe(onError: { err in
+                transaction.state = .ERROR
+            }, onCompleted: {
+                logger.logMessage("transaction confirmed");
+                transaction.state = .SENT
+            })
+    }
+
+    // - returns: `true` if the SDK is already configured, `false` otherwise.
+    fileprivate var isConfigured: Bool {
+        return model.configured.value;
     }
     
-    public func subscribeToPendingTransactions(callback: @escaping (Set<OpenTransaction>) -> Void) -> NSObject{
-        let pending = pendingTransactions()
-        //return AdStateSignal(adStateObservable).subscribe(callback);
-        return OpenTransactionsSignal(pending).subscribe(callback)
+    
+    fileprivate func startObservingAdStateAndNotifyDelegate(placementId: String, onAdAvailable: AdAvailableCallback?) {
+        let placement = model.placementModel(placementId: placementId)
+        guard !observedPlacementIds.contains(placementId) else {
+            return
+        }
+        
+        observedPlacementIds.insert(placementId)
+        
+        placement.adStateObservable.subscribe(onNext: { adState in
+            switch(adState) {
+            case .REQUESTING_AD:
+                self.delegate?.kwizzadDidRequestAd(placementId: placementId);
+                if Int(placement.changed.timeIntervalSinceNow) > KwizzadSDK.TIMEOUT_REQUESTING_AD {
+                    logger.logMessage("trying to request a new ad while currently ad request running. will be ignored.", .Error);
+                    let errorMessage = "placement was requesting ad, but timeout was reached";
+                    self.delegate?.kwizzadOnErrorOccured?(placementId: placement.placementId, reason: errorMessage);
+                }
+                return;
+            case .LOADING_AD:
+                logger.logMessage("LOADING_AD");
+                return;
+            case .RECEIVED_AD:
+                logger.logMessage("RECEIVED_AD");
+                if let adResponse = placement.adResponse {
+                    let rewards = adResponse.rewards ?? []
+                    self.delegate?.kwizzadOnAdAvailable(placementId: placementId, potentialRewards: rewards, adResponse: adResponse);
+                    onAdAvailable?(rewards, adResponse)
+                } else {
+                    let errorMessage = "Got a RECEIVED_AD event with an empty ad response.";
+                    self.delegate?.kwizzadOnErrorOccured?(placementId: placement.placementId, reason: errorMessage);
+                }
+                return
+            case .AD_READY:
+                logger.logMessage("AD_READY");
+                self.delegate?.kwizzadOnAdReady(placementId: placementId);
+                self.preloadAdIfEnabled(placement: placement);
+                return;
+            case .SHOWING_AD:
+                logger.logMessage("SHOWING_AD");
+                self.delegate?.kwizzadDidShowAd(placementId: placementId);
+                return;
+            case .DISMISSED:
+                logger.logMessage("DISMISSED");
+                self.delegate?.kwizzadDidDismissAd(placementId: placementId);
+                self.preloadAdIfEnabled(placement: placement);
+            case .NOFILL:
+                self.delegate?.kwizzadOnNoFill(placementId: placementId);
+                if let retryAfter = placement.retryAfter {
+                    logger.logMessage("Retrying after \(retryAfter.timeIntervalSinceNow)",.Debug)
+                    self.preloadAdIfEnabled(placement: placement);
+                }
+            default:
+                break;
+            }
+        })
+        .addDisposableTo(disposeBag);
+    }
+    
+    func preloadAdIfEnabled(placement: PlacementModel?) {
+        guard let placement = placement else { return; }
+        if (self.preloadAdsAutomatically) {
+            if (placement.adResponse?.adWillExpireSoon() ?? false) {
+                self.requestAd(placementId: placement.placementId)
+            }
+        }
     }
     
     fileprivate func filterActiveTransactions(_ input: Set<OpenTransaction>) -> Set<OpenTransaction> {
-        
-        kwlog.debug("open transactions changed \(input.count)")
-        
         var filtered: Set<OpenTransaction> = []
         
         for cb in input {
@@ -189,195 +287,9 @@ open class KwizzadSDK:NSObject {
                 filtered.insert(cb)
             }
             else {
-                kwlog.debug("filtering out \(cb)")
+                logger.logMessage("filtering out \(cb)")
             }
         }
         return filtered;
     }
-    
-    public func completeTransaction(_ transaction: OpenTransaction) {
-        transaction.state = .SENDING
-        
-        _ = api.queue(TransactionConfirmedEvent.fromTransaction(transaction))
-            .subscribe(onError: { err in
-                transaction.state = .ERROR
-            }, onCompleted: {
-                kwlog.debug("transaction confirmed");
-                transaction.state = .SENT
-            })
-    }
-}
-
-class KwizzadAPI {
-    
-    let model : KwizzadModel;
-    let disposeBag = DisposeBag();
-    
-    let sendQueue = PublishSubject<(String, BehaviorSubject<Void>)>();
-    
-    public init(_ model: KwizzadModel) {
-        self.model = model;
-        
-        sendQueue
-            .flatMap(self.send)
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { response in
-                
-                if(response == "") {
-                    return
-                }
-                
-                kwlog.debug("server response \(response)")
-                kwlog.debug()
-                
-                let foo: [FromDict] = dictConvert(str: response)
-                
-                debugPrint(foo)
-                
-                for msg in foo {
-                    
-                    if let noFillEvent = msg as? NoFillEvent {
-                        self.model
-                            .placementModel(placementId: noFillEvent.placementId!)
-                            .transition(from: .REQUESTING_AD,
-                                        to: .NOFILL,
-                                beforeChange: { placement in
-                                    placement.retryAfter = noFillEvent.retryAfter;
-                                    placement.adResponse = nil;
-                            })
-                    }
-                    
-                    if let openTransactionsEvent = msg as? OpenTransactionsEvent {
-                        
-                        kwlog.debug("got open transactions \(openTransactionsEvent.transactions)");
-                        
-                        if let transactions = openTransactionsEvent.transactions {
-                            var newSet : Set<OpenTransaction> = [];
-                            
-                            for cb in self.model.openTransactions.value {
-                                if transactions.contains(cb) && (cb.state == .ACTIVE || cb.state == .SENDING) {
-                                    newSet.insert(cb);
-                                }
-                            }
-                            
-                            newSet.formUnion(transactions)
-                            
-                            kwlog.debug("size \(newSet.count)");
-                            
-                            if (newSet.count > 0 || newSet.count != self.model.openTransactions.value.count) {
-                                kwlog.debug("changed, setting transactions");
-                                self.model.openTransactions.value = newSet;
-                            }
-                        }
-                    }
-                    
-                    if let adResponse = msg as? AdResponseEvent {
-                        self.model.placementModel(placementId: adResponse.placementId!)
-                            .transition(
-                                from: AdState.REQUESTING_AD,
-                                to: AdState.RECEIVED_AD,
-                                beforeChange: { placement in
-                                    placement.adResponse = adResponse;
-                                    if self.model.overrideWeb != nil, adResponse.url != nil, let regex = try? NSRegularExpression(pattern: "[^:]+://[^/]+", options: .caseInsensitive) {
-                                        
-                                        kwlog.debug("url before \(adResponse.url)")
-                                        adResponse.url = regex.stringByReplacingMatches(in: adResponse.url!, options: .withTransparentBounds, range: NSMakeRange(0, adResponse.url!.characters.count), withTemplate: self.model.overrideWeb!)
-                                        kwlog.debug("url after \(adResponse.url)")
-                                    }
-                                    
-                                    //QLog.d("Replace " + event.url + " with " + model.overrideWeb);
-                                    //event.url = event.url.replaceFirst("",model.overrideWeb);
-                                    //QLog.d("Replaced: " + event.url);
-                                }
-                        )
-                        
-                    }
-                }
-        }).addDisposableTo(disposeBag)
-    }
-    
-    func send(_ request: String, _ ret: BehaviorSubject<Void>) -> Observable<String> {
-        return Observable.create { (observer) -> Disposable in
-            var task: URLSessionDataTask?
-            
-            let baseUrl = self.model.server+self.model.apiKey!+"/"+self.model.installId;
-            
-            let session = URLSession.shared
-            
-            kwlog.debug(baseUrl)
-            kwlog.debug(request)
-            
-            var httpRequest = URLRequest(url: URL(string: baseUrl)!)
-            httpRequest.httpMethod = "POST";
-            httpRequest.httpBody = request.data(using: .utf8);
-            
-            kwlog.debug("sending \(httpRequest.httpBody)")
-            
-            httpRequest.setValue("application/json", forHTTPHeaderField: "Content-Type");
-            
-            task = session.dataTask(with: httpRequest) { (data, response, error) -> Void in
-                if error != nil {
-                    kwlog.debug(error)
-                    observer.onError(error!)
-                } else {
-                    let result = String(data: data!, encoding:.utf8)!
-                    observer.onNext(result);
-                    observer.onCompleted()
-                    ret.onCompleted()
-                }
-            }
-            task?.resume()
-            
-            return Disposables.create {
-                if task != nil {
-                    task?.cancel()
-                }
-            }
-            }.retryWhen{ error -> Observable<Int64> in
-                return Observable.timer(30000, scheduler: MainScheduler.instance)
-            }.catchError({ error in
-                ret.onError(error)
-                return Observable.just("")
-            })
-    }
-    
-    func convert<T:ToDict>(_ request : [T]) throws -> String {
-        var str = "[";
-        var first: Bool = true
-        for r in request {
-            if(first) {
-                first = false;
-            }
-            else {
-                str += ","
-            }
-            if let foo : String = dictConvert(r) {
-                str += foo;
-            }
-        }
-        str += "]"
-        return str
-    }
-    
-    func queue<T:ToDict>(_ request: T...) -> Observable<Void> {
-        kwlog.debug("queueing \(request)")
-        
-        do {
-            
-            let ret = BehaviorSubject<Void>(value: Void())
-            
-            let r = try convert(request)
-            
-            sendQueue.onNext((r, ret))
-            
-            return ret.observeOn(MainScheduler.instance);
-            
-        }
-        catch {
-            return Observable.error(error);
-        }
-        
-        
-    }
-    
 }

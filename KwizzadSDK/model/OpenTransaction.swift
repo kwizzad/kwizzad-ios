@@ -8,8 +8,19 @@
 
 import Foundation
 
+/// Holds information about a reward that the user can earn, has earned, or has not earned
+/// because there was an issue.
+///
+/// On requesting an ad and on ad dismissal, you get an information about if/how the user got
+/// pending transactions for rewards. You can then display this information to your user—either
+/// summarized or with a dialog for each single pending reward. As soon as your app confirms a
+/// transaction, its reward will be paid out.
+///
+/// Transactions work like an inbox, so you might transactions again (asynchronously) until your
+/// app confirms them.
+
 @objc(KwizzadOpenTransaction)
-open class OpenTransaction : NSObject, FromDict {
+open class OpenTransaction: NSObject, FromDict {
     open let adId : String?
     open let transactionId : String?
     open let conversionTimestamp : String?
@@ -18,9 +29,16 @@ open class OpenTransaction : NSObject, FromDict {
     public var state : State = .ACTIVE
     
     public enum State {
+        /// The reward will be payed out on confirmation.
         case ACTIVE
+        
+        /// The transaction is being confirmed by the client.
         case SENDING
+        
+        /// The transaction has been confirmed.
         case SENT
+        
+        /// There was an error confirming the transaction.
         case ERROR
     }
     

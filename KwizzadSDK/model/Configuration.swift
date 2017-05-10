@@ -11,11 +11,11 @@ import Foundation
 @objc(KwizzadConfiguration)
 open class Configuration:NSObject {
     let apiKey : String
-    let overrideServer : String?
-    let overrideWeb : String?
-    let debug : Bool
+    var overrideServer : String? = nil
+    var overrideWeb : String? = nil
+    var debug : Bool = false
     
-    public init(apiKey:String, overrideServer:String? = nil, overrideWeb: String? = nil, debug: Bool = false) {
+    public init(apiKey:String, overrideServer:String? = nil, overrideWeb: String? = nil,debug: Bool = false) {
         self.apiKey = apiKey;
         self.overrideServer = overrideServer;
         self.overrideWeb = overrideWeb;
@@ -29,7 +29,7 @@ open class Configuration:NSObject {
         debug = b._debug
     }
     
-    open static func create() -> Builder {
+    public static func create() -> Builder {
         return Builder()
     }
     
@@ -43,21 +43,32 @@ open class Configuration:NSObject {
             
         }
         
+        /// Returns the API key to use for Kwizzad. The API key is used to identify your app.
+        /// Note: Please don't share this key.
+        /// Note: If you do not know your API key, ask the Kwizzad team to provide one to you.
         open func apiKey(_ _apiKey: String) -> Builder {
             self._apiKey = _apiKey
             return self;
         }
         
+        /// Allows debugging Kwizzad by connecting it to another server.
+        /// - Parameter _overrideServer: Base URL of the server to use, for example
+        ///   `http://qa.someserver.com/`.
         open func overrideServer(_ _overrideServer : String) -> Builder {
             self._overrideServer = _overrideServer
             return self
         }
         
+        /// Override the base URL of the web server for displaying Komet,
+        /// a web app that is Kwizzad can show in a web view.
+        /// - Parameter _overrideServer: Base URL of the server to use, for example
+        ///   `http://qa.someserver.com/api/sdk/`.
         open func overrideWeb(_ _overrideWeb : String) -> Builder {
             self._overrideWeb = _overrideWeb
             return self
         }
         
+        /// Switches debug logging on and off.
         open func debug(_ _debug : Bool) -> Builder {
             self._debug = _debug
             return self;

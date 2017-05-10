@@ -42,11 +42,12 @@ func dictConvert <T : ToDict>(_ o: T?) -> String? {
                 return foo;
             }
             else {
-                kwlog.error("not json convertible \(map)")
+                logger.logMessage("Not json convertible \(map)",.Error)
             }
         }
         catch {
-            kwlog.error("oh no \(error)")
+            logger.logMessage("Error while serializing JSON : \(error)",.Error)
+
         }
     }
     
@@ -104,7 +105,7 @@ func dictConvert (str: String?) -> [String: Any]? {
         catch {
         }
     }
-    kwlog.debug("could not deserialize \(str)")
+    logger.logMessage("could not deserialize \(String(describing: str))")
     return nil
 }
 
@@ -119,7 +120,7 @@ func dictConvert (str: String?) -> NSArray? {
         catch {
         }
     }
-    kwlog.debug("could not deserialize \(str)")
+    logger.logMessage("could not deserialize \(String(describing: str))")
     return nil
 }
 
@@ -178,15 +179,17 @@ func dictConvertToObject (fromDict dict: [String : Any]?) -> FromDict? {
                 return clazz.init(dict!)
             }
             else {
-                kwlog.error("\(type) not FromDict")
+                logger.logMessage("\(type) not FromDict",.Error)
+
             }
         }
         else {
-            kwlog.error("\(type) was not registered");
+            logger.logMessage("\(type) was not registered",.Error)
         }
     }
     else {
-        kwlog.error("no type found in \(dict)")
+        logger.logMessage("no type found in \(String(describing: dict))",.Error)
+
     }
     
     return nil;

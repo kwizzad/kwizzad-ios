@@ -9,6 +9,16 @@
 import Foundation
 import RxSwift
 
+/// Holds data for a *placement* and its state.
+///
+/// A placement can contain a specified set of campaigns and playout rules.
+/// You get one or more placements assigned to use in your application.
+/// Each placement has an ID so you can differentiate which set of
+/// campaigns/playout rules is used in a specific place in your app.
+///
+/// Note: If you are unsure which placement ID to use, contact the Kwizzad
+/// team to get a placement ID assigned.
+
 @objc(KwizzadPlacementModel)
 open class PlacementModel : NSObject {
     
@@ -23,7 +33,8 @@ open class PlacementModel : NSObject {
     var retryAfter:Date?
     var currentStep = 0
     var goalUrl:String? = nil
-    
+
+    /// Initializes a new placement with the given ID. You normally don't have to do call this yourself.
     public init(placementId: String) {
         self.placementId = placementId
         super.init();
@@ -50,6 +61,10 @@ open class PlacementModel : NSObject {
     }
     
     open var adResponse : AdResponseEvent? {
+        /// - returns the last ad response event received from the server.
+        ///   You can use this to get information about potential rewards
+        ///   for the end user, and for campaign details (for example to
+        ///   display them in an ad button).
         get {
             return _adResponse;
         }
@@ -61,42 +76,34 @@ open class PlacementModel : NSObject {
             }
         }
     }
-    
-    open var closeButtonVisible: Bool {
-        return _closeButtonVisible.value
-    }
-    
-    open var closeButtonVisibleObservable: Observable<Bool> {
-        return _closeButtonVisible.asObservable()
-    }
-    
-    open func closeButtonVisibleSignal(_ callback: @escaping (Bool) -> Void) -> NSObject{
-        return BoolSignal(closeButtonVisibleObservable).subscribe(callback);
-    }
-    
-    open var adStateObservable : Observable<AdState> {
-        return state.asObservable()
-    }
-    
-    open func adStateSignal(_ callback: @escaping (AdState) -> Void) -> NSObject{
-        return AdStateSignal(adStateObservable).subscribe(callback)
-    }
-    
+
     open var adState: AdState {
         get {
             return state.value
         }
         set(newValue) {
-            kwlog.debug("changing adState from \(self.state.value) to \(newValue)")
+            logger.logMessage("changing adState from \(self.state.value) to \(newValue)")
             _changed = Date()
             state.value = newValue
         }
     }
-    
+
+    open var adStateObservable : Observable<AdState> {
+        return state.asObservable()
+    }
+
     open var changed: Date {
         return _changed
     }
     
+    open var closeButtonVisible: Bool {
+        return _closeButtonVisible.value
+    }
+
+    open var closeButtonVisibleObservable: Observable<Bool> {
+        return _closeButtonVisible.asObservable()
+    }
+
     open func transition(_ to: AdState) {
         adState = to
     }
@@ -110,12 +117,11 @@ open class PlacementModel : NSObject {
                 if let override = decideTo?() {
                     changeTo = override
                 }
-                
+    
                 beforeChange?(self)
                 
                 if(changeTo != nil) {
-                    
-                    kwlog.debug("adstate changing from \(self.adState) to \(to)");
+                    logger.logMessage("adstate changing from \(self.adState) to \(String(describing: to))");
                     
                     adState = changeTo!;
                 }

@@ -1,0 +1,158 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://docs.fastlane.tools/actions
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+#encoding: utf-8
+fastlane_version "2.27.0"
+
+default_platform :ios
+
+platform :ios do
+
+  # Setup Jenkins
+  lane :jenkins do
+    setup_jenkins
+  end
+
+  desc "Release a new beta version on Hockey"
+  desc "This action does the following:"
+  desc ""
+  desc "- Increment the build number"
+  desc "- Build and sign the app"
+  desc "- Upload the ipa file to hockey"
+  lane :betaswift do
+
+    increment_build_number(build_number: ENV['BUILD_NUMBER'])
+
+    cert(
+         development: true,
+       )
+    sigh(
+         development: true,
+         app_identifier: "com.kwizzad.*",
+    )
+
+    # Build
+    gym(
+      workspace: "KwizzadSDK.xcworkspace",
+      configuration: "Debug",
+      scheme: "KwizzadExample",
+      silent: false,
+      clean: true,
+      skip_build_archive: false,
+      output_directory: "build/", # Destination directory. Defaults to current directory.
+      output_name: "KwizzadExample-#{get_build_number}.ipa",       # specify the name of the .ipa file to generate (including file extension)
+      archive_path: "build/KwizzadExample-#{get_build_number}.xcarchive",
+      build_path: "build/",
+      include_symbols: true,
+      disable_xcpretty: true,
+      export_method: "development",
+      export_team_id: "M6VZFHJV8T"
+    )
+
+  end
+
+  lane :betaobjc do
+
+    increment_build_number(build_number: ENV['BUILD_NUMBER'])
+    cert(
+         development: true,
+       )
+    sigh(
+         development: true,
+         app_identifier: "com.kwizzad.*",
+    )
+    # Build
+    gym(
+      workspace: "KwizzadSDK.xcworkspace",
+      configuration: "Debug",
+      scheme: "KwizzadExampleObjc",
+      silent: false,
+      clean: true,
+      skip_build_archive: false,
+      output_directory: "build/", # Destination directory. Defaults to current directory.
+      output_name: "KwizzadExampleObjc-#{get_build_number}.ipa",       # specify the name of the .ipa file to generate (including file extension)
+      archive_path: "build/KwizzadExampleObjc-#{get_build_number}.xcarchive",
+      build_path: "build/",
+      include_symbols: true,
+      disable_xcpretty: true,
+      export_method: "development",
+      export_team_id: "M6VZFHJV8T"
+    )
+
+  end
+
+  lane :betapodswift do
+
+    increment_build_number(build_number: ENV['BUILD_NUMBER'])
+
+    cert(
+         development: true,
+       )
+    sigh(
+         development: true,
+         app_identifier: "com.kwizzad.*",
+    )
+
+    # Build
+    gym(
+      workspace: "../KwizzadExample.xcworkspace",
+      configuration: "Debug",
+      scheme: "KwizzadExample",
+      silent: false,
+      clean: true,
+      skip_build_archive: false,
+      output_directory: "../build/", # Destination directory. Defaults to current directory.
+      output_name: "KwizzadExample-#{get_build_number}.ipa",       # specify the name of the .ipa file to generate (including file extension)
+      archive_path: "../build/KwizzadExample-#{get_build_number}.xcarchive",
+      build_path: "../build/",
+      include_symbols: true,
+      disable_xcpretty: true,
+      export_method: "development",
+      export_team_id: "M6VZFHJV8T"
+    )
+  end
+
+  lane :betapodobjc do
+
+    increment_build_number(build_number: ENV['BUILD_NUMBER'])
+    cert(
+         development: true,
+       )
+    sigh(
+         development: true,
+         app_identifier: "com.kwizzad.*",
+    )
+    # Build
+    gym(
+      workspace: "../KwizzadExample.xcworkspace",
+      configuration: "Debug",
+      scheme: "KwizzadExampleObjc",
+      silent: false,
+      clean: true,
+      skip_build_archive: false,
+      output_directory: "../build/", # Destination directory. Defaults to current directory.
+      output_name: "KwizzadExampleObjc-#{get_build_number}.ipa",       # specify the name of the .ipa file to generate (including file extension)
+      archive_path: "../build/KwizzadExampleObjc-#{get_build_number}.xcarchive",
+      build_path: "../build/",
+      include_symbols: true,
+      disable_xcpretty: true,
+      export_method: "development",
+      export_team_id: "M6VZFHJV8T"
+    )
+
+  end
+
+  error do |lane, exception|
+    puts "Got an error! #{exception.error_info.to_s}"
+  end
+end
