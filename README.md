@@ -5,11 +5,11 @@
 [![Pod version](https://img.shields.io/cocoapods/v/KwizzadSDK.svg)](https://cocoapods.org/pods/KwizzadSDK) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Github Release](https://img.shields.io/github/release/kwizzad/kwizzad-ios.svg)](https://github.com/kwizzad/kwizzad-ios/releases)
 
-- [Showcase](#Showcase)
-- [Prerequisites](#Prerequisites)
-- [Migration](#Migration)
-- [Installation](#Installation)
-- [Usage](#Usage)
+- [Showcase](#showcase)
+- [Prerequisites](#prerequisites)
+- [Migration](#migration)
+- [Installation](#installation)
+- [Usage](#usage)
 
 ## Showcase
 
