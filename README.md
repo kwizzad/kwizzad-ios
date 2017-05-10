@@ -13,9 +13,7 @@
 
 ## Showcase
 
-<p align="center">
-![Showcase](/Documentation/demo.gif)
-</p>
+![Showcase](https://github.com/kwizzad/kwizzad-ios/blob/master/Documentation/demo.gif)
 
 ## Prerequisites
 - You already have your own KWIZZAD API KEY and PLACEMENT ID. If not, please contact TVSMILES per [E-Mail](mailto:it@tvsmiles.de) and we will register your APP.
