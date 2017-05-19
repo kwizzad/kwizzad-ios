@@ -40,12 +40,14 @@ open class AdResponseEvent : AdEvent, FromDict {
     
     open var url: String?
     open let goalUrlPattern: String?
+    open let kometArchiveUrl: String?
     open let closeButtonVisibility: String?
 
     public override required init(_ map: [String : Any]) {
         adType = map["adType"] as? String
         url = map["url"] as? String
         goalUrlPattern = map["goalUrlPattern"] as? String
+        kometArchiveUrl = map["kometArchiveUrl"] as? String
         closeButtonVisibility = map["closeButtonVisibility"] as? String
         
         rewards = dictConvertToObject(arr: map["rewards"] as? [[String:Any]], type: Reward.self)

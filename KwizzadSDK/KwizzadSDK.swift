@@ -36,6 +36,7 @@ func KwizzadLocalized(_ key: String, replacements : [String:String]? = nil) -> S
 open class KwizzadSDK : NSObject {
     fileprivate static let TIMEOUT_REQUESTING_AD = 1000 * 10;
     fileprivate static let MAX_REQUEST_RETRIES = 10;
+    fileprivate static let MIN_SUPPORTED_OSVERSION = "8";
     fileprivate static let STATES_THAT_ALLOW_REQUESTS = [
         AdState.INITIAL,
         AdState.NOFILL,
@@ -70,7 +71,7 @@ open class KwizzadSDK : NSObject {
     fileprivate var observedPlacementIds : Set<String> = []
 
     fileprivate let disposeBag = DisposeBag()
-
+    
     fileprivate override init() {
         let c = Convertibles.instance;
         c.add(clazz: AdResponseEvent.self, type: "adResponse")
@@ -124,6 +125,13 @@ open class KwizzadSDK : NSObject {
     /// Don't use both at the same time.
     open func requestAd(placementId: String, onAdAvailable: AdAvailableCallback? = nil) {
         
+        guard SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(version: KwizzadSDK.MIN_SUPPORTED_OSVERSION) else {
+            let errMessage = "Requests are avoided with devices lower than iOS \(KwizzadSDK.MIN_SUPPORTED_OSVERSION)";
+            logger.logMessage("\(errMessage)",.Error);
+            self.delegate?.kwizzadOnErrorOccured?(placementId: placementId, reason: errMessage)
+            return;
+        }
+
         let placement = model.placementModel(placementId: placementId)
         guard KwizzadSDK.STATES_THAT_ALLOW_REQUESTS.contains(placement.state.value) else {
             logger.logMessage("Ignored ad request in state \(placement.state.value)",.Error);
@@ -162,8 +170,8 @@ open class KwizzadSDK : NSObject {
         placement.currentStep = 0
 
         if(placement.transition(from: AdState.RECEIVED_AD, to: AdState.LOADING_AD)) {
-            let myCustomParameters = ["userId": self.userDataModel.userId];
-            return KwizzadViewController.create(placement : placement, api : api, customParameters: myCustomParameters);
+//            let myCustomParameters = ["userId": self.userDataModel.userId];
+            return KwizzadViewController.create(placement : placement, api : api, customParameters: customParameters);
         }
         return nil;
     }
@@ -292,4 +300,9 @@ open class KwizzadSDK : NSObject {
         }
         return filtered;
     }
+    fileprivate func SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(version: String) -> Bool {
+        return UIDevice.current.systemVersion.compare(version,options: NSString.CompareOptions.numeric) != ComparisonResult.orderedAscending
+        
+    }
+
 }
