@@ -152,6 +152,32 @@ platform :ios do
 
   end
 
+  lane :betatest do
+
+    scan(
+      workspace: "KwizzadSDK.xcworkspace",
+      scheme: "KwizzadSDKTests",
+      clean: false,
+      code_coverage: true,
+      # slack_url: "https://hooks.slack.com/services/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",
+      # slack_channel: "kwizzad-sdk",
+      test_without_building: true,
+      formatter: false,
+      fail_build: true,
+      output_style: "raw"
+    )
+
+    xcov(
+      workspace: "KwizzadSDK.xcworkspace",
+      scheme: "KwizzadSDKTests",
+      output_directory: "fastlane/xcov",
+      only_project_targets: true,
+      # slack_channel: "kwizzad-sdk",
+      # slack_url: "https://hooks.slack.com/services/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"
+    )
+
+  end
+
   error do |lane, exception|
     puts "Got an error! #{exception.error_info.to_s}"
   end

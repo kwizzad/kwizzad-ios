@@ -55,6 +55,21 @@ This action does the following:
 fastlane ios betaobjc
 ```
 
+### ios betapodswift
+```
+fastlane ios betapodswift
+```
+
+### ios betapodobjc
+```
+fastlane ios betapodobjc
+```
+
+### ios betatest
+```
+fastlane ios betatest
+```
+
 
 ----
 

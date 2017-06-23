@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AA00C56E1D93EA980044F1AC"
-               BuildableName = "KwizzadSDK.framework"
-               BlueprintName = "KwizzadSDK"
-               ReferencedContainer = "container:KwizzadSDK.xcodeproj">
+               BlueprintIdentifier = "AA7660A71D94083B00DBC694"
+               BuildableName = "KwizzadExample.app"
+               BlueprintName = "KwizzadExample"
+               ReferencedContainer = "container:KwizzadExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,20 +33,30 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AA00C5771D93EA980044F1AC"
-               BuildableName = "KwizzadSDKTests.xctest"
-               BlueprintName = "KwizzadSDKTests"
-               ReferencedContainer = "container:KwizzadSDK.xcodeproj">
+               BlueprintIdentifier = "AA7660BE1D94083B00DBC694"
+               BuildableName = "KwizzadExampleTests.xctest"
+               BlueprintName = "KwizzadExampleTests"
+               ReferencedContainer = "container:KwizzadExample.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "629129831ED45D6A003C4AA8"
+               BuildableName = "KwizzadExampleUITests.xctest"
+               BlueprintName = "KwizzadExampleUITests"
+               ReferencedContainer = "container:KwizzadExample.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AA00C56E1D93EA980044F1AC"
-            BuildableName = "KwizzadSDK.framework"
-            BlueprintName = "KwizzadSDK"
-            ReferencedContainer = "container:KwizzadSDK.xcodeproj">
+            BlueprintIdentifier = "AA7660A71D94083B00DBC694"
+            BuildableName = "KwizzadExample.app"
+            BlueprintName = "KwizzadExample"
+            ReferencedContainer = "container:KwizzadExample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -62,15 +72,23 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AA00C56E1D93EA980044F1AC"
-            BuildableName = "KwizzadSDK.framework"
-            BlueprintName = "KwizzadSDK"
-            ReferencedContainer = "container:KwizzadSDK.xcodeproj">
+            BlueprintIdentifier = "AA7660A71D94083B00DBC694"
+            BuildableName = "KwizzadExample.app"
+            BlueprintName = "KwizzadExample"
+            ReferencedContainer = "container:KwizzadExample.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "OS_ACTIVITY_MODE"
+            value = "disable"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -80,15 +98,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AA00C56E1D93EA980044F1AC"
-            BuildableName = "KwizzadSDK.framework"
-            BlueprintName = "KwizzadSDK"
-            ReferencedContainer = "container:KwizzadSDK.xcodeproj">
+            BlueprintIdentifier = "AA7660A71D94083B00DBC694"
+            BuildableName = "KwizzadExample.app"
+            BlueprintName = "KwizzadExample"
+            ReferencedContainer = "container:KwizzadExample.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

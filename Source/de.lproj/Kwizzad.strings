@@ -1,0 +1,30 @@
+/* In 'forfeit' rewards dialog when there is still a callback to reach. */
+"Are you sure you want to quit and miss out on %@?" = "Willst du die Aktion wirklich beenden? Du verpasst %@.";
+
+/* Are you sure you want to quit and miss out on this offer? */
+"Are you sure you want to quit and miss out on this offer?" = "Willst du dir das Angebot wirklich entgehen lassen?";
+
+/* Button in 'forfeit reward' dialog for staying in Kwizzad */
+"Continue and claim reward" = "Weitermachen und Belohnung erhalten";
+
+/* Button in 'forfeit reward' dialog for leaving Kwizzad */
+"Quit and forfeit reward" = "Ohne Belohnung beenden";
+
+/* Joins two strings with an 'and' to generate a human-readable enumeration */
+"%@ and %@" = "%1$@ und %2$@";
+
+/* Joins a list of comma-separated values with a last values to form a human-readable enumeration (e.g. with oxford comma) */
+"%@, and %@" = "%1$@ und %2$@";
+
+/* Shown in a confirmation dialog when the user earns a known, specific reward. */
+"Congratulations, you earned %@!" = "Herzlichen Glückwunsch zu %@!";
+
+/* Shown in a confirmation dialog when the user earns an unspecified reward. */
+"Congratulations, you earned a reward!" = "Deine Belohnung ist unterwegs!";
+
+/* Can be shown as incentive text, for example on an ad banner. First parameter is the potential total reward. */
+"Earn %@ with a quiz." = "Verdiene %@ mit einem Quiz.";
+
+/* Description of an amount with an upper limit */
+"up to %@" = "bis zu %@";
+

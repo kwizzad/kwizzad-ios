@@ -11,7 +11,7 @@ s.requires_arc = true
 #s.social_media_url = "http://kwizzad.com"
 
 # 2
-s.version = "2.0.3"
+s.version = "2.0.4"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
@@ -29,10 +29,10 @@ s.source = { :git => "https://github.com/kwizzad/kwizzad-ios.git", :tag => "#{s.
 s.frameworks   = ['Foundation', 'UIKit']
 
 # 8 - Source files
-s.source_files = "KwizzadSDK/**/*.{swift,h,m}"
+s.source_files = "Source/*.{swift,h,m}"
 
 # 9 - Resources
-s.resources = ["KwizzadSDK/**/*.{strings}" , "KwizzadSDK/**/*.xcassets"]
+s.resources = ["Source/**/*.{strings}" , "Source/**/*.xcassets"]
 
 # 10 - Dependencies
 s.dependency 'RxSwift', '~> 3.0'

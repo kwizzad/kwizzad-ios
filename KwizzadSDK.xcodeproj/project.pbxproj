@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		62045F051E9CF38B00650EB0 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62045F041E9CF38B00650EB0 /* Logger.swift */; };
+		629129901ED49466003C4AA8 /* PlacementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6291298E1ED49466003C4AA8 /* PlacementTests.swift */; };
 		629215761EB355DF00C008DD /* KwizzadSDKDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629215751EB355DF00C008DD /* KwizzadSDKDelegate.swift */; };
 		6298A40A1E5EEC880070F007 /* KwizzadProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6298A4091E5EEC880070F007 /* KwizzadProgressView.swift */; };
 		629947691E8166AA003AF9A9 /* KwizzadAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629947681E8166AA003AF9A9 /* KwizzadAPI.swift */; };
 		AA00C5791D93EA980044F1AC /* KwizzadSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA00C56F1D93EA980044F1AC /* KwizzadSDK.framework */; };
 		AA00C5801D93EA980044F1AC /* KwizzadSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00C5721D93EA980044F1AC /* KwizzadSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA08A0BE1DF09CD1008A29BC /* Kwizzad.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA08A0BB1DF09CD1008A29BC /* Kwizzad.strings */; };
 		AA1E42F31DB53AF000CB1150 /* AdTrackingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1E42F21DB53AF000CB1150 /* AdTrackingEvent.swift */; };
 		AA51D4B31DAFEAD0001A7B21 /* KwizzadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA51D4B21DAFEAD0001A7B21 /* KwizzadViewController.swift */; };
 		AA51D4B51DAFF7CE001A7B21 /* KwizzadImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA51D4B41DAFF7CE001A7B21 /* KwizzadImages.xcassets */; };
@@ -36,7 +36,10 @@
 		AADE2E701DB7D7A300F06407 /* DictConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE2E6F1DB7D7A300F06407 /* DictConvertible.swift */; };
 		FE4F50681E964848004B2765 /* ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4F50671E964848004B2765 /* ImageInfo.swift */; };
 		FE4F506A1E964C4D004B2765 /* AdMetaInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4F50691E964C4D004B2765 /* AdMetaInfo.swift */; };
+		FE84AD601EDEEB6100D0E4A8 /* LocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE84AD5F1EDEEB6100D0E4A8 /* LocalizationTests.swift */; };
 		FE93A8701DE5D16100BE65D1 /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE93A86F1DE5D16100BE65D1 /* UserDataModel.swift */; };
+		FEA5F9671ECDD0C100069698 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA5F9661ECDD0C100069698 /* Localization.swift */; };
+		FEA5F9701ECDDB5400069698 /* Kwizzad.strings in Resources */ = {isa = PBXBuildFile; fileRef = FEA5F9721ECDDB5400069698 /* Kwizzad.strings */; };
 		FEAEA9281E9CC3CA0000A095 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEAEA9251E9CC3CA0000A095 /* RxSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		62045F041E9CF38B00650EB0 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		6291298E1ED49466003C4AA8 /* PlacementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacementTests.swift; sourceTree = "<group>"; };
 		629215751EB355DF00C008DD /* KwizzadSDKDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KwizzadSDKDelegate.swift; sourceTree = "<group>"; };
 		6298A4091E5EEC880070F007 /* KwizzadProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KwizzadProgressView.swift; sourceTree = "<group>"; };
 		629947681E8166AA003AF9A9 /* KwizzadAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KwizzadAPI.swift; sourceTree = "<group>"; };
@@ -60,32 +64,36 @@
 		AA00C5731D93EA980044F1AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA00C5781D93EA980044F1AC /* KwizzadSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KwizzadSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA00C57F1D93EA980044F1AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AA08A0BC1DF09CD1008A29BC /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Kwizzad.strings; sourceTree = "<group>"; };
-		AA08A0BD1DF09CD1008A29BC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Kwizzad.strings; sourceTree = "<group>"; };
-		AA1E42F21DB53AF000CB1150 /* AdTrackingEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdTrackingEvent.swift; path = model/AdTrackingEvent.swift; sourceTree = "<group>"; };
+		AA1E42F21DB53AF000CB1150 /* AdTrackingEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdTrackingEvent.swift; sourceTree = "<group>"; };
 		AA51D4B21DAFEAD0001A7B21 /* KwizzadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KwizzadViewController.swift; sourceTree = "<group>"; };
 		AA51D4B41DAFF7CE001A7B21 /* KwizzadImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = KwizzadImages.xcassets; sourceTree = "<group>"; };
 		AA7660E11D940AEC00DBC694 /* KwizzadSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KwizzadSDK.swift; sourceTree = "<group>"; };
-		AA7A679F1DAAC8A600BEE919 /* KwizzadModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KwizzadModel.swift; path = model/KwizzadModel.swift; sourceTree = "<group>"; };
-		AA7A67A31DAAC8E200BEE919 /* AdState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdState.swift; path = model/AdState.swift; sourceTree = "<group>"; };
-		AA7A67A51DAAC8FB00BEE919 /* PlacementModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacementModel.swift; path = model/PlacementModel.swift; sourceTree = "<group>"; };
-		AA7A67A71DAACBCE00BEE919 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = model/Configuration.swift; sourceTree = "<group>"; };
-		AA7A67A91DAACC1900BEE919 /* KwizzadEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KwizzadEvent.swift; path = model/KwizzadEvent.swift; sourceTree = "<group>"; };
-		AA7A67AB1DAACC2400BEE919 /* AdResponseEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdResponseEvent.swift; path = model/AdResponseEvent.swift; sourceTree = "<group>"; };
+		AA7A679F1DAAC8A600BEE919 /* KwizzadModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KwizzadModel.swift; sourceTree = "<group>"; };
+		AA7A67A31DAAC8E200BEE919 /* AdState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdState.swift; sourceTree = "<group>"; };
+		AA7A67A51DAAC8FB00BEE919 /* PlacementModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacementModel.swift; sourceTree = "<group>"; };
+		AA7A67A71DAACBCE00BEE919 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		AA7A67A91DAACC1900BEE919 /* KwizzadEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KwizzadEvent.swift; sourceTree = "<group>"; };
+		AA7A67AB1DAACC2400BEE919 /* AdResponseEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdResponseEvent.swift; sourceTree = "<group>"; };
 		AA7A67AD1DAACC6500BEE919 /* WKController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WKController.swift; sourceTree = "<group>"; };
-		AAB780B61DB93F04003DCA77 /* AdRequestEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdRequestEvent.swift; path = model/AdRequestEvent.swift; sourceTree = "<group>"; };
-		AAB780B81DB93F18003DCA77 /* TransactionConfirmedEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionConfirmedEvent.swift; path = model/TransactionConfirmedEvent.swift; sourceTree = "<group>"; };
-		AAB780BA1DB93F43003DCA77 /* AdEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdEvent.swift; path = model/AdEvent.swift; sourceTree = "<group>"; };
-		AAB780BF1DB94026003DCA77 /* NoFillEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoFillEvent.swift; path = model/NoFillEvent.swift; sourceTree = "<group>"; };
-		AAB780C11DB94052003DCA77 /* OpenTransactionsEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenTransactionsEvent.swift; path = model/OpenTransactionsEvent.swift; sourceTree = "<group>"; };
-		AAB780C31DB9406C003DCA77 /* Reward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reward.swift; path = model/Reward.swift; sourceTree = "<group>"; };
-		AAB780C51DB94EB3003DCA77 /* OpenTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenTransaction.swift; path = model/OpenTransaction.swift; sourceTree = "<group>"; };
-		AAB92A1D1E44EDA100434893 /* UnsafeVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UnsafeVariable.swift; path = model/UnsafeVariable.swift; sourceTree = "<group>"; };
-		AADE2E6F1DB7D7A300F06407 /* DictConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictConvertible.swift; path = model/DictConvertible.swift; sourceTree = "<group>"; };
-		FE4F50671E964848004B2765 /* ImageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageInfo.swift; path = model/ImageInfo.swift; sourceTree = "<group>"; };
-		FE4F50691E964C4D004B2765 /* AdMetaInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdMetaInfo.swift; path = model/AdMetaInfo.swift; sourceTree = "<group>"; };
-		FE93A86F1DE5D16100BE65D1 /* UserDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDataModel.swift; path = model/UserDataModel.swift; sourceTree = "<group>"; };
+		AAB780B61DB93F04003DCA77 /* AdRequestEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdRequestEvent.swift; sourceTree = "<group>"; };
+		AAB780B81DB93F18003DCA77 /* TransactionConfirmedEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionConfirmedEvent.swift; sourceTree = "<group>"; };
+		AAB780BA1DB93F43003DCA77 /* AdEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdEvent.swift; sourceTree = "<group>"; };
+		AAB780BF1DB94026003DCA77 /* NoFillEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoFillEvent.swift; sourceTree = "<group>"; };
+		AAB780C11DB94052003DCA77 /* OpenTransactionsEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenTransactionsEvent.swift; sourceTree = "<group>"; };
+		AAB780C31DB9406C003DCA77 /* Reward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
+		AAB780C51DB94EB3003DCA77 /* OpenTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenTransaction.swift; sourceTree = "<group>"; };
+		AAB92A1D1E44EDA100434893 /* UnsafeVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsafeVariable.swift; sourceTree = "<group>"; };
+		AADE2E6F1DB7D7A300F06407 /* DictConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictConvertible.swift; sourceTree = "<group>"; };
+		FE4F50671E964848004B2765 /* ImageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageInfo.swift; sourceTree = "<group>"; };
+		FE4F50691E964C4D004B2765 /* AdMetaInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMetaInfo.swift; sourceTree = "<group>"; };
+		FE84AD5F1EDEEB6100D0E4A8 /* LocalizationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationTests.swift; sourceTree = "<group>"; };
+		FE93A86F1DE5D16100BE65D1 /* UserDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		FE93A8711DE5FABD00BE65D1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FEA5F9661ECDD0C100069698 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		FEA5F9711ECDDB5400069698 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Kwizzad.strings; sourceTree = "<group>"; };
+		FEA5F9741ECDDD0A00069698 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Kwizzad.strings; sourceTree = "<group>"; };
+		FEA5F9761ECE0E0D00069698 /* genstrings.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = genstrings.sh; sourceTree = "<group>"; };
+		FEA5F9771ECE0E0D00069698 /* setup */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = setup; sourceTree = "<group>"; };
 		FEAEA9251E9CC3CA0000A095 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,9 +130,11 @@
 		AA00C5651D93EA980044F1AC = {
 			isa = PBXGroup;
 			children = (
+				FEA5F9751ECE0E0D00069698 /* bin */,
+				FEA5F9721ECDDB5400069698 /* Kwizzad.strings */,
 				FE93A8711DE5FABD00BE65D1 /* README.md */,
-				AA00C5711D93EA980044F1AC /* KwizzadSDK */,
-				AA00C57C1D93EA980044F1AC /* KwizzadSDKTests */,
+				AA00C5711D93EA980044F1AC /* Source */,
+				AA00C57C1D93EA980044F1AC /* Tests */,
 				AA00C5701D93EA980044F1AC /* Products */,
 				AAA50BBD1D93F00700764DD1 /* Frameworks */,
 			);
@@ -139,11 +149,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AA00C5711D93EA980044F1AC /* KwizzadSDK */ = {
+		AA00C5711D93EA980044F1AC /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				6298A4081E5EEC720070F007 /* utils */,
-				AA08A0B41DF09882008A29BC /* localization */,
 				AA7A679A1DAAC86000BEE919 /* model */,
 				AA00C5721D93EA980044F1AC /* KwizzadSDK.h */,
 				AA7660E11D940AEC00DBC694 /* KwizzadSDK.swift */,
@@ -152,23 +161,17 @@
 				AA51D4B41DAFF7CE001A7B21 /* KwizzadImages.xcassets */,
 				AA00C5731D93EA980044F1AC /* Info.plist */,
 			);
-			path = KwizzadSDK;
+			path = Source;
 			sourceTree = "<group>";
 		};
-		AA00C57C1D93EA980044F1AC /* KwizzadSDKTests */ = {
+		AA00C57C1D93EA980044F1AC /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				FE84AD5F1EDEEB6100D0E4A8 /* LocalizationTests.swift */,
+				6291298E1ED49466003C4AA8 /* PlacementTests.swift */,
 				AA00C57F1D93EA980044F1AC /* Info.plist */,
 			);
-			path = KwizzadSDKTests;
-			sourceTree = "<group>";
-		};
-		AA08A0B41DF09882008A29BC /* localization */ = {
-			isa = PBXGroup;
-			children = (
-				AA08A0BB1DF09CD1008A29BC /* Kwizzad.strings */,
-			);
-			name = localization;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		AA7A679A1DAAC86000BEE919 /* model */ = {
@@ -185,6 +188,7 @@
 				AADE2E6F1DB7D7A300F06407 /* DictConvertible.swift */,
 				FE93A86F1DE5D16100BE65D1 /* UserDataModel.swift */,
 				AAB92A1D1E44EDA100434893 /* UnsafeVariable.swift */,
+				FEA5F9661ECDD0C100069698 /* Localization.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -230,6 +234,15 @@
 			name = events;
 			sourceTree = "<group>";
 		};
+		FEA5F9751ECE0E0D00069698 /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				FEA5F9761ECE0E0D00069698 /* genstrings.sh */,
+				FEA5F9771ECE0E0D00069698 /* setup */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -251,6 +264,7 @@
 				AA00C56A1D93EA980044F1AC /* Sources */,
 				AA00C56B1D93EA980044F1AC /* Frameworks */,
 				AA00C56C1D93EA980044F1AC /* Headers */,
+				FEA5F94F1ECDA00400069698 /* ShellScript */,
 				AA00C56D1D93EA980044F1AC /* Resources */,
 			);
 			buildRules = (
@@ -299,6 +313,7 @@
 					AA00C5771D93EA980044F1AC = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = M6VZFHJV8T;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -328,7 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA51D4B51DAFF7CE001A7B21 /* KwizzadImages.xcassets in Resources */,
-				AA08A0BE1DF09CD1008A29BC /* Kwizzad.strings in Resources */,
+				FEA5F9701ECDDB5400069698 /* Kwizzad.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +355,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FEA5F94F1ECDA00400069698 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./bin/genstrings.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AA00C56A1D93EA980044F1AC /* Sources */ = {
@@ -369,6 +400,7 @@
 				AAB92A1E1E44EDA100434893 /* UnsafeVariable.swift in Sources */,
 				AADE2E701DB7D7A300F06407 /* DictConvertible.swift in Sources */,
 				629215761EB355DF00C008DD /* KwizzadSDKDelegate.swift in Sources */,
+				FEA5F9671ECDD0C100069698 /* Localization.swift in Sources */,
 				AA7A67AC1DAACC2400BEE919 /* AdResponseEvent.swift in Sources */,
 				AA51D4B31DAFEAD0001A7B21 /* KwizzadViewController.swift in Sources */,
 				AAB780BB1DB93F43003DCA77 /* AdEvent.swift in Sources */,
@@ -379,6 +411,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE84AD601EDEEB6100D0E4A8 /* LocalizationTests.swift in Sources */,
+				629129901ED49466003C4AA8 /* PlacementTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,13 +427,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		AA08A0BB1DF09CD1008A29BC /* Kwizzad.strings */ = {
+		FEA5F9721ECDDB5400069698 /* Kwizzad.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				AA08A0BC1DF09CD1008A29BC /* de */,
-				AA08A0BD1DF09CD1008A29BC /* en */,
+				FEA5F9711ECDDB5400069698 /* en */,
+				FEA5F9741ECDDD0A00069698 /* de */,
 			);
 			name = Kwizzad.strings;
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -523,7 +558,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = KwizzadSDK/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -551,7 +586,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = KwizzadSDK/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -567,12 +602,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = M6VZFHJV8T;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = KwizzadSDKTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kwizzad.KwizzadSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
@@ -581,9 +618,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = M6VZFHJV8T;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = KwizzadSDKTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kwizzad.KwizzadSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
