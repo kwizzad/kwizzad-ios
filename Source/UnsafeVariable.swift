@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RxSwift
 
 // NOT THREADSAFE! :)
 public final class UnsafeVariable<Element> {
@@ -24,7 +23,7 @@ public final class UnsafeVariable<Element> {
     /// Whenever a new value is set, all the observers are notified of the change.
     ///
     /// Even if the newly set value is same as the old value, observers are still notified for change.
-    public var value: E {
+    var value: E {
         get {
             return _value
         }
@@ -37,13 +36,13 @@ public final class UnsafeVariable<Element> {
     /// Initializes variable with initial value.
     ///
     /// - parameter value: Initial variable value.
-    public init(_ value: Element) {
+    init(_ value: Element) {
         _value = value
         _subject = BehaviorSubject(value: value)
     }
     
     /// - returns: Canonical interface for push style sequence
-    public func asObservable() -> Observable<E> {
+    func asObservable() -> Observable<E> {
         return _subject
     }
     

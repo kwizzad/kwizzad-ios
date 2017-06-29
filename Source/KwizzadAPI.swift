@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RxSwift
 
 class KwizzadAPI {
     
@@ -114,7 +113,7 @@ class KwizzadAPI {
         return statusCode >= 499;
     }
     
-    func retryTimeoutFor(index: Int, error: Error) -> TimeInterval? {
+    func retryTimeoutFor(index: Int, error: Swift.Error) -> TimeInterval? {
         guard error as? KwizzadSDK.ResponseError == KwizzadSDK.ResponseError.retryableRequestError else {
             return nil
         }

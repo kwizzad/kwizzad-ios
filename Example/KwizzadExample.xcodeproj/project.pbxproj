@@ -74,7 +74,6 @@
 		50F179641DB0636F002A878C /* KwizzadExampleObjc-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "KwizzadExampleObjc-Info.plist"; path = "/Users/ace/work/kwizzad_sdk_ios_swift/KwizzadExample/KwizzadExampleObjc-Info.plist"; sourceTree = "<absolute>"; };
 		50F179891DB065A2002A878C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		62045F0D1E9CFC5E00650EB0 /* KwizzadSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KwizzadSDK.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/KwizzadSDK-fpmgrlcmixsvlrendhohcaxhadpy/Build/Products/Debug-iphoneos/KwizzadSDK.framework"; sourceTree = "<group>"; };
-		625786941EFBBE0900EB3365 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = ../Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		627EB84B1E9D02BF00B8D935 /* KwizzadSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KwizzadSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		629129841ED45D6A003C4AA8 /* KwizzadExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KwizzadExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		629129861ED45D6A003C4AA8 /* KwizzadExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KwizzadExampleUITests.swift; sourceTree = "<group>"; };
@@ -192,7 +191,6 @@
 		AA7660DC1D94087A00DBC694 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				625786941EFBBE0900EB3365 /* RxSwift.framework */,
 				62045F0D1E9CFC5E00650EB0 /* KwizzadSDK.framework */,
 			);
 			name = Frameworks;
@@ -209,7 +207,6 @@
 				50F179521DB0636E002A878C /* Frameworks */,
 				50F179571DB0636E002A878C /* Resources */,
 				627EB8511E9D02DD00B8D935 /* Embed Frameworks */,
-				625786AE1EFBC13D00EB3365 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -246,7 +243,6 @@
 				AA7660A51D94083B00DBC694 /* Frameworks */,
 				AA7660A61D94083B00DBC694 /* Resources */,
 				6257869D1EFBBEA400EB3365 /* Embed Frameworks */,
-				625786AD1EFBBFF600EB3365 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -341,37 +337,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		625786AD1EFBBFF600EB3365 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/../Carthage/Build/iOS/RxSwift.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-		625786AE1EFBC13D00EB3365 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/../Carthage/Build/iOS/RxSwift.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		50F1794E1DB0636E002A878C /* Sources */ = {
@@ -606,7 +571,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(SRCROOT)/../Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = KwizzadExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -627,7 +591,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(SRCROOT)/../Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = KwizzadExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

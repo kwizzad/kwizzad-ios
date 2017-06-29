@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RxSwift
 
 let logger = Logger.sharedInstance
 public typealias AdAvailableCallback = (_ rewards: [Reward]?, _ adResponse: AdResponseEvent?) -> Void
@@ -24,7 +23,7 @@ open class KwizzadSDK : NSObject {
         AdState.DISMISSED,
         ];
 
-    enum ResponseError: Error {
+    enum ResponseError: Swift.Error {
         case fatalError
         case retryableRequestError
     }

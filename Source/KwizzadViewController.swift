@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RxSwift
 import WebKit
 
 class KwizzadViewController : UIViewController {
@@ -145,7 +144,7 @@ class KwizzadViewController : UIViewController {
 
             switch(adState) {
             case .CALL2ACTION:
-                Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.showProgressView), userInfo: nil, repeats: false)
+                Foundation.Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.showProgressView), userInfo: nil, repeats: false)
                 break;
             case .CALL2ACTIONCLICKED:
                 self.callToActionClicked = true;

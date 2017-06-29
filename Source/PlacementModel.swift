@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RxSwift
 
 /// Holds data for a *placement* and its state.
 ///
@@ -88,7 +87,7 @@ open class PlacementModel : NSObject {
         }
     }
 
-    open var adStateObservable : Observable<AdState> {
+    var adStateObservable : Observable<AdState> {
         return state.asObservable()
     }
 
@@ -100,7 +99,7 @@ open class PlacementModel : NSObject {
         return _closeButtonVisible.value
     }
 
-    open var closeButtonVisibleObservable: Observable<Bool> {
+    var closeButtonVisibleObservable: Observable<Bool> {
         return _closeButtonVisible.asObservable()
     }
 

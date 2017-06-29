@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RxSwift
 
 // For client-side DNS load balancing.
 let randomServerIndex = arc4random_uniform(3) + 1;
