@@ -86,6 +86,7 @@ class KwizzadViewController : UIViewController {
             conf.allowsPictureInPictureMediaPlayback = false
             conf.requiresUserActionForMediaPlayback = false
             conf.allowsAirPlayForMediaPlayback = false
+            conf.allowsInlineMediaPlayback = true
         }
         else {
             conf.mediaPlaybackRequiresUserAction = false

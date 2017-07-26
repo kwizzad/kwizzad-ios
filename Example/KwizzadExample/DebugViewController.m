@@ -155,6 +155,7 @@ KwizzadSDK* kwizzadInstance;
 -(void) kwizzadOnNoFillWithPlacementId:(NSString *)placementId {
     [self log:[NSString stringWithFormat:@"Received a no-fill response on placement %@",placementId]];
     [self.adView setHidden: YES];
+    [_preloadButton setEnabled:YES];
 }
 
 // optional
