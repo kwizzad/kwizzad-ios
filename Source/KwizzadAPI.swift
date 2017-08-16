@@ -42,6 +42,7 @@ class KwizzadAPI {
                                         to: .NOFILL,
                                         beforeChange: { placement in
                                             placement.retryAfter = noFillEvent.retryAfter;
+                                            placement.retryInMilliseconds = noFillEvent.retryInMilliseconds;
                                             placement.adResponse = nil;
                             })
                     }
@@ -67,8 +68,7 @@ class KwizzadAPI {
                                 self.model.openTransactions.value = newSet;
                                 // todo
                                 KwizzadSDK.instance.delegate?.kwizzadGotOpenTransactions(
-                                    openTransactions: self.model.openTransactions.value,
-                                    rewards: self.model.openTransactions.value.flatMap({ $0.reward })
+                                    openTransactions: self.model.openTransactions.value
                                 )
                             }
                         }

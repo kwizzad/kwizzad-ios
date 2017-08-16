@@ -40,7 +40,7 @@ public protocol KwizzadSDKDelegate : class {
     /// An ad has been dismissed.
     @objc func kwizzadDidDismissAd(placementId: String);
     /// Got transactions to be confirmed.
-    @objc func kwizzadGotOpenTransactions(openTransactions : Set<OpenTransaction>, rewards: [Reward]) ;
+    @objc func kwizzadGotOpenTransactions(openTransactions : Set<OpenTransaction>) ;
     /// Got a nofill error during an ad request.
     @objc func kwizzadOnNoFill(placementId: String);
     

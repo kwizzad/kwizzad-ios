@@ -78,7 +78,7 @@ class Logger {
      :param: line         Implicit parameter, line which the call was made
      */
     func logMessage(_ message: String , _ logLevel: LoggerLevels = .Info, file: String = #file, line: UInt = #line) {
-        if (KwizzadSDK.instance.isDebug) {
+        if (KwizzadSDK.instance.showDebugMessages) {
             if self.verbosityLevel.rawValue > LoggerLevels.None.rawValue &&  logLevel.rawValue <= self.verbosityLevel.rawValue {
                 print("\(getGlyphForLogLevel(logLevel: logLevel))\(message) [\(file):\(line)] \(message)")
             }

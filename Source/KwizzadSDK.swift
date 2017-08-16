@@ -48,7 +48,7 @@ open class KwizzadSDK : NSObject {
     /// You can set this to `false` if you want have exact control over when new ads are loaded.
     open var preloadAdsAutomatically = true
     
-    open var isDebug = true
+    open var showDebugMessages = true
 
     fileprivate let api : KwizzadAPI
 
@@ -78,7 +78,7 @@ open class KwizzadSDK : NSObject {
         if(configuration.overrideServer != nil) {
             instance.model.configuredAPIBaseUrl = configuration.overrideServer!
         }
-        instance.isDebug = configuration.debug
+        instance.showDebugMessages = configuration.debug
         instance.model.overrideWeb = configuration.overrideWeb
         instance.model.configured.value = true;
     }
@@ -122,8 +122,11 @@ open class KwizzadSDK : NSObject {
             return;
         }
         
-        if (placement.adState == .AD_READY) {
+        if (placement.adState == .AD_READY && !(placement._adResponse?.adWillExpireSoon() ?? false)) {
+            let previousAutomaticReloadingFlag: Bool = self.preloadAdsAutomatically;
+            self.preloadAdsAutomatically = false;
             placement.close()
+            self.preloadAdsAutomatically = previousAutomaticReloadingFlag;
         }
         
         self.startObservingAdStateAndNotifyDelegate(placementId: placementId, onAdAvailable: onAdAvailable);
@@ -239,8 +242,16 @@ open class KwizzadSDK : NSObject {
             case .AD_READY:
                 logger.logMessage("AD_READY");
                 self.delegate?.kwizzadOnAdReady(placementId: placementId);
-                self.preloadAdIfEnabled(placement: placement);
-                // Enabling nofill automatic request 
+                
+                if let response = placement.adResponse {
+                    if let expiry = response.expiryInMilliseconds {
+                        // preload a new ad after expring
+                        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(Int(expiry))) {
+                            self.preloadAdIfEnabled(placement: placement);
+                        }
+                    }
+                }
+                // Enabling nofill automatic request
                 self.isRequestAlreadyRetried = false;
                 return;
             case .SHOWING_AD:
@@ -253,15 +264,18 @@ open class KwizzadSDK : NSObject {
                 self.preloadAdIfEnabled(placement: placement);
             case .NOFILL:
                 self.delegate?.kwizzadOnNoFill(placementId: placementId);
-                if let retryAfter = placement.retryAfter {
-                    logger.logMessage("Retrying after \(retryAfter.timeIntervalSinceNow)",.Debug)
+                if let retryAfter = placement.retryInMilliseconds {
+                    if (self.preloadAdsAutomatically) {
+                        logger.logMessage("Retrying after \(Int(retryAfter/1000))",.Debug)
+                    }
                     if (!self.isRequestAlreadyRetried) {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + retryAfter.timeIntervalSinceNow) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(Int(retryAfter))) {
                             self.isRequestAlreadyRetried = true
-                            self.requestAd(placementId: placement.placementId)
+                            if (self.preloadAdsAutomatically) {
+                                self.requestAd(placementId: placement.placementId)
+                            }
                         }
                     }
-
                 }
             default:
                 break;
@@ -273,7 +287,7 @@ open class KwizzadSDK : NSObject {
     func preloadAdIfEnabled(placement: PlacementModel?) {
         guard let placement = placement else { return; }
         if (self.preloadAdsAutomatically) {
-            if (placement.adResponse?.adWillExpireSoon() ?? false) {
+            if (placement.adResponse != nil) {
                 self.requestAd(placementId: placement.placementId)
             }
         }

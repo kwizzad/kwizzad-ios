@@ -53,7 +53,7 @@ class DebugViewController: UIViewController, KwizzadSDKDelegate, UITextFieldDele
             })
         }
     }
-    
+
     @IBAction func preloadButtonPressed(_ sender: Any) {
         self.clearLog()
         // Fade adview while preloading ad
@@ -68,6 +68,10 @@ class DebugViewController: UIViewController, KwizzadSDKDelegate, UITextFieldDele
         kwizzad.requestAd(placementId: placementField.text!)
         self.kwizzadController = nil
         view.endEditing(true)
+    }
+
+    @IBAction func enableAutomaticPreload(_ sender: UISwitch) {
+        kwizzad.preloadAdsAutomatically = sender.isOn
     }
 
     func stopAd() {
@@ -132,7 +136,9 @@ class DebugViewController: UIViewController, KwizzadSDKDelegate, UITextFieldDele
         self.height.constant = adView.preferredHeight()
         adView.layoutSubviews()
         
-        self.log("Ad will expire in \(String(describing: adResponse.expiry?.timeIntervalSinceNow)) seconds.");
+        if let expiry = adResponse.expiryInMilliseconds {
+            self.log("Ad will expire in \(String(describing: (expiry/1000))) seconds.");
+        }
     }
 
     func kwizzadOnAdReady(placementId: String) {
@@ -149,9 +155,11 @@ class DebugViewController: UIViewController, KwizzadSDKDelegate, UITextFieldDele
         self.log("The ad on placement \(placementId) has been dismissed.")
     }
     
-    func kwizzadGotOpenTransactions(openTransactions: Set<OpenTransaction>, rewards: [Reward]) {
+    func kwizzadGotOpenTransactions(openTransactions: Set<OpenTransaction>) {
         self.log("\(openTransactions.count) incoming transactions to be confirmed.");
         self.log("Got transactions: \(openTransactions.map({ $0.description }))");
+        
+        let rewards = openTransactions.flatMap({$0.reward })
         self.log("Earned rewards: \(Reward.enumerateRewardsAsText(rewards: rewards) ?? "(none)")");
 
         if rewards.count > 0 {

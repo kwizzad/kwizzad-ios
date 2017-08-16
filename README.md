@@ -141,7 +141,7 @@ To load the Kwizzad SDK over CocoaPods:
     - kwizzadOnAdAvailable:placementId:potentialRewards:adResponse
     - kwizzadOnAdReady:placementId
     - kwizzadDidShowAd:placementId
-    - kwizzadGotOpenTransactions:placementId
+    - kwizzadGotOpenTransactions:openTransactions
     - kwizzadDidDismissAd:placementId
     - kwizzadOnNoFill:placementId
 

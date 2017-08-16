@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n8J-wA-obf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n8J-wA-obf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="OgK-KP-dAE">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="255"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kwizzad Objective-C Example App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0r-MP-bOn">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -75,8 +75,28 @@
                                                     <constraint firstItem="lK0-F7-apy" firstAttribute="baseline" secondItem="bw3-pj-EI4" secondAttribute="baseline" id="ycn-Pb-6h0"/>
                                                 </constraints>
                                             </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NfO-4o-pdg">
+                                                <rect key="frame" x="0.0" y="120" width="375" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preload Ads Automatically :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t97-id-4Aa">
+                                                        <rect key="frame" x="0.0" y="11" width="297" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <color key="textColor" red="0.32071781160000001" green="0.3369905353" blue="0.5148476958" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Yz-av-9Eu">
+                                                        <rect key="frame" x="297" y="4.5" width="80" height="31"/>
+                                                        <connections>
+                                                            <action selector="enableAutomaticPreload:" destination="n8J-wA-obf" eventType="valueChanged" id="lG0-FY-3x8"/>
+                                                        </connections>
+                                                    </switch>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="twG-po-CtV"/>
+                                                </constraints>
+                                            </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="noi-fg-avn">
-                                                <rect key="frame" x="0.0" y="120" width="375" height="90"/>
+                                                <rect key="frame" x="0.0" y="165" width="375" height="90"/>
                                                 <subviews>
                                                     <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFn-G3-bSB" customClass="AdView" customModule="KwizzadExampleObjc">
                                                         <rect key="frame" x="10" y="0.0" width="355" height="80"/>
@@ -117,10 +137,10 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C6V-El-OzE">
-                                        <rect key="frame" x="0.0" y="210" width="375" height="388"/>
+                                        <rect key="frame" x="0.0" y="255" width="375" height="343"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EqH-0V-iYl">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="388"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="343"/>
                                                 <color key="backgroundColor" red="0.32156862749999998" green="0.33725490200000002" blue="0.51372549020000002" alpha="0.089388912670000001" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="textColor" red="0.32156862749999998" green="0.33725490200000002" blue="0.51372549020000002" alpha="0.51220034250000002" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>

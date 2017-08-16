@@ -157,14 +157,14 @@ platform :ios do
     scan(
       workspace: "KwizzadSDK.xcworkspace",
       scheme: "KwizzadSDKTests",
-      clean: false,
+      clean: true,
       code_coverage: true,
       # slack_url: "https://hooks.slack.com/services/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",
       # slack_channel: "kwizzad-sdk",
       test_without_building: true,
       formatter: false,
       fail_build: true,
-      output_style: "raw"
+      output_style: "raw",
     )
 
     xcov(

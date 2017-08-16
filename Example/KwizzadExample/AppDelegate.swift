@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         KwizzadSDK.setup(configuration: Configuration.create().apiKey("b81e71a86cf1314d249791138d642e6c4bd08240f21dd31811dc873df5d7469d").build())
+        KwizzadSDK.instance.showDebugMessages = true // show debug messages
         return true
     }
 }

@@ -71,9 +71,9 @@
 		50F1794B1DB06350002A878C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		50F1794C1DB06350002A878C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		50F179631DB0636E002A878C /* KwizzadExampleObjc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KwizzadExampleObjc.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		50F179641DB0636F002A878C /* KwizzadExampleObjc-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "KwizzadExampleObjc-Info.plist"; path = "/Users/ace/work/kwizzad_sdk_ios_swift/KwizzadExample/KwizzadExampleObjc-Info.plist"; sourceTree = "<absolute>"; };
 		50F179891DB065A2002A878C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		62045F0D1E9CFC5E00650EB0 /* KwizzadSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KwizzadSDK.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/KwizzadSDK-fpmgrlcmixsvlrendhohcaxhadpy/Build/Products/Debug-iphoneos/KwizzadSDK.framework"; sourceTree = "<group>"; };
+		625F424F1F3B163600ABEDA5 /* KwizzadExampleObjc-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KwizzadExampleObjc-Info.plist"; sourceTree = "<group>"; };
 		627EB84B1E9D02BF00B8D935 /* KwizzadSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KwizzadSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		629129841ED45D6A003C4AA8 /* KwizzadExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KwizzadExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		629129861ED45D6A003C4AA8 /* KwizzadExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KwizzadExampleUITests.swift; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 				629930261EB23DAB002B0E62 /* DebugViewController.m */,
 				503BC2001DC5529B006258F0 /* ObjCMain.storyboard */,
 				50F179891DB065A2002A878C /* main.m */,
-				50F179641DB0636F002A878C /* KwizzadExampleObjc-Info.plist */,
+				625F424F1F3B163600ABEDA5 /* KwizzadExampleObjc-Info.plist */,
 			);
 			name = ObjcExample;
 			sourceTree = "<group>";
@@ -410,7 +410,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "KwizzadExampleObjc-Info.plist";
+				INFOPLIST_FILE = "KwizzadExample/KwizzadExampleObjc-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kwizzad.KwizzadExampleObjc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -428,7 +428,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "KwizzadExampleObjc-Info.plist";
+				INFOPLIST_FILE = "KwizzadExample/KwizzadExampleObjc-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kwizzad.KwizzadExampleObjc;
 				PRODUCT_NAME = "$(TARGET_NAME)";

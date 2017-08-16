@@ -30,6 +30,7 @@ open class PlacementModel : NSObject {
     let placementId: String
     var _changed: Date = Date()
     var retryAfter:Date?
+    var retryInMilliseconds:Double?
     var currentStep = 0
     var goalUrl:String? = nil
 

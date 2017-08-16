@@ -44,6 +44,10 @@ KwizzadSDK* kwizzadInstance;
     }
 }
 
+- (IBAction)enableAutomaticPreload:(UISwitch *)sender {
+    kwizzadInstance.preloadAdsAutomatically = [sender isOn];
+}
+
 - (IBAction)startAd:(id)sender {
     if ( [kwizzadInstance canShowAdWithPlacementId:_placementField.text]) {
         [self presentViewController:_kwizzadViewController animated:YES completion:nil];
@@ -126,8 +130,18 @@ KwizzadSDK* kwizzadInstance;
     [self log:[NSString stringWithFormat:@"The ad on placement %@ has been dismissed.",placementId]];
 }
 
-- (void) kwizzadGotOpenTransactionsWithOpenTransactions:(NSSet<KwizzadOpenTransaction *> *)openTransactions rewards: (NSArray<KwizzadReward *> *)rewards {
+- (void) kwizzadGotOpenTransactionsWithOpenTransactions:(NSSet<KwizzadOpenTransaction *> *)openTransactions{
     [self log:[NSString stringWithFormat:@"%lu incoming transactions to be confirmed.",(unsigned long)openTransactions.count]];
+    
+    
+    NSMutableArray *rewards = [[NSMutableArray alloc]init];
+    
+    // Get rewards from openTransactions.
+    [openTransactions enumerateObjectsUsingBlock:^(KwizzadOpenTransaction * _Nonnull transaction, BOOL * _Nonnull stop) {
+        KwizzadReward* reward = transaction.reward;
+        [rewards addObject:reward];
+    }];
+ 
     [self log:[NSString stringWithFormat:@"Earned rewards: %@", [KwizzadReward enumerateRewardsAsTextWithRewards: rewards]]];
 
     if (rewards.count > 0) {

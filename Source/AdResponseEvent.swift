@@ -21,12 +21,15 @@ open class DeprecatedResponse : AdEvent, FromDict {
 open class AdResponseEvent : AdEvent, FromDict {
     open let adType: String?
     
-    /// At this date, the ad will expire and the client has to request a new one.
+    /// At this date, the ad will expire and the client has to request a new one or the SDK will do it if automaticPreloading is set to true.
     public let expiry: Date?
     
+    /// The expiry time in milliseconds until client has to request a new one or the SDK will do it if automaticPreloading is set to true.
+    public var expiryInMilliseconds: Double?
+    
     open func adWillExpireSoon() -> Bool {
-        guard let expiry = expiry else { return false }
-        return expiry.timeIntervalSinceNow - estimatedTimeForPlayingACampaign < 0;
+        guard let  expiry = expiryInMilliseconds else { return false }
+        return expiry < 5000;
     }
     
     /// An array of potential rewards.
@@ -43,6 +46,8 @@ open class AdResponseEvent : AdEvent, FromDict {
     open let kometArchiveUrl: String?
     open let closeButtonVisibility: String?
 
+    var expiryTimer : Foundation.Timer?
+
     public override required init(_ map: [String : Any]) {
         adType = map["adType"] as? String
         url = map["url"] as? String
@@ -53,13 +58,18 @@ open class AdResponseEvent : AdEvent, FromDict {
         rewards = dictConvertToObject(arr: map["rewards"] as? [[String:Any]], type: Reward.self)
         
         expiry = fromISO8601(map["expiry"])
-        
+        expiryInMilliseconds = map["expiresIn"] as? Double
+    
         adMetaInfo = AdMetaInfo(map["ad"] as? [String:Any] ?? [:])
         images = dictConvertToObject(arr: map["images"] as? [[String:Any]], type: ImageInfo.self)
 
         super.init(map)
         
         logger.logMessage("will expire \(String(describing: self.expiry))")
+        
+        if (KwizzadSDK.instance.preloadAdsAutomatically) {
+            self.updateExpiryTime()
+        }
     }
     
     /// Helper function for getting a squared thumbnail image url.
@@ -68,5 +78,13 @@ open class AdResponseEvent : AdEvent, FromDict {
     public func squaredThumbnailURL(width: Int = 200) -> String? {
         let imageInfo : ImageInfo? = images?.first(where: { $0.type == "header" } );
         return imageInfo?.url(width);
+    }
+    
+    func updateExpiryTime () {
+        if (expiryInMilliseconds != nil) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(Int(expiryInMilliseconds!))) {
+                self.expiryInMilliseconds = 0
+            }
+        }
     }
 }

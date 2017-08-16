@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,19 +26,16 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="667"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fNs-cx-FOV">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="266"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kwizzad Swift Example App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lG-jV-JNL">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="qj8-OW-fND"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" red="0.92120641469955444" green="0.38861584663391113" blue="0.49514526128768921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Kc-xV-BVr">
-                                                <rect key="frame" x="0.0" y="55" width="414" height="60"/>
+                                                <rect key="frame" x="0.0" y="66" width="414" height="60"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="tvsa" borderStyle="roundedRect" placeholder="Your placement name here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w9T-6e-8MQ">
                                                         <rect key="frame" x="10" y="10" width="274" height="44"/>
@@ -75,8 +72,28 @@
                                                     <constraint firstItem="w9T-6e-8MQ" firstAttribute="leading" secondItem="0Kc-xV-BVr" secondAttribute="leading" constant="10" id="sGt-Db-VDu"/>
                                                 </constraints>
                                             </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Eiq-hd-uBh">
+                                                <rect key="frame" x="0.0" y="131" width="414" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preload Ads Automatically :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ecm-as-J6I">
+                                                        <rect key="frame" x="0.0" y="11" width="328" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <color key="textColor" red="0.32071781160000001" green="0.3369905353" blue="0.5148476958" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i7F-dF-ojx">
+                                                        <rect key="frame" x="328" y="4.6666666666666572" width="88" height="31"/>
+                                                        <connections>
+                                                            <action selector="enableAutomaticPreload:" destination="BYZ-38-t0r" eventType="valueChanged" id="PyD-mY-EJt"/>
+                                                        </connections>
+                                                    </switch>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="YfF-eQ-TD0"/>
+                                                </constraints>
+                                            </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VTV-EJ-n6l">
-                                                <rect key="frame" x="0.0" y="120" width="414" height="90"/>
+                                                <rect key="frame" x="0.0" y="176" width="414" height="90"/>
                                                 <subviews>
                                                     <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rye-YG-Cb4" customClass="AdView" customModule="KwizzadExample">
                                                         <rect key="frame" x="10" y="0.0" width="394" height="80"/>
@@ -120,10 +137,10 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fgo-fn-Wqr">
-                                        <rect key="frame" x="0.0" y="210" width="414" height="457"/>
+                                        <rect key="frame" x="0.0" y="266" width="414" height="401"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cjn-HV-rbd">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="457"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="401"/>
                                                 <color key="backgroundColor" red="0.32156862745098036" green="0.33725490196078434" blue="0.51372549019607838" alpha="0.089388912671232876" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="textColor" red="0.32156862745098036" green="0.33725490196078434" blue="0.51372549019607838" alpha="0.51220034246575341" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -139,6 +156,9 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="fgo-fn-Wqr" firstAttribute="top" secondItem="Bgp-rd-FSz" secondAttribute="top" constant="266" id="1Bq-FD-1lX"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -160,7 +180,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-733" y="655"/>
+            <point key="canvasLocation" x="-733.33333333333337" y="654.61956521739137"/>
         </scene>
     </scenes>
 </document>

@@ -94,7 +94,7 @@ If you used to integrate Kwizzad SDK in a version prior to `2.x.x`, there are so
     - kwizzadOnAdAvailable:placementId:potentialRewards:adResponse
     - kwizzadOnAdReady:placementId
     - kwizzadDidShowAd:placementId
-    - kwizzadGotOpenTransactions:placementId
+    - kwizzadGotOpenTransactions:openTransactions
     - kwizzadDidDismissAd:placementId
     - kwizzadOnNoFill:placementId
 

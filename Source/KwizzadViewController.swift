@@ -106,7 +106,7 @@ class KwizzadViewController : UIViewController {
         if #available(iOS 9, *) {
             webView.allowsLinkPreview = false
         }
-        let url = URL(string: placement.adResponse!.url!)!;
+        let url = addKometQueryParams(userData: KwizzadSDK.instance.userDataModel, url: URL(string: placement.adResponse!.url!)!)!;
 
         logger.logMessage("Opening \(url)…")
         webView.load(URLRequest(url: url));

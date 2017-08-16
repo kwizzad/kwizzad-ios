@@ -195,6 +195,7 @@
 		FE93A8701DE5D16100BE65D1 /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE93A86F1DE5D16100BE65D1 /* UserDataModel.swift */; };
 		FEA5F9671ECDD0C100069698 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA5F9661ECDD0C100069698 /* Localization.swift */; };
 		FEA5F9701ECDDB5400069698 /* Kwizzad.strings in Resources */ = {isa = PBXBuildFile; fileRef = FEA5F9721ECDDB5400069698 /* Kwizzad.strings */; };
+		FEF4AA561F432CB50098FD49 /* QueryParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF4AA551F432CB50098FD49 /* QueryParams.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -403,6 +404,7 @@
 		FEA5F9741ECDDD0A00069698 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Kwizzad.strings; sourceTree = "<group>"; };
 		FEA5F9761ECE0E0D00069698 /* genstrings.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = genstrings.sh; sourceTree = "<group>"; };
 		FEA5F9771ECE0E0D00069698 /* setup */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = setup; sourceTree = "<group>"; };
+		FEF4AA551F432CB50098FD49 /* QueryParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryParams.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -430,6 +432,7 @@
 				AA7A67AD1DAACC6500BEE919 /* WKController.swift */,
 				6298A4091E5EEC880070F007 /* KwizzadProgressView.swift */,
 				62045F041E9CF38B00650EB0 /* Logger.swift */,
+				FEF4AA551F432CB50098FD49 /* QueryParams.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -1059,6 +1062,7 @@
 				FE22B37F1F03A52800E42857 /* Observable+Aggregate.swift in Sources */,
 				FE4F506A1E964C4D004B2765 /* AdMetaInfo.swift in Sources */,
 				FE22B3321F03A52800E42857 /* SubscriptionDisposable.swift in Sources */,
+				FEF4AA561F432CB50098FD49 /* QueryParams.swift in Sources */,
 				FE22B3231F03A52800E42857 /* SynchronizedUnsubscribeType.swift in Sources */,
 				AAB780C21DB94052003DCA77 /* OpenTransactionsEvent.swift in Sources */,
 				FE22B39A1F03A52800E42857 /* ConcurrentMainScheduler.swift in Sources */,
