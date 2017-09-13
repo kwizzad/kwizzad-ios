@@ -208,8 +208,8 @@ class PlacementTests: XCTestCase , KwizzadSDKDelegate {
     func kwizzadDidDismissAd(placementId: String) {
         XCTAssertEqual(self.kwizzad.placementModel(placementId: self.placementId).adState, AdState.DISMISSED)
     }
-    
-    func kwizzadGotOpenTransactions(openTransactions: Set<OpenTransaction>, rewards: [Reward]) {
+
+    func kwizzadGotOpenTransactions(openTransactions: Set<OpenTransaction>) {
         
     }
     

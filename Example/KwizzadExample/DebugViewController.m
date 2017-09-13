@@ -58,7 +58,7 @@ KwizzadSDK* kwizzadInstance;
     NSURL *url = [NSURL URLWithString:urlString];
     NSData *data = [NSData dataWithContentsOfURL:url];
     UIImage *image = [UIImage imageWithData:data];
-    [_adView.imageView setImage:image];
+    _adView.imageView.image = image;
 }
 
 /////////////////////////////////////////////////////////////////////
@@ -96,14 +96,19 @@ KwizzadSDK* kwizzadInstance;
     KwizzadAdMetaInfo *adMetaInfo = adResponse.adMetaInfo;
     [self log:[NSString stringWithFormat:@"Teaser for campaign's content: %@", adMetaInfo.teaser]];
     [self log:[NSString stringWithFormat:@"Brand name: %@", adMetaInfo.brand]];
-    NSString *incentiveText = [KwizzadReward incentiveTextForRewards:potentialRewards];
+    NSString *incentiveText = adMetaInfo.teaser;
     
     _adView.headlineLabel.text = adMetaInfo.headline;
     _adView.detailsLabel.text = incentiveText;
     
-    if ( potentialRewards.count > 0) {
-        [_adView.smilesLabel setHidden:NO];
-        _adView.smilesLabel.text = [NSString stringWithFormat:@"+%@",[[KwizzadReward summarizeWithRewards:potentialRewards].firstObject valueOrMaxValue]];
+    if (potentialRewards.count > 0) {
+        int rewardAmount = [[[KwizzadReward summarizeWithRewards:potentialRewards].firstObject valueOrMaxValue] intValue];
+        if(rewardAmount > 0) {
+            [_adView.smilesLabel setHidden:NO];
+            _adView.smilesLabel.text = [NSString stringWithFormat:@"+%d", rewardAmount];
+        } else {
+            [_adView.smilesLabel setHidden:YES];
+        }
     } else {
         [_adView.smilesLabel setHidden:YES];
     }

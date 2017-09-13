@@ -1,6 +1,9 @@
 /* In 'forfeit' rewards dialog when there is still a callback to reach. */
 "Are you sure you want to quit and miss out on %@?" = "Willst du die Aktion wirklich beenden? Du verpasst %@.";
 
+/* In 'forfeit' rewards dialog when there is still a callback to reach, but rewards are variable.  */
+"Are you sure you want to quit and miss out on up to %@?" = "Willst du die Aktion wirklich beenden und nicht bis zu %@?";
+
 /* Are you sure you want to quit and miss out on this offer? */
 "Are you sure you want to quit and miss out on this offer?" = "Willst du dir das Angebot wirklich entgehen lassen?";
 
@@ -28,3 +31,11 @@
 /* Description of an amount with an upper limit */
 "up to %@" = "bis zu %@";
 
+/* In 'forfeit' rewards dialog when call2ActionClicked and placement doesnt have goal url */
+"Close window and go back to the app?" = "Fenster schliessen und zurück zur App?";
+
+/* Close button in 'forfeit' rewards dialog when call2ActionClicked and placement doesnt have goal url */
+"Yes, close window" = "Ja, Fenster schliessen";
+
+/* Cancel button in 'forfeit' rewards dialog when call2ActionClicked and placement doesnt have goal url */
+"Cancel" = "Abbrechen";

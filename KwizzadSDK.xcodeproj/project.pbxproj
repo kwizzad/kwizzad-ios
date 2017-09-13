@@ -212,6 +212,7 @@
 		62045F041E9CF38B00650EB0 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		6291298E1ED49466003C4AA8 /* PlacementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacementTests.swift; sourceTree = "<group>"; };
 		629215751EB355DF00C008DD /* KwizzadSDKDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KwizzadSDKDelegate.swift; sourceTree = "<group>"; };
+		62929E4E1F57F551002D0DAA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Kwizzad.strings; sourceTree = "<group>"; };
 		6298A4091E5EEC880070F007 /* KwizzadProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KwizzadProgressView.swift; sourceTree = "<group>"; };
 		629947681E8166AA003AF9A9 /* KwizzadAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KwizzadAPI.swift; sourceTree = "<group>"; };
 		AA00C56F1D93EA980044F1AC /* KwizzadSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KwizzadSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -901,6 +902,7 @@
 			knownRegions = (
 				en,
 				de,
+				fr,
 			);
 			mainGroup = AA00C5651D93EA980044F1AC;
 			productRefGroup = AA00C5701D93EA980044F1AC /* Products */;
@@ -1164,6 +1166,7 @@
 			children = (
 				FEA5F9711ECDDB5400069698 /* en */,
 				FEA5F9741ECDDD0A00069698 /* de */,
+				62929E4E1F57F551002D0DAA /* fr */,
 			);
 			name = Kwizzad.strings;
 			path = Source;

@@ -163,7 +163,7 @@ platform :ios do
       # slack_channel: "kwizzad-sdk",
       test_without_building: true,
       formatter: false,
-      fail_build: true,
+      fail_build: false,
       output_style: "raw",
     )
 

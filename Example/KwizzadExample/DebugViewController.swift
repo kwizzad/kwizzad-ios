@@ -37,6 +37,8 @@ class DebugViewController: UIViewController, KwizzadSDKDelegate, UITextFieldDele
                             let image = UIImage(data: data)
                             self.adView.imageView?.image = image
                         }
+                    } else {
+                        self.adView.imageView?.image = nil
                     }
                 }
             }
@@ -114,7 +116,7 @@ class DebugViewController: UIViewController, KwizzadSDKDelegate, UITextFieldDele
         self.log("Brand name: \(adMetaInfo.brand ?? "(none)")");
         self.log("Teaser for campaign's content: \(adMetaInfo.teaser ?? "(none)")");
 
-        let incentiveText = Reward.incentiveTextFor(rewards: potentialRewards)
+        let incentiveText = adMetaInfo.teaser
         self.log("Incentive text: \(incentiveText ?? "(undefined)")")
 
         // Optionally, can use this to build your own strings that describe the potential reward(s).
@@ -126,8 +128,13 @@ class DebugViewController: UIViewController, KwizzadSDKDelegate, UITextFieldDele
         
         // Handling the case where there's no potential rewards.
         if let reward =  Reward.summarize(rewards: potentialRewards).first {
-            adView.smilesLabel.isHidden = false
-            adView.smilesLabel.text = "+\(String(describing:reward.valueOrMaxValue()!.stringValue))"
+            let rewardAmount = reward.valueOrMaxValue()!;
+            if(rewardAmount.intValue > 0) {
+                adView.smilesLabel.isHidden = false
+                adView.smilesLabel.text = "+\(String(describing:rewardAmount.stringValue))"
+            } else {
+                adView.smilesLabel.isHidden = true
+            }
         } else {
             adView.smilesLabel.isHidden = true
         }

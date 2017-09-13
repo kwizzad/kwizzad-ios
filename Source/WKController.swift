@@ -42,6 +42,13 @@ class WKController : NSObject, WKScriptMessageHandler, WKNavigationDelegate {
             })
         }
         
+        // Open pages with target="_blank" in external browser
+        if navigationAction.targetFrame == nil && navigationAction.request.url != nil {
+            UIApplication.shared.openURL(navigationAction.request.url!);
+            decisionHandler(.cancel);
+            return;
+        }
+        
         if attached {
             let urlString = webView.url!.absoluteString
             

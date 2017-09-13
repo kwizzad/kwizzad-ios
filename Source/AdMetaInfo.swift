@@ -23,16 +23,22 @@ open class AdMetaInfo : NSObject, FromDict {
         if let headline = map["headline"] as? String {
             if (headline != "") {
                 self.headline = headline;
+            } else {
+                self.headline = LocalizedString("KWIZZAD OFFERS", comment: "KWIZZAD OFFERS");
             }
         }
         if let teaser = map["teaser"] as? String {
             if (teaser != "") {
                 self.teaser = teaser;
+            } else {
+                self.teaser = LocalizedString("Answer simple quizzes and complete the task", comment: "Answer simple quizzes and complete the task");
             }
         }
         if let brand = map["brand"] as? String {
             if (brand != "") {
                 self.brand = brand;
+            } else {
+                self.brand = LocalizedString("TVSMILES", comment: "TVSMILES");
             }
         }
     }

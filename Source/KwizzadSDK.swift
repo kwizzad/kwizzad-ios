@@ -157,7 +157,6 @@ open class KwizzadSDK : NSObject {
         placement.currentStep = 0
 
         if(placement.transition(from: AdState.RECEIVED_AD, to: AdState.LOADING_AD)) {
-//            let myCustomParameters = ["userId": self.userDataModel.userId];
             return KwizzadViewController.create(placement : placement, api : api, customParameters: customParameters);
         }
         return nil;

@@ -124,7 +124,7 @@ class KwizzadViewController : UIViewController {
 
         button.sizeToFit()
 
-        view.addSubview(button)
+        webView.addSubview(button)
 
         if #available(iOS 9.0, *) {
             button.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
@@ -195,16 +195,48 @@ class KwizzadViewController : UIViewController {
             self.placement.close();
         })
     }
-
-    func forfeitRewardsText(rewards: [Reward]) -> String {
-        let summarizedRewards = Reward.summarize(rewards: rewards);
-        let description = Reward.enumerateRewardsAsText(rewards: summarizedRewards)
-        if summarizedRewards.count > 0, let description = description {
-            let format = LocalizedString("Are you sure you want to quit and miss out on %@?", comment: "In 'forfeit' rewards dialog when there is still a callback to reach.");
-            return String(format: format, description);
+    
+    func showCloseDialog() {
+        let rewards = rewardsThatCanStillBeReached();
+        var msg = "";
+        var continueCaption = "";
+        var closeCaption = "";
+        let reward = rewards.first(where: {$0.type == "callback"});
+        
+        if(callToActionClicked && (placement.goalUrl == nil && placement.goalUrl!.isEmpty)) {
+            continueCaption = LocalizedString("Cancel", comment: "cancel button in 'forfeit' rewards dialog when call2ActionClicked and placement doesnt have goal url");
+            closeCaption = LocalizedString("Yes, close window", comment: "close button in 'forfeit' rewards dialog when call2ActionClicked and placement doesnt have goal url");
+            msg = LocalizedString("Close window and go back to the app?", comment: "message in 'forfeit' rewards dialog when call2ActionClicked and placement doesnt have goal url");
+        } else {
+            continueCaption = LocalizedString("Continue and claim reward", comment: "Button in 'forfeit reward' dialog for staying in Kwizzad");
+            closeCaption = LocalizedString("Quit and forfeit reward", comment: "Button in 'forfeit reward' dialog for leaving Kwizzad");
+            
+            if(reward != nil &&
+                ((reward!.amount != nil && (reward!.amount)!.intValue > 0) ||
+                    (reward!.maxAmount != nil && (reward!.maxAmount)!.intValue > 0)) ) {
+                if(reward?.maxAmount != nil && (reward?.maxAmount)!.intValue > 0) {
+                    let format = LocalizedString("Are you sure you want to quit and miss out on up to %@?", comment: "In 'forfeit' rewards dialog when there is still a callback to reach, but rewards are variable.");
+                    msg = String(format: format, (reward?.maxAmount)!);
+                } else {
+                    let format = LocalizedString("Are you sure you want to quit and miss out on %@?", comment: "In 'forfeit' rewards dialog when there is still a callback to reach.");
+                    msg = String(format: format, (reward?.amount)!);
+                }
+            } else {
+                msg = LocalizedString("Are you sure you want to miss out on this offer?",
+                                       comment: "In 'forfeit' rewards dialog when there is still callback to reach but no rewards")
+            }
         }
-        return LocalizedString("Are you sure you want to quit and miss out on this offer?", comment: "Are you sure you want to quit and miss out on this offer?");
+        
+        let alert = UIAlertController(title: nil, message: msg, preferredStyle: UIAlertControllerStyle.alert);
+        
+        alert.addAction(UIAlertAction(title: continueCaption, style: UIAlertActionStyle.cancel, handler: nil));
+        alert.addAction(UIAlertAction(title: closeCaption, style: UIAlertActionStyle.destructive, handler: { _ in self.dismissAndClosePlacement(); }));
+        self.present(alert, animated: true, completion: nil);
     }
+    
+    
+    
+    
     
     func hasGoalUrl() -> Bool {
         return self.placement.goalUrl != nil && !self.placement.goalUrl!.isEmpty;
@@ -224,21 +256,13 @@ class KwizzadViewController : UIViewController {
     func closeButtonClick() {
         logger.logMessage(self.placement.adResponse.debugDescription)
         logger.logMessage("Close button clicked")
-
-        let rewards = rewardsThatCanStillBeReached();
-        if (goalReached || rewards.count == 0) {
+        if (goalReached) {
             // The user did everything they could do, so don't bother them anymore
             self.dismissAndClosePlacement();
             return;
         }
 
-        let msg = self.forfeitRewardsText(rewards: rewards);
-        let alert = UIAlertController(title: nil, message: msg, preferredStyle: UIAlertControllerStyle.alert);
-        let continueCaption = LocalizedString("Continue and claim reward", comment: "Button in 'forfeit reward' dialog for staying in Kwizzad");
-        let closeCaption = LocalizedString("Quit and forfeit reward", comment: "Button in 'forfeit reward' dialog for leaving Kwizzad");
-        alert.addAction(UIAlertAction(title: continueCaption, style: UIAlertActionStyle.cancel, handler: nil));
-        alert.addAction(UIAlertAction(title: closeCaption, style: UIAlertActionStyle.destructive, handler: { _ in self.dismissAndClosePlacement(); }));
-        self.present(alert, animated: true, completion: nil);
+        self.showCloseDialog();
     }
 
     func closeAd()
