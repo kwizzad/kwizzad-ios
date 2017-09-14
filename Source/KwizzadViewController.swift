@@ -203,7 +203,7 @@ class KwizzadViewController : UIViewController {
         var closeCaption = "";
         let reward = rewards.first(where: {$0.type == "callback"});
         
-        if(callToActionClicked && (placement.goalUrl == nil && placement.goalUrl!.isEmpty)) {
+        if(callToActionClicked && (placement.goalUrl == nil || placement.goalUrl!.isEmpty)) {
             continueCaption = LocalizedString("Cancel", comment: "cancel button in 'forfeit' rewards dialog when call2ActionClicked and placement doesnt have goal url");
             closeCaption = LocalizedString("Yes, close window", comment: "close button in 'forfeit' rewards dialog when call2ActionClicked and placement doesnt have goal url");
             msg = LocalizedString("Close window and go back to the app?", comment: "message in 'forfeit' rewards dialog when call2ActionClicked and placement doesnt have goal url");
