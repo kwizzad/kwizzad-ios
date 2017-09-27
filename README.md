@@ -132,17 +132,6 @@ To load the Kwizzad SDK over CocoaPods:
   - with objective-c
   [`DebugViewController.m`](./KwizzadExample/KwizzadExample/DebugViewController.m) contains an exemplary integration of an ad placement in a view controller.
 
-  For better targeting, please set your user data : 
-  ```swift  
-  let userData = kwizzad.userDataModel;
-  userData.userId = "12345" 
-  userData.gender = Gender.Female
-  userData.userName = "Francesca Rossi" 
-  userData.facebookUserId = "1234abc"
-  ```
-
-
-
 ```swift    
  using the delegate pattern
 
@@ -163,3 +152,12 @@ To load the Kwizzad SDK over CocoaPods:
     - kwizzadOnGoalReached:placementId
     - kwizzadCallToActionClicked:placementId
 ```
+
+  For better targeting, please set your user data : 
+  ```swift  
+  let userData = kwizzad.userDataModel;
+  userData.userId = "12345" 
+  userData.gender = Gender.Female
+  userData.userName = "Francesca Rossi" 
+  userData.facebookUserId = "1234abc"
+  ```
