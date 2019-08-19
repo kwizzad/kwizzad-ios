@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 // NOT THREADSAFE! :)
 public final class UnsafeVariable<Element> {

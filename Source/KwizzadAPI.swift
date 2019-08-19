@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 class KwizzadAPI {
     
@@ -84,7 +85,7 @@ class KwizzadAPI {
                                     if self.model.overrideWeb != nil, adResponse.url != nil, let regex = try? NSRegularExpression(pattern: "[^:]+://[^/]+", options: .caseInsensitive) {
                                         
                                         logger.logMessage("url before \(String(describing: adResponse.url))")
-                                        adResponse.url = regex.stringByReplacingMatches(in: adResponse.url!, options: .withTransparentBounds, range: NSMakeRange(0, adResponse.url!.characters.count), withTemplate: self.model.overrideWeb!)
+                                        adResponse.url = regex.stringByReplacingMatches(in: adResponse.url!, options: .withTransparentBounds, range: NSMakeRange(0, adResponse.url!.count), withTemplate: self.model.overrideWeb!)
                                         logger.logMessage("url after \(String(describing: adResponse.url))")
                                     }
                             }

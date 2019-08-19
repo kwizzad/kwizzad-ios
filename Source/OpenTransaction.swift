@@ -21,10 +21,10 @@ import Foundation
 
 @objc(KwizzadOpenTransaction)
 open class OpenTransaction: NSObject, FromDict {
-    open let adId : String?
-    open let transactionId : String?
-    open let conversionTimestamp : String?
-    open let reward : Reward?
+    public let adId : String?
+    public let transactionId : String?
+    public let conversionTimestamp : String?
+    public let reward : Reward?
     
     public var state : State = .ACTIVE
     
@@ -62,7 +62,7 @@ open class OpenTransaction: NSObject, FromDict {
         }
     }
     
-    override open var hashValue: Int {
+    override open var hash: Int {
         return (transactionId!+adId!).hashValue
     }
     

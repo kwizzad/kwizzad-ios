@@ -14,7 +14,7 @@ let defaultLocale = "en";
 /// Returns the language code with the country code removed (for example `"en"` if given `"en-GB"`.
 /// returns: the language code with the country code removed (for example `"en"` if given `"en-GB"`.
 func languageWithoutCountry(_ language: String) -> String {
-    return language.characters.count >= 2 ? language[language.startIndex..<language.index(language.startIndex, offsetBy: 2)] : language;
+    return language.count >= 2 ? language.substring(with: language.startIndex..<language.index(language.startIndex, offsetBy: 2)) : language;
 }
 
 func languageCodesToTry(_ preferredLanguages: [String]) -> [String] {

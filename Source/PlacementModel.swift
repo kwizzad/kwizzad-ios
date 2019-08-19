@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 /// Holds data for a *placement* and its state.
 ///

@@ -56,8 +56,8 @@ func generateUserData() -> [String:Any] {
 
 open class AdEvent : KwizzadEvent {
 
-    open let placementId: String?
-    open let adId: String?
+    public let placementId: String?
+    public let adId: String?
 
     open override func toDict(_ map: inout [String : Any]) {
         super.toDict(&map)

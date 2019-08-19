@@ -9,7 +9,7 @@
 import Foundation
 
 open class KwizzadEvent : NSObject {
-    open let type:String?
+    public let type:String?
     open var eventTimestamp:Date?
     
     init(type: String) {

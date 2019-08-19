@@ -8,6 +8,7 @@
 
 import Foundation
 import WebKit
+import RxSwift
 
 class KwizzadViewController : UIViewController {
     let placement : PlacementModel
@@ -64,7 +65,7 @@ class KwizzadViewController : UIViewController {
         return true
     }
 
-    func showProgressView() {
+    @objc func showProgressView() {
         KwizzadProgressView.shared.showProgressView(self.view)
     }
 
@@ -120,7 +121,7 @@ class KwizzadViewController : UIViewController {
 
         button.translatesAutoresizingMaskIntoConstraints = false
 
-        button.contentEdgeInsets = UIEdgeInsetsMake(5,5,5,5)
+        button.contentEdgeInsets = UIEdgeInsets(top: 5,left: 5,bottom: 5,right: 5)
 
         button.sizeToFit()
 
@@ -132,10 +133,10 @@ class KwizzadViewController : UIViewController {
 
         } else {
             // Fallback on earlier versions
-            let constTop:NSLayoutConstraint = NSLayoutConstraint(item: button, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0);
+            let constTop:NSLayoutConstraint = NSLayoutConstraint(item: button, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0);
             self.view.addConstraint(constTop);
 
-            let constRight:NSLayoutConstraint = NSLayoutConstraint(item: button, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.right, multiplier: 1, constant: 0);
+            let constRight:NSLayoutConstraint = NSLayoutConstraint(item: button, attribute: NSLayoutConstraint.Attribute.right, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.right, multiplier: 1, constant: 0);
             self.view.addConstraint(constRight);
         }
 
@@ -227,10 +228,10 @@ class KwizzadViewController : UIViewController {
             }
         }
         
-        let alert = UIAlertController(title: nil, message: msg, preferredStyle: UIAlertControllerStyle.alert);
+        let alert = UIAlertController(title: nil, message: msg, preferredStyle: UIAlertController.Style.alert);
         
-        alert.addAction(UIAlertAction(title: continueCaption, style: UIAlertActionStyle.cancel, handler: nil));
-        alert.addAction(UIAlertAction(title: closeCaption, style: UIAlertActionStyle.destructive, handler: { _ in self.dismissAndClosePlacement(); }));
+        alert.addAction(UIAlertAction(title: continueCaption, style: UIAlertAction.Style.cancel, handler: nil));
+        alert.addAction(UIAlertAction(title: closeCaption, style: UIAlertAction.Style.destructive, handler: { _ in self.dismissAndClosePlacement(); }));
         self.present(alert, animated: true, completion: nil);
     }
     
@@ -253,7 +254,7 @@ class KwizzadViewController : UIViewController {
         }) ?? [];
     }
 
-    func closeButtonClick() {
+    @objc func closeButtonClick() {
         logger.logMessage(self.placement.adResponse.debugDescription)
         logger.logMessage("Close button clicked")
         if (goalReached) {

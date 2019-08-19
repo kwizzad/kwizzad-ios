@@ -11,7 +11,7 @@ s.requires_arc = true
 #s.social_media_url = "http://kwizzad.com"
 
 # 2
-s.version = "2.3.2"
+s.version = "2.4.0"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
@@ -33,5 +33,8 @@ s.source_files = "Source/**/*.{swift,h,m}"
 
 # 9 - Resources
 s.resources = ["Source/**/*.{strings}" , "Source/**/*.xcassets"]
+
+# 10 - Dependencies
+# s.dependency 'RxSwift', '5.0.0'
 
 end

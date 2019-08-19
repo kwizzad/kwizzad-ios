@@ -7,4 +7,10 @@
    <FileRef
       location = "container:KwizzadSDK.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:KwizzadSDK.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
 </Workspace>

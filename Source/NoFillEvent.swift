@@ -10,7 +10,7 @@ import Foundation
 
 open class NoFillEvent : AdEvent, FromDict {
     
-    open let retryAfter: Date?
+    public let retryAfter: Date?
     public var retryInMilliseconds: Double?
 
     public override required init(_ map: [String : Any]) {

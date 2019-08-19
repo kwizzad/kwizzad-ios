@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 let logger = Logger.sharedInstance
 public typealias AdAvailableCallback = (_ rewards: [Reward]?, _ adResponse: AdResponseEvent?) -> Void
@@ -38,7 +39,7 @@ open class KwizzadSDK : NSObject {
     open weak var delegate: KwizzadSDKDelegate?
 
     @objc
-    open static let instance = KwizzadSDK()
+    public static let instance = KwizzadSDK()
 
     let model = KwizzadModel()
     
@@ -73,7 +74,7 @@ open class KwizzadSDK : NSObject {
     /// Configures the SDK's basic data that are necessary to function.
     /// - Parameter configuration: A set of options to be used by the SDK.
     @objc
-    static open func setup(configuration : Configuration) {
+    static public func setup(configuration : Configuration) {
         instance.model.apiKey = configuration.apiKey;
         if(configuration.overrideServer != nil) {
             instance.model.configuredAPIBaseUrl = configuration.overrideServer!
@@ -86,7 +87,7 @@ open class KwizzadSDK : NSObject {
     /// Configures the SDK's basic data that are necessary to function.
     /// - Parameter apiKey: Ask support for an api key.
     @objc
-    static open func setup(apiKey : String) {
+    static public func setup(apiKey : String) {
         instance.model.apiKey = apiKey;
         instance.model.configured.value = true;
     }

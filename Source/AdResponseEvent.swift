@@ -19,7 +19,7 @@ open class DeprecatedResponse : AdEvent, FromDict {
 /// Holds metadata about an available ad, for example potential rewards and information about the campaign behind the ad.
 @objc(KwizzadAdResponseEvent)
 open class AdResponseEvent : AdEvent, FromDict {
-    open let adType: String?
+    public let adType: String?
     
     /// At this date, the ad will expire and the client has to request a new one or the SDK will do it if automaticPreloading is set to true.
     public let expiry: Date?
@@ -33,18 +33,18 @@ open class AdResponseEvent : AdEvent, FromDict {
     }
     
     /// An array of potential rewards.
-    open let rewards:[Reward]?
+    public let rewards:[Reward]?
     
     /// AdMetainfo object containing informations about the campaign.
-    open let adMetaInfo: AdMetaInfo
+    public let adMetaInfo: AdMetaInfo
     
     /// Holds campaign images like thumbnails, banners etc.
-    open let images: [ImageInfo]?
+    public let images: [ImageInfo]?
     
     open var url: String?
-    open let goalUrlPattern: String?
-    open let kometArchiveUrl: String?
-    open let closeButtonVisibility: String?
+    public let goalUrlPattern: String?
+    public let kometArchiveUrl: String?
+    public let closeButtonVisibility: String?
 
     var expiryTimer : Foundation.Timer?
 
