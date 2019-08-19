@@ -1,0 +1,6 @@
+framework module Pods_KwizzadSDK {
+  umbrella header "Pods-KwizzadSDK-umbrella.h"
+
+  export *
+  module * { export * }
+}
