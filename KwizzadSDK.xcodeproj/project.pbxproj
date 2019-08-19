@@ -255,7 +255,6 @@
 				D319668EA7E95ABCF8CA4A20 /* Pods-KwizzadSDKTests.debug.xcconfig */,
 				3465F0C7C42377DB5321BD1E /* Pods-KwizzadSDKTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

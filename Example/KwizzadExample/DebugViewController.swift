@@ -171,8 +171,8 @@ class DebugViewController: UIViewController, KwizzadSDKDelegate, UITextFieldDele
 
         if rewards.count > 0 {
             let msg = Reward.confirmationText(rewards: rewards);
-            let alert = UIAlertController(title: nil, message: msg, preferredStyle: UIAlertControllerStyle.alert);
-            alert.addAction(UIAlertAction(title: "Yay!", style: UIAlertActionStyle.default, handler: { _ in
+            let alert = UIAlertController(title: nil, message: msg, preferredStyle: UIAlertController.Style.alert);
+            alert.addAction(UIAlertAction(title: "Yay!", style: UIAlertAction.Style.default, handler: { _ in
                 openTransactions.forEach({ self.kwizzad.complete(transaction: $0) });
             }))
             self.present(alert, animated: true, completion: nil);

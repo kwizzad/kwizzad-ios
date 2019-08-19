@@ -78,7 +78,7 @@ import UIKit
     func roundedCorners(view : UIView?, withBorder : Bool, cornerRadius: CGFloat) {
         view?.layer.cornerRadius = cornerRadius
         if withBorder {
-            view?.layer.borderColor = UIColor.init(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.1).cgColor
+            view?.layer.borderColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.1).cgColor
             view?.layer.borderWidth = 1.0
         }
         view?.layer.masksToBounds = true
