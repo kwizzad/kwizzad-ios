@@ -35,6 +35,6 @@ s.source_files = "Source/**/*.{swift,h,m}"
 s.resources = ["Source/**/*.{strings}" , "Source/**/*.xcassets"]
 
 # 10 - Dependencies
-# s.dependency 'RxSwift', '5.0.0'
+s.dependency 'RxSwift', '5.0.0'
 
 end
