@@ -218,15 +218,18 @@ class KwizzadViewController : UIViewController {
                 if(reward?.maxAmount != nil && (reward?.maxAmount)!.intValue > 0) {
                     let format = LocalizedString("Are you sure you want to quit and miss out on up to %@?", comment: "In 'forfeit' rewards dialog when there is still a callback to reach, but rewards are variable.");
                     msg = String(format: format, (reward?.maxAmount)!);
-                } else {
-                    let format = LocalizedString("Are you sure you want to quit and miss out on %@?", comment: "In 'forfeit' rewards dialog when there is still a callback to reach.");
-                    msg = String(format: format, (reward?.amount)!);
-                    
                     let alert = UIAlertController(title: nil, message: msg, preferredStyle: UIAlertController.Style.alert);
                     
                     alert.addAction(UIAlertAction(title: continueCaption, style: UIAlertAction.Style.cancel, handler: nil));
                     alert.addAction(UIAlertAction(title: closeCaption, style: UIAlertAction.Style.destructive, handler: { _ in self.dismissAndClosePlacement(); }));
                     self.present(alert, animated: true, completion: nil);
+                    return
+                    
+                } else {
+                    let format = LocalizedString("Are you sure you want to quit and miss out on %@?", comment: "In 'forfeit' rewards dialog when there is still a callback to reach.");
+                    msg = String(format: format, (reward?.amount)!);
+                    
+         
                 }
             } else {
                 msg = LocalizedString("Are you sure you want to miss out on this offer?",
@@ -234,6 +237,7 @@ class KwizzadViewController : UIViewController {
             }
         }
 
+        self.dismissAndClosePlacement();
     }
     
     
